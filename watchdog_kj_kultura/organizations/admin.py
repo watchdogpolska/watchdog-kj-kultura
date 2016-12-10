@@ -28,8 +28,10 @@ class OrganizationAdmin(admin.ModelAdmin):
 
     def get_field_kwargs_for_category(self, category, obj):
         if obj:
-            return dict(label=category.name,
-                        initial=obj.meta.get(category.key, ''))
+            return {'label': category.name,
+                    'initial': obj.meta.get(category.key, ''),
+                    'help_text': _("Use {{object.meta.{key}}} in templates to display value").
+                    format(key=category.key)}
         return dict(label=category.name)
 
     def get_field_for_category(self, *args, **kwargs):
@@ -41,7 +43,6 @@ class OrganizationAdmin(admin.ModelAdmin):
         self.form.categories = self.categories
         fields = {'meta_%d' % (category.pk): self.get_field_for_category(category, obj)
                   for category in self.categories}
-        # gf += fields.keys()
         self.form.declared_fields.update(fields)
         return gf
 

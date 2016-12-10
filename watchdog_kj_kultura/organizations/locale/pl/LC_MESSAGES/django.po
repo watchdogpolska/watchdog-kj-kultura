@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-10 21:42+0100\n"
-"PO-Revision-Date: 2016-12-10 21:42+0100\n"
+"POT-Creation-Date: 2016-12-11 00:36+0100\n"
+"PO-Revision-Date: 2016-12-11 00:36+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -19,7 +19,12 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: admin.py:59
+#: admin.py:33
+#, python-brace-format
+msgid "Use {{object.meta.{key}}} in templates to display value"
+msgstr "Użyj {{object.meta.{key}}} w szablonie, aby wyświetlić wartość"
+
+#: admin.py:60
 msgid "Organization count"
 msgstr "Liczba organizacji"
 
@@ -27,7 +32,7 @@ msgstr "Liczba organizacji"
 msgid "Organizations system"
 msgstr "Baza instytucji kultury"
 
-#: models.py:18 models.py:40 models.py:59
+#: models.py:18 models.py:40 models.py:65
 msgid "Name"
 msgstr "Nazwa"
 
@@ -43,11 +48,11 @@ msgstr "Metakategoria"
 msgid "MetaCategorys"
 msgstr "Metakategorie"
 
-#: models.py:41 models.py:60
+#: models.py:41 models.py:66
 msgid "Slug"
 msgstr "Identyfikator redakcyjny"
 
-#: models.py:45 models.py:66
+#: models.py:45 models.py:72
 msgid "Category"
 msgstr "Kategoria"
 
@@ -55,22 +60,42 @@ msgstr "Kategoria"
 msgid "Categories"
 msgstr "Kategorie"
 
-#: models.py:61
+#: models.py:67
 msgid "E-mail"
 msgstr "E-mail"
 
-#: models.py:63
+#: models.py:69
 msgid "Unit of administrative division"
 msgstr "Jednostka podziału terytorialnego"
 
-#: models.py:69
+#: models.py:75
 msgid "Metadata"
 msgstr "Metadane"
 
-#: models.py:73
+#: models.py:79
 msgid "Organization"
 msgstr "Organizacja"
 
-#: models.py:74
+#: models.py:80
 msgid "Organizations"
 msgstr "Organizacje"
+
+#: templates/organizations/organization_list.html:6
+msgid "organizations"
+msgstr "organizacje"
+
+#: templates/organizations/organization_list.html:14
+msgid "No rows."
+msgstr "Brak wierszy."
+
+#: urls.py:10
+msgid "^region-(?P<slug>[\\w-]+)$"
+msgstr "^region-(?P<slug>[\\w-]+)$"
+
+#: urls.py:12
+msgid "^organization-(?P<slug>[\\w-]+)$"
+msgstr "^instytucja-(?P<slug>[\\w-]+)$"
+
+#: views.py:15 views.py:44 views.py:48 views.py:51 views.py:82
+msgid "Organization list"
+msgstr "Wykaz organizacji"
