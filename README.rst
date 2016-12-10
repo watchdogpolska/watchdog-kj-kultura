@@ -3,10 +3,19 @@ watchdog-kj-kultura
 
 Projekt prezentacji danych o kulturze realizowany z Klubem Jagielońskim.
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
-     :alt: Built with Cookiecutter Django
+.. image:: https://coveralls.io/repos/github/watchdogpolska/watchdog-kj-kultura/badge.svg?branch=master
+    :target: https://coveralls.io/github/watchdogpolska/watchdog-kj-kultura?branch=master
 
+.. image:: https://travis-ci.org/watchdogpolska/watchdog-kj-kultura.svg?branch=master
+    :target: https://travis-ci.org/watchdogpolska/watchdog-kj-kultura
+
+.. image:: https://pyup.io/repos/github/watchdogpolska/watchdog-kj-kultura/shield.svg
+     :target: https://pyup.io/repos/github/watchdogpolska/watchdog-kj-kultura/
+     :alt: Updates
+
+.. image:: https://pyup.io/repos/github/watchdogpolska/watchdog-kj-kultura/python-3-shield.svg
+     :target: https://pyup.io/repos/github/watchdogpolska/watchdog-kj-kultura/
+     :alt: Python 3
 
 :License: MIT
 
