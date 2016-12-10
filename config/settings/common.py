@@ -42,6 +42,7 @@ THIRD_PARTY_APPS = (
     'allauth.socialaccount',  # registration
     'teryt_tree',
     'grappelli',
+    'django_bootstrap_breadcrumbs'
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -199,7 +200,7 @@ MEDIA_URL = '/media/'
 
 # URL Configuration
 # ------------------------------------------------------------------------------
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'watchdog_kj_kultura.main.urls'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'config.wsgi.application'
