@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('teryt_tree', '0003_auto_20161210_1843'),
+        ('teryt_tree', '0002_auto_20151216_0201'),
     ]
 
     operations = [
