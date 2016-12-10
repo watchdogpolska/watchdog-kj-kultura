@@ -4,3 +4,8 @@ python:
 cache: pip
 install: "pip install -r requirements/local.txt -r requirements.txt"
 script: py.test
+
+dist: trusty
+sudo: required
+addons:
+  postgresql: "9.5"
