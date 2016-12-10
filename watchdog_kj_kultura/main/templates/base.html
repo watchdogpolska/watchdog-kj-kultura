@@ -42,10 +42,7 @@
           <div class="collapse navbar-toggleable-xs" id="bs-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
+                <a class="nav-link" href="{% url 'organizations:list' %}">{% trans 'Organizations system' %}</a>
               </li>
             </ul>
 
@@ -71,13 +68,27 @@
     </div>
 
     <div class="container">
-
+      {% if breadcrumbs %}
+      <ul class="breadcrumb">
+          {% for label, url in breadcrumbs %}
+              <li>
+                  {% if url %}
+                      <a href="{{ url }}">{{ label|safe }}</a>
+                  {% else %}
+                      {{ label }}
+                  {% endif %}
+                  {% if not forloop.last %}
+                      <span class="divider">/</span>
+                  {% endif %}
+              </li>
+          {% endfor %}
+      </ul>
+      {% endif %}
       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
           {% endfor %}
       {% endif %}
-
       {% block content %}
         <p>Use this document as a way to quick start any new project.</p>
       {% endblock content %}

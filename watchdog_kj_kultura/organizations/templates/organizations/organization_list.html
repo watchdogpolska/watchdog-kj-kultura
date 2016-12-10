@@ -1,0 +1,17 @@
+{% extends 'organizations/organization_base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="well organization-list">
+<h2>{% trans 'organizations' %}</h2>
+{% if object_list %}
+<ul>
+    {% for organization in object_list %}
+    <li><a href="{{organization.get_absolute_url}}">{{organization}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    {% trans 'No rows.' %}
+{% endif %}
+</div>
+{% endblock %}

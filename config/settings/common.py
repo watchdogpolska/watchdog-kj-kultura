@@ -42,7 +42,6 @@ THIRD_PARTY_APPS = (
     'allauth.socialaccount',  # registration
     'teryt_tree',
     'grappelli',
-    'django_bootstrap_breadcrumbs'
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (

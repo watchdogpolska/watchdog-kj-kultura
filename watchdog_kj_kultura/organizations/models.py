@@ -49,9 +49,15 @@ class Category(TimeStampedModel):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('organizations:list', kwargs={'category': self.slug})
+
 
 class OrganizationQuerySet(models.QuerySet):
-    pass
+
+    def area(self, jst):
+        return self.filter(jst__tree_id=jst.tree_id,
+                           jst__lft__range=(jst.lft, jst.rght))
 
 
 @python_2_unicode_compatible
