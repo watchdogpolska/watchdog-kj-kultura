@@ -1,4 +1,6 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+{% load main_tags %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -47,24 +49,23 @@
               </li>
             </ul>
 
-            <ul class="nav navbar-nav pull-xs-right">
-              {% if request.user.is_authenticated %}
+            {% if request.user.is_authenticated and request.user.is_staff %}
+            {% if object != None or object_list != None %}
+              <ul class="nav navbar-nav pull-xs-right">
+                {% if object != None %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                  <a class="nav-link" href="{{ object | object_to_url_edit_obj }}">{% blocktrans %}Edit {{object}}{%endblocktrans%}</a>
                 </li>
+                {% endif %}
+                {% if object_list != None %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+                  <a class="nav-link" href="{{ object_list | object_list_to_url_edit_obj }}">{% blocktrans %}Changelist{%endblocktrans%}</a>
                 </li>
-              {% else %}
-                <li class="nav-item">
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-                </li>
-                <li class="nav-item">
-                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-                </li>
-              {% endif %}
-            </ul>
-          </div>
+                {% endif %}
+              </ul>
+            {% endif %}
+            {% endif %}
+            </div>
         </div>
       </nav>
     </div>
