@@ -40,17 +40,20 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'teryt_tree',
+    'grappelli',
 )
-
 # Apps specific for this project go here.
 LOCAL_APPS = (
     # custom users app
+    'watchdog_kj_kultura.organizations',
+    'watchdog_kj_kultura.main',
     'watchdog_kj_kultura.users.apps.UsersConfig',
     # Your stuff: custom apps go here
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = LOCAL_APPS + THIRD_PARTY_APPS + DJANGO_APPS
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------

@@ -39,7 +39,8 @@ pytz==2016.10
 # Redis support
 django-redis==4.6.0
 redis>=2.10.5
-
+django-grappelli==2.9.1
+django-teryt-tree==0.7.0
 
 
 

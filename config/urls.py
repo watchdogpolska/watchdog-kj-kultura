@@ -17,6 +17,7 @@ urlpatterns = [
 
     # User management
     url(r'^users/', include('watchdog_kj_kultura.users.urls', namespace='users')),
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
