@@ -48,7 +48,7 @@ LOCAL_APPS = (
     # custom users app
     'watchdog_kj_kultura.organizations',
     'watchdog_kj_kultura.main',
-    'watchdog_kj_kultura.users.apps.UsersConfig',
+    'watchdog_kj_kultura.users',
     # Your stuff: custom apps go here
 )
 
@@ -117,7 +117,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 TIME_ZONE = 'Europe/Warsaw'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl-pl'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1

@@ -29,6 +29,27 @@ class MetaCategory(TimeStampedModel):
         return self.name
 
 
+class CategoryQuerySet(models.QuerySet):
+
+    def with_organization_count(self):
+        return self.annotate(organization_count=models.Count('organization'))
+
+
+@python_2_unicode_compatible
+class Category(TimeStampedModel):
+    name = models.CharField(verbose_name=_("Name"), max_length=50)
+    slug = AutoSlugField(populate_from='name', verbose_name=_("Slug"), unique=True)
+    objects = CategoryQuerySet.as_manager()
+
+    class Meta:
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
+        ordering = ['created', ]
+
+    def __str__(self):
+        return self.name
+
+
 class OrganizationQuerySet(models.QuerySet):
     pass
 
@@ -38,8 +59,13 @@ class Organization(TimeStampedModel):
     name = models.CharField(verbose_name=_("Name"), max_length=50)
     slug = AutoSlugField(populate_from='name', verbose_name=_("Slug"), unique=True)
     email = models.EmailField(verbose_name=_("E-mail"))
-    jst = models.ForeignKey(JednostkaAdministracyjna)
+    jst = models.ForeignKey(JednostkaAdministracyjna,
+                            verbose_name=_("Unit of administrative division"))
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    category = models.ForeignKey(to=Category,
+                                 verbose_name=_("Category"),
+                                 null=True,
+                                 blank=True)
     meta = JSONField(verbose_name=_("Metadata"), default={})
     objects = OrganizationQuerySet.as_manager()
 

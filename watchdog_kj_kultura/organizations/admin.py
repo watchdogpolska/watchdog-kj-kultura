@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 from .forms import OrganizationAdminForm
-from .models import MetaCategory, Organization
+from .models import Category, MetaCategory, Organization
 
 
 @admin.register(MetaCategory)
@@ -43,3 +44,20 @@ class OrganizationAdmin(admin.ModelAdmin):
         # gf += fields.keys()
         self.form.declared_fields.update(fields)
         return gf
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    '''
+        Admin View for Category
+    '''
+    list_display = ('name', 'get_organization_count')
+    search_fields = ('name',)
+
+    def get_organization_count(self, obj):
+        return obj.organization_count
+    get_organization_count.short_description = _('Organization count')
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(CategoryAdmin, self).get_queryset(*args, **kwargs)
+        return qs.with_organization_count()
