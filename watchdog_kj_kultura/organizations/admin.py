@@ -29,12 +29,13 @@ class OrganizationAdmin(admin.ModelAdmin):
     form = OrganizationAdminForm
 
     def get_field_kwargs_for_category(self, category, obj):
+        kwargs = dict(label=category.name, required=False)
         if obj:
-            return {'label': category.name,
-                    'initial': obj.meta.get(category.key, ''),
-                    'help_text': _("Use {{object.meta.{key}}} in templates to display value").
-                    format(key=category.key)}
-        return dict(label=category.name)
+            HELP = _("Use {{object.meta.{key}}} in templates to display value").\
+                format(key=category.key)
+            kwargs.update(dict(initial=obj.meta.get(category.key, ''),
+                               help_text=HELP))
+        return kwargs
 
     def get_field_for_category(self, *args, **kwargs):
         return forms.CharField(**self.get_field_kwargs_for_category(*args, **kwargs))

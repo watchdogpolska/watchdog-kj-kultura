@@ -5,3 +5,15 @@
 <h1>{{region}}</h1>
 {{block.super}}
 {% endblock %}
+
+{% block organization_sidebar %}
+{{block.super}}
+{% if region.get_descendants.all %}
+<h2>{{region}}</h2>
+<ul>
+{% for node in region.get_descendants %}
+<li><a href="{% url 'organizations:list' region=node.slug%}">{{node}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
