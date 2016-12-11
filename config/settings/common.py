@@ -12,7 +12,8 @@ from __future__ import absolute_import, unicode_literals
 
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 3  # (watchdog_kj_kultura/config/settings/common.py - 3 = watchdog_kj_kultura/)
+# (watchdog_kj_kultura/config/settings/common.py - 3 = watchdog_kj_kultura/)
+ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('watchdog_kj_kultura')
 
 env = environ.Env()
@@ -44,7 +45,8 @@ THIRD_PARTY_APPS = (
     'teryt_tree',
     'grappelli',
     'leaflet',
-    'djgeojson'
+    'djgeojson',
+    'djmail',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -91,8 +93,9 @@ FIXTURE_DIRS = (
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
-
+EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
+DJMAIL_REAL_BACKEND = env('DJANGO_EMAIL_BACKEND',
+                          default='django.core.mail.backends.smtp.EmailBackend')
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
