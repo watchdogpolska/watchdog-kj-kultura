@@ -61,8 +61,11 @@ class OrganizationListView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRela
             return [(_('Organization list'), reverse('organizations:list')),
                     (self.category, None), ]
         if self.is_region:
-            return [(_('Organization list'), reverse('organizations:list')),
-                    (self.region, None), ]
+            b = [(_('Organization list'), reverse('organizations:list'))]
+            for node in self.region.get_ancestors():
+                b += [(node, reverse('organizations:list', kwargs={'region': str(node.slug)})), ]
+            b += [(self.region, None), ]
+            return b
         return [(_('Organization list'), None), ]
 
     @cached_property
@@ -98,8 +101,8 @@ class OrganizationDetailView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRe
         # if self.object.category:
         #     b += [(self.object.category, self.object.category.get_absolute_url), ]
         if self.object.jst:
-            for node in self.object.jst.get_ancestors():
-                b += [(node, reverse('organization:list', kwargs={'region': str(node.pk)})), ]
+            for node in self.object.jst.get_ancestors(include_self=True):
+                b += [(node, reverse('organizations:list', kwargs={'region': str(node.slug)})), ]
         b += [(self.object, None), ]
         return b
 
