@@ -69,20 +69,17 @@
 
     <div class="container">
       {% if breadcrumbs %}
-      <ul class="breadcrumb">
+      <ol class="breadcrumb">
           {% for label, url in breadcrumbs %}
-              <li>
+              <li  class="breadcrumb-item{% if forloop.last %} active{% endif %}">
                   {% if url %}
-                      <a href="{{ url }}">{{ label|safe }}</a>
+                      <a href="{{ url }}">{{ label }}</a>
                   {% else %}
                       {{ label }}
                   {% endif %}
-                  {% if not forloop.last %}
-                      <span class="divider">/</span>
-                  {% endif %}
               </li>
           {% endfor %}
-      </ul>
+      </ol>
       {% endif %}
       {% if messages %}
           {% for message in messages %}
