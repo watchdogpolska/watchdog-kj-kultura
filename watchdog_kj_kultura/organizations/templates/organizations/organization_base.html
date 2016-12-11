@@ -1,1 +1,15 @@
 {% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+<div class="col-sm-3">
+<ul>
+{% for category in category_list %}
+<li><a href="{{category.get_absolute_url}}">{{category}}</a></li>
+{% endfor %}
+</ul>
+</div>
+<div class="col-sm-9">
+{% block organization_content %}{% endblock %}
+</div>
+{% endblock %}

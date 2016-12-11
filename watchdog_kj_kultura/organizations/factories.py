@@ -1,9 +1,9 @@
 import factory
 import factory.fuzzy
-
-from .models import MetaCategory, Organization
-from ..users.factories import UserFactory
 from teryt_tree.factories import JednostkaAdministracyjnaFactory
+
+from ..users.factories import UserFactory
+from .models import Category, MetaCategory, Organization
 
 
 class MetaCategoryFactory(factory.django.DjangoModelFactory):
@@ -24,4 +24,13 @@ class OrganizationFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = Organization
+        django_get_or_create = ('slug', )
+
+
+class CategoryFactory(factory.django.DjangoModelFactory):
+    name = factory.Sequence(lambda n: 'Category-%d' % n)
+    slug = factory.LazyAttribute(lambda obj: 'slug-%s' % obj.name)
+
+    class Meta:
+        model = Category
         django_get_or_create = ('slug', )

@@ -9,7 +9,15 @@ from .models import Category, Organization
 from teryt_tree.models import JednostkaAdministracyjna
 
 
-class BreadcrumbsMixin:
+class MenuMixin(object):
+
+    def get_context_data(self, **kwargs):
+        context = super(MenuMixin, self).get_context_data(**kwargs)
+        context['category_list'] = Category.objects.all()
+        return context
+
+
+class BreadcrumbsMixin(object):
 
     def get_breadcrumbs(self):
         return [(_('Organization list'), None), ]
@@ -20,7 +28,7 @@ class BreadcrumbsMixin:
         return context
 
 
-class OrganizationListView(BreadcrumbsMixin, SelectRelatedMixin, ListView):
+class OrganizationListView(MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, ListView):
     model = Organization
     select_related = ['category']
 
@@ -29,14 +37,14 @@ class OrganizationListView(BreadcrumbsMixin, SelectRelatedMixin, ListView):
         return 'category' in self.kwargs
 
     @property
-    def is_teryt(self):
-        return 'teryt' in self.kwargs
+    def is_region(self):
+        return 'region' in self.kwargs
 
     def get_template_name_suffix(self):
         if self.is_category:
             return '_category'
-        if self.is_teryt:
-            return '_teryt'
+        if self.is_region:
+            return '_region'
         return '_list'
 
     def get_breadcrumbs(self):
@@ -44,9 +52,9 @@ class OrganizationListView(BreadcrumbsMixin, SelectRelatedMixin, ListView):
             return [(_('Organization list'), reverse('organizations:list')),
                     (self.category, None),
                     ]
-        if self.is_teryt:
+        if self.is_region:
             return [(_('Organization list'), reverse('organizations:list')),
-                    (self.teryt, None),
+                    (self.region, None),
                     ]
         return [(_('Organization list'), None),
                 ]
@@ -54,27 +62,27 @@ class OrganizationListView(BreadcrumbsMixin, SelectRelatedMixin, ListView):
     @cached_property
     def category(self):
         return (get_object_or_404(Category, slug=self.kwargs['category'])
-                if 'category' in self.kwargs else None)
+                if self.is_category else None)
 
     @cached_property
-    def teryt(self):
-        return (get_object_or_404(JednostkaAdministracyjna, slug=self.kwargs['teryt'])
-                if 'teryt' in self.kwargs else None)
+    def region(self):
+        return (get_object_or_404(JednostkaAdministracyjna, slug=self.kwargs['region'])
+                if self.is_region else None)
 
     def get_context_data(self, **kwargs):
         context = super(OrganizationListView, self).get_context_data(**kwargs)
         context['category'] = self.category
-        context['teryt'] = self.teryt
+        context['region'] = self.region
         return context
 
     def get_queryset(self, *args, **kwargs):
         qs = super(OrganizationListView, self).get_queryset(*args, **kwargs)
-        qs = qs.filter(category=self.category) if 'category' in self.kwargs else qs
-        qs = qs.filter(jst=self.teryt) if 'teryt' in self.kwargs else qs
+        qs = qs.filter(category=self.category) if self.is_category else qs
+        qs = qs.area(self.region) if self.is_region else qs
         return qs
 
 
-class OrganizationDetailView(BreadcrumbsMixin, SelectRelatedMixin, DetailView):
+class OrganizationDetailView(MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, DetailView):
     model = Organization
     select_related = ['category', ]
 
