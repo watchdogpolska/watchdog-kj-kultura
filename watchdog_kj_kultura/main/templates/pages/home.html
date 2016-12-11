@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n static %}
+{% load leaflet_tags %}
+{% load geojson_tags %}
+
+{% block css %}
+  {{block.super}}
+  {% leaflet_js %}
+  {% leaflet_css %}
+{% endblock %}
 
 {% block content %}
 <div class="jumbotron gray">
@@ -8,21 +16,30 @@
   <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">{% trans 'Learn more'%}</a></p>
 </div>
 
+<script>
+function main_map_init (map, options) {
+    var geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    };
+
+    var dataurl = '{% url "organizations:data" %}';
+    $.getJSON(dataurl, function (data) {
+        L.geoJson(data, {
+            pointToLayer: function (feature, latlng) {
+                var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                marker.bindPopup('<a href="' + feature.properties.absolute_url + '">' + feature.properties.name + '</a>');
+                return marker;
+            }
+        }).addTo(map);
+    });
+};
+</script>
 <div class="row">
-    <div class="col-md-7">
-      <div class="red">
-        <h2 class="title"><i class="fa fa-globe"></i> {% trans 'Voivodeships' %}</h3>
-        {% include 'teryt/_voivodeship_map.svg.html' %}
-      </div>
-    </div>
-    <div class="col-md-5">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-    </div>
+{% leaflet_map "main" callback="main_map_init" %}
 </div>
 {% endblock %}

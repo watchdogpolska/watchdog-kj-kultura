@@ -1,12 +1,13 @@
 from braces.views import SelectRelatedMixin
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView
+from djgeojson.views import GeoJSONLayerView, TiledGeoJSONLayerView
+from teryt_tree.models import JednostkaAdministracyjna
 
 from .models import Category, Organization
-from teryt_tree.models import JednostkaAdministracyjna
 
 
 class MenuMixin(object):
@@ -90,3 +91,24 @@ class OrganizationDetailView(MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, De
         b += [(self.object, None), ]
         print(b)
         return b
+
+
+PROPERTIES_LIST = ['name', 'absolute_url']
+
+
+class OrganizationTiledGeoJSONLayerView(TiledGeoJSONLayerView):
+    model = Organization
+    geometry_field = 'pos'
+    properties = PROPERTIES_LIST
+
+
+class OrganizationMapLayer(GeoJSONLayerView):
+    model = Organization
+    precision = 4
+    simplify = 0.5
+    geometry_field = 'pos'
+    properties = PROPERTIES_LIST
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(OrganizationMapLayer, self).get_queryset(*args, **kwargs)
+        return qs.exclude(**{self.geometry_field: None})

@@ -1,5 +1,7 @@
 from autoslug.fields import AutoSlugField
 from django.conf import settings
+from django.contrib.gis.db import models as gismodels
+from django.contrib.gis.geos import Point
 from django.contrib.postgres.fields import JSONField
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -68,12 +70,21 @@ class Organization(TimeStampedModel):
     jst = models.ForeignKey(JednostkaAdministracyjna,
                             verbose_name=_("Unit of administrative division"))
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    pos = gismodels.PointField(verbose_name=_("Position"), null=True, blank=True, db_index=True)
     category = models.ForeignKey(to=Category,
                                  verbose_name=_("Category"),
                                  null=True,
                                  blank=True)
     meta = JSONField(verbose_name=_("Metadata"), default={})
     objects = OrganizationQuerySet.as_manager()
+
+    def geocode_input(self):
+        if self.pos:
+            return "{0}, {1}".format(self.pos.coords[1], self.pos.coords[0])
+        return self.name or "Warszawa, mazowieckie, Polska"
+
+    def set_geopy_point(self, point):
+        self.pos = Point(point.point.longitude, point.point.latitude)
 
     class Meta:
         verbose_name = _("Organization")
@@ -85,3 +96,7 @@ class Organization(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse('organizations:details', kwargs={'slug': self.slug})
+
+    @property
+    def absolute_url(self):
+        return self.get_absolute_url()

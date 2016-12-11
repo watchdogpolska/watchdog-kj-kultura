@@ -28,7 +28,7 @@ DJANGO_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.gis',
     # Useful template tags:
     # 'django.contrib.humanize',
 
@@ -43,6 +43,8 @@ THIRD_PARTY_APPS = (
     'mptt',
     'teryt_tree',
     'grappelli',
+    'leaflet',
+    'djgeojson'
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -105,7 +107,7 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///watchdog_kj_kultura'),
+    'default': env.db('DATABASE_URL', default='postgis:///watchdog_kj_kultura'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -256,3 +258,11 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (6.0, 45.0),
+    'DEFAULT_ZOOM': 1,
+    'TILES': [('OSM',
+               '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+               '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors')]
+
+}

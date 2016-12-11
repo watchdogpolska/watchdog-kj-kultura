@@ -7,6 +7,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.OrganizationListView.as_view(),
         name="list"),
+    url(r'^data.geojson$', views.OrganizationMapLayer.as_view(), name='data'),
+    url(r'^data-(?P<z>\d+)-(?P<x>\d+)-(?P<y>\d+).geojson$',
+        views.OrganizationTiledGeoJSONLayerView.as_view(), name='data'),
     url(_(r'^region-(?P<region>[\w-]+)$'), views.OrganizationListView.as_view(),
         name="list"),
     url(_(r'^organization-(?P<slug>[\w-]+)$'), views.OrganizationDetailView.as_view(),

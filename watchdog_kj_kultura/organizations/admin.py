@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -20,10 +21,11 @@ class OrganizationAdmin(admin.ModelAdmin):
     '''
         Admin View for Organization
     '''
-    list_display = ('name', 'email', 'jst', 'user', 'created', 'modified')
+    list_display = ('name', 'email', 'jst', 'user', 'created', 'modified', 'pos', )
     list_filter = ('created', 'modified')
     readonly_fields = ('meta',)
     search_fields = ('name',)
+    actions = ('geocode_location', 'geocode_clean')
     form = OrganizationAdminForm
 
     def get_field_kwargs_for_category(self, category, obj):
@@ -45,6 +47,29 @@ class OrganizationAdmin(admin.ModelAdmin):
                   for category in self.categories}
         self.form.declared_fields.update(fields)
         return gf
+
+    def get_geocoder_useragent(self):
+        return ','.join("%s <%s>" % x for x in settings.ADMINS)
+
+    def geocode_location(self, request, queryset):
+        from geopy.geocoders import Nominatim
+        geolocator = Nominatim(user_agent=self.get_geocoder_useragent())
+        geocoded = 0
+        skipped = 0
+        for organization in queryset:
+            point = geolocator.geocode(organization.geocode_input(), language='pl')
+            if point:
+                organization.set_geopy_point(point)
+                organization.save(update_fields=["pos"])
+                geocoded += 1
+            else:
+                skipped += 1
+        print("%s geocoded, %d skipped" % (geocoded, skipped))
+    geocode_location.short_description = "Geocode selected using Nominatim"
+
+    def geocode_clean(self, request, queryset):
+        queryset.update(pos=None)
+    geocode_clean.short_description = "Clean pos of selected"
 
 
 @admin.register(Category)
