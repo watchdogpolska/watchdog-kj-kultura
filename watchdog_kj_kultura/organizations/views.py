@@ -10,6 +10,14 @@ from teryt_tree.models import JednostkaAdministracyjna
 from .models import Category, Organization
 
 
+class VisibleMixin(object):
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(VisibleMixin, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(visible=True)
+        return qs
+
+
 class MenuMixin(object):
 
     def get_context_data(self, **kwargs):
@@ -29,7 +37,7 @@ class BreadcrumbsMixin(object):
         return context
 
 
-class OrganizationListView(MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, ListView):
+class OrganizationListView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, ListView):
     model = Organization
     select_related = ['category']
 
@@ -80,29 +88,32 @@ class OrganizationListView(MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, List
         return qs
 
 
-class OrganizationDetailView(MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, DetailView):
+class OrganizationDetailView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRelatedMixin,
+                             DetailView):
     model = Organization
     select_related = ['category', ]
 
     def get_breadcrumbs(self):
         b = [(_('Organization list'), reverse('organizations:list')), ]
-        if self.object.category:
-            b += [(self.object.category, self.object.category.get_absolute_url), ]
+        # if self.object.category:
+        #     b += [(self.object.category, self.object.category.get_absolute_url), ]
+        if self.object.jst:
+            for node in self.object.jst.get_ancestors():
+                b += [(node, reverse('organization:list', kwargs={'region': str(node.pk)})), ]
         b += [(self.object, None), ]
-        print(b)
         return b
 
 
 PROPERTIES_LIST = ['name', 'absolute_url']
 
 
-class OrganizationTiledGeoJSONLayerView(TiledGeoJSONLayerView):
+class OrganizationTiledGeoJSONLayerView(VisibleMixin, TiledGeoJSONLayerView):
     model = Organization
     geometry_field = 'pos'
     properties = PROPERTIES_LIST
 
 
-class OrganizationMapLayer(GeoJSONLayerView):
+class OrganizationMapLayer(VisibleMixin, GeoJSONLayerView):
     model = Organization
     precision = 4
     simplify = 0.5

@@ -5,6 +5,7 @@ from django.contrib.gis.geos import Point
 from django.contrib.postgres.fields import JSONField
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models import Case, When
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from model_utils.models import TimeStampedModel
@@ -61,6 +62,11 @@ class OrganizationQuerySet(models.QuerySet):
         return self.filter(jst__tree_id=jst.tree_id,
                            jst__lft__range=(jst.lft, jst.rght))
 
+    def switch_visibility(self):
+        return self.update(visible=Case(When(visible=True, then=False),
+                                        When(visible=False, then=True),
+                                        default=False))
+
 
 @python_2_unicode_compatible
 class Organization(TimeStampedModel):
@@ -75,6 +81,9 @@ class Organization(TimeStampedModel):
                                  verbose_name=_("Category"),
                                  null=True,
                                  blank=True)
+    visible = models.BooleanField(verbose_name=_("Public visible"),
+                                  help_text=_("Check to mark organization as public visible"),
+                                  default=False)
     meta = JSONField(verbose_name=_("Metadata"), default={})
     objects = OrganizationQuerySet.as_manager()
 

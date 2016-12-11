@@ -25,7 +25,7 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_filter = ('created', 'modified')
     readonly_fields = ('meta',)
     search_fields = ('name',)
-    actions = ('geocode_location', 'geocode_clean')
+    actions = ('geocode_location', 'geocode_clean', 'switch_visible')
     form = OrganizationAdminForm
 
     def get_field_kwargs_for_category(self, category, obj):
@@ -65,11 +65,15 @@ class OrganizationAdmin(admin.ModelAdmin):
             else:
                 skipped += 1
         print("%s geocoded, %d skipped" % (geocoded, skipped))
-    geocode_location.short_description = "Geocode selected using Nominatim"
+    geocode_location.short_description = _("Geocode selected using Nominatim")
 
     def geocode_clean(self, request, queryset):
         queryset.update(pos=None)
-    geocode_clean.short_description = "Clean pos of selected"
+    geocode_clean.short_description = _("Clean position of selected")
+
+    def switch_visible(self, request, queryset):
+        queryset.switch_visibility()
+    switch_visible.short_description = _("Switch visibility of selected")
 
 
 @admin.register(Category)

@@ -21,6 +21,7 @@ class OrganizationFactory(factory.django.DjangoModelFactory):
     slug = factory.LazyAttribute(lambda obj: 'slug-%s' % obj.name)
     user = factory.SubFactory(UserFactory)
     jst = factory.SubFactory(JednostkaAdministracyjnaFactory)
+    visible = True
 
     class Meta:
         model = Organization
