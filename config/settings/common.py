@@ -40,6 +40,7 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'mptt',
     'teryt_tree',
     'grappelli',
 )
@@ -49,6 +50,7 @@ LOCAL_APPS = (
     'watchdog_kj_kultura.organizations',
     'watchdog_kj_kultura.main',
     'watchdog_kj_kultura.users',
+    'watchdog_kj_kultura.teryt'
     # Your stuff: custom apps go here
 )
 
@@ -248,7 +250,6 @@ LOGIN_URL = 'account_login'
 
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
-
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'

@@ -50,14 +50,11 @@ class OrganizationListView(MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, List
     def get_breadcrumbs(self):
         if self.is_category:
             return [(_('Organization list'), reverse('organizations:list')),
-                    (self.category, None),
-                    ]
+                    (self.category, None), ]
         if self.is_region:
             return [(_('Organization list'), reverse('organizations:list')),
-                    (self.region, None),
-                    ]
-        return [(_('Organization list'), None),
-                ]
+                    (self.region, None), ]
+        return [(_('Organization list'), None), ]
 
     @cached_property
     def category(self):
