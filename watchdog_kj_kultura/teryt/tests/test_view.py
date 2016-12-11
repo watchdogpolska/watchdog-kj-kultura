@@ -1,8 +1,8 @@
 from django.core.urlresolvers import reverse
 from django.test import RequestFactory, TestCase
 
-from feder.teryt import views
-from feder.teryt.factories import JSTFactory
+from .. import views
+from ..factories import JSTFactory
 from django.core.urlresolvers import reverse_lazy
 
 
@@ -55,12 +55,12 @@ class JSTListViewTestCase(TestCase):
         self.assertContains(resp, self.object_list[0].name)
 
 
-class SitemapTestCase(TestCase):
+# class SitemapTestCase(TestCase):
 
-    def setUp(self):
-        self.teryt = JSTFactory()
+#     def setUp(self):
+#         self.teryt = JSTFactory()
 
-    def test_letters(self):
-        url = reverse('sitemaps', kwargs={'section': 'teryt'})
-        response = self.client.get(url)
-        self.assertContains(response, self.teryt.get_absolute_url())
+#     def test_letters(self):
+#         url = reverse('sitemaps', kwargs={'section': 'teryt'})
+#         response = self.client.get(url)
+#         self.assertContains(response, self.teryt.get_absolute_url())
