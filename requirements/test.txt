@@ -11,3 +11,6 @@ factory_boy==2.7.0
 # pytest
 pytest-django==3.1.2
 pytest-sugar==0.7.1
+coveralls==1.1
+pytest==3.0.5
+pytest-cov==2.4.0

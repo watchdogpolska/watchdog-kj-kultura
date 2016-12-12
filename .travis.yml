@@ -8,6 +8,8 @@ install:
   - psql -U postgres -c "create extension postgis"
 script: py.test
 
+after_success:
+  - coveralls
 
 dist: trusty
 sudo: required
