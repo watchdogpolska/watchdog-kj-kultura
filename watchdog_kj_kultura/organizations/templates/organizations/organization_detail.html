@@ -1,7 +1,8 @@
 {% extends 'organizations/organization_base.html' %}
-
+{% load i18n %}
 {% block organization_content %}
 <h1>{{object}}</h1>
+<a href="{% url 'organizations:fix' slug=object.slug %}" class="btn btn-warning">{% trans 'Report an error' %}</a>
 <pre>
 {{object.meta}}
 </pre>
@@ -16,4 +17,5 @@
         <td>{{value}}</td>
     </tr>
     {% endfor %}
-</table>P {% endblock %}
+</table>
+{% endblock %}

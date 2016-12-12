@@ -1,12 +1,13 @@
-from braces.views import SelectRelatedMixin
+from braces.views import FormValidMessageMixin, SelectRelatedMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, UpdateView
 from djgeojson.views import GeoJSONLayerView, TiledGeoJSONLayerView
 from teryt_tree.models import JednostkaAdministracyjna
 
+from .forms import OrganizationFixForm
 from .models import Category, Organization
 
 
@@ -94,7 +95,7 @@ class OrganizationListView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRela
 class OrganizationDetailView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRelatedMixin,
                              DetailView):
     model = Organization
-    select_related = ['category', ]
+    select_related = ['category', 'jst']
 
     def get_breadcrumbs(self):
         b = [(_('Organization list'), reverse('organizations:list')), ]
@@ -126,3 +127,24 @@ class OrganizationMapLayer(VisibleMixin, GeoJSONLayerView):
     def get_queryset(self, *args, **kwargs):
         qs = super(OrganizationMapLayer, self).get_queryset(*args, **kwargs)
         return qs.exclude(**{self.geometry_field: None})
+
+
+class OrganizationFixView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRelatedMixin,
+                          FormValidMessageMixin, UpdateView):
+    model = Organization
+    select_related = ['category', 'jst']
+    form_class = OrganizationFixForm
+
+    def get_breadcrumbs(self):
+        b = [(_('Organization list'), reverse('organizations:list')), ]
+        # if self.object.category:
+        #     b += [(self.object.category, self.object.category.get_absolute_url), ]
+        if self.object.jst:
+            for node in self.object.jst.get_ancestors(include_self=True):
+                b += [(node, reverse('organizations:list', kwargs={'region': str(node.slug)})), ]
+        b += [(self.object, self.object.get_absolute_url)]
+        b += [(_("Report an error"), None)]
+        return b
+
+    def get_form_valid_message(self):
+        return u"The request to change {0} was saved!!".format(self.object.name)

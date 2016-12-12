@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from ..factories import CategoryFactory, OrganizationFactory
+from ..factories import CategoryFactory, OrganizationFactory, MetaCategoryFactory
 from teryt_tree.factories import JednostkaAdministracyjnaFactory
 
 
@@ -46,3 +46,40 @@ class OrganizationDetailViewTestCase(TestCase):
     def test_can_view_self(self):
         resp = self.client.get(self.url)
         self.assertEqual(resp.status_code, 200)
+
+    def test_contains_link_to_fix(self):
+        resp = self.client.get(self.url)
+        self.assertEqual(resp.status_code, 200)
+        self.assertContains(resp, reverse('organizations:fix', kwargs={'slug': self.object.slug}))
+
+
+class OrganizationFixViewTestCase(TestCase):
+    def setUp(self):
+        self.meta = MetaCategoryFactory()
+        self.object = OrganizationFactory(meta={self.meta.key: 'LOREM_IPSUM'})
+        self.url = reverse('organizations:fix', kwargs={'slug': self.object.slug})
+
+    def test_can_view_self(self):
+        resp = self.client.get(self.url)
+        self.assertEqual(resp.status_code, 200)
+
+    def test_contains_link_to_details(self):
+        resp = self.client.get(self.url)
+        self.assertEqual(resp.status_code, 200)
+        self.assertContains(resp, reverse('organizations:details',
+                                          kwargs={'slug': self.object.slug}))
+
+    def test_contains_meta_fields_and_values(self):
+        resp = self.client.get(self.url)
+        self.assertEqual(resp.status_code, 200)
+        self.assertContains(resp, "meta_%s" % (self.meta.pk, ))
+        self.assertContains(resp, 'LOREM_IPSUM')
+
+    def test_unsaved_changes(self):
+        resp = self.client.post(self.url, {'name': 'exapmle-name',
+                                           'email': 'xxx@example.com',
+                                           'jst': JednostkaAdministracyjnaFactory().pk,
+                                           'sources': 'some-text'})
+        self.assertEqual(resp.status_code, 302)
+        self.object.refresh_from_db()
+        self.assertNotEqual(self.object.name, 'exapmle-name')

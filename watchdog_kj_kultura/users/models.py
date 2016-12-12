@@ -14,6 +14,10 @@ class User(AbstractUser):
     # First Name and Last Name do not cover name patterns
     # around the globe.
     name = models.CharField(_('Name of User'), blank=True, max_length=255)
+    notify_about_fix = models.BooleanField(_("Notify about fix suggestion to organization"),
+                                           help_text=_("Check to receive notifications about fix " +
+                                                       "suggestion to organization description"),
+                                           default=False)
 
     def __str__(self):
         return self.username

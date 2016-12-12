@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 00:36+0100\n"
-"PO-Revision-Date: 2016-12-11 00:36+0100\n"
+"POT-Creation-Date: 2016-12-11 18:45+0100\n"
+"PO-Revision-Date: 2016-12-11 18:47+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -19,12 +19,24 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: admin.py:33
+#: admin.py:34
 #, python-brace-format
 msgid "Use {{object.meta.{key}}} in templates to display value"
 msgstr "Użyj {{object.meta.{key}}} w szablonie, aby wyświetlić wartość"
 
-#: admin.py:60
+#: admin.py:69
+msgid "Geocode selected using Nominatim"
+msgstr "Ustal pozycje używając Nominatim"
+
+#: admin.py:73
+msgid "Clean position of selected"
+msgstr "Wyczyść pozycje wybranych"
+
+#: admin.py:77
+msgid "Switch visibility of selected"
+msgstr "Przestaw widoczność wybranych"
+
+#: admin.py:90
 msgid "Organization count"
 msgstr "Liczba organizacji"
 
@@ -32,51 +44,63 @@ msgstr "Liczba organizacji"
 msgid "Organizations system"
 msgstr "Baza instytucji kultury"
 
-#: models.py:18 models.py:40 models.py:65
+#: models.py:21 models.py:43 models.py:73
 msgid "Name"
 msgstr "Nazwa"
 
-#: models.py:19
+#: models.py:22
 msgid "Key"
 msgstr "Klucz"
 
-#: models.py:24
+#: models.py:27
 msgid "MetaCategory"
 msgstr "Metakategoria"
 
-#: models.py:25
+#: models.py:28
 msgid "MetaCategorys"
 msgstr "Metakategorie"
 
-#: models.py:41 models.py:66
+#: models.py:44 models.py:74
 msgid "Slug"
 msgstr "Identyfikator redakcyjny"
 
-#: models.py:45 models.py:72
+#: models.py:48 models.py:81
 msgid "Category"
 msgstr "Kategoria"
 
-#: models.py:46
+#: models.py:49
 msgid "Categories"
 msgstr "Kategorie"
 
-#: models.py:67
+#: models.py:75
 msgid "E-mail"
 msgstr "E-mail"
 
-#: models.py:69
+#: models.py:77
 msgid "Unit of administrative division"
 msgstr "Jednostka podziału terytorialnego"
 
-#: models.py:75
+#: models.py:79
+msgid "Position"
+msgstr "Pozycja"
+
+#: models.py:84
+msgid "Public visible"
+msgstr "Publiczna widoczność"
+
+#: models.py:85
+msgid "Check to mark organization as public visible"
+msgstr "Zaznacz, aby oznaczyć organizacje jako widoczną publicznie"
+
+#: models.py:87
 msgid "Metadata"
 msgstr "Metadane"
 
-#: models.py:79
+#: models.py:99
 msgid "Organization"
 msgstr "Organizacja"
 
-#: models.py:80
+#: models.py:100
 msgid "Organizations"
 msgstr "Organizacje"
 
@@ -88,14 +112,14 @@ msgstr "organizacje"
 msgid "No rows."
 msgstr "Brak wierszy."
 
-#: urls.py:10
-msgid "^region-(?P<slug>[\\w-]+)$"
+#: urls.py:13
+msgid "^region-(?P<region>[\\w-]+)$"
 msgstr "^region-(?P<slug>[\\w-]+)$"
 
-#: urls.py:12
+#: urls.py:15
 msgid "^organization-(?P<slug>[\\w-]+)$"
 msgstr "^instytucja-(?P<slug>[\\w-]+)$"
 
-#: views.py:15 views.py:44 views.py:48 views.py:51 views.py:82
+#: views.py:32 views.py:61 views.py:64 views.py:69 views.py:100
 msgid "Organization list"
 msgstr "Wykaz organizacji"

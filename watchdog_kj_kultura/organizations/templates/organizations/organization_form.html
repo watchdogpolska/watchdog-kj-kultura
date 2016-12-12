@@ -1,0 +1,9 @@
+{% extends 'organizations/organization_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% crispy form %}
+{% endblock %}
+
+{% block extra_css %}
+{{form.media}}
+{% endblock %}
