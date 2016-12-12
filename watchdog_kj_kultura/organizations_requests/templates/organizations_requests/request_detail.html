@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<h1>{{object}}</h1>
+<p>Organization: <a href="{{object.organization.get_absolute_url}}">{{object.organization}}</a></p>
+<a href="{% url 'organizations_requests:send' organization=object.organization.slug template=object.template.slug %}">{% blocktrans %}Send your {{template}} too{%endblocktrans %}</a>
+{% endblock %}

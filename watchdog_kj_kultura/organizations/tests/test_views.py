@@ -52,11 +52,11 @@ class OrganizationDetailViewTestCase(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, reverse('organizations:fix', kwargs={'slug': self.object.slug}))
 
-    # def test_contains_link_to_request(self):
-    #     resp = self.client.get(self.url)
-    #     self.assertEqual(resp.status_code, 200)
-    #     self.assertContains(resp, reverse('organizations:request',
-    #                                       kwargs={'slug': self.object.slug}))
+    def test_contains_link_to_request(self):
+        resp = self.client.get(self.url)
+        self.assertEqual(resp.status_code, 200)
+        self.assertContains(resp, reverse('organizations_requests:templates',
+                                          kwargs={'organization': self.object.slug}))
 
 
 class OrganizationFixViewTestCase(TestCase):

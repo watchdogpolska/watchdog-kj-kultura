@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+{% for object in object_list %}
+<li><a href="{% url 'organizations_requests:send' organization=organization.slug template=object.slug %}">{{object}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

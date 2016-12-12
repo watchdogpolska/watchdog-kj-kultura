@@ -21,6 +21,8 @@ urlpatterns = [
     url(_(r'^organizations/'), include('watchdog_kj_kultura.organizations.urls',
                                        namespace='organizations')),
     url(_(r'^region/'), include('watchdog_kj_kultura.teryt.urls', namespace="teryt")),
+    url(_(r'^requests/'), include('watchdog_kj_kultura.organizations_requests.urls',
+                                  namespace="organizations_requests")),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),
 

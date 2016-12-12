@@ -24,6 +24,7 @@ class Template(TimeStampedModel):
     slug = AutoSlugField(populate_from='name', verbose_name=_("Slug"), unique=True)
     subject = models.CharField(verbose_name=_("Subject"), max_length=100)
     body = models.TextField(verbose_name=_("Body"))
+    introduction = models.TextField(verbose_name=_("Introduction"), blank=True)
     email_required = models.BooleanField(blank=True,
                                          verbose_name=_("Require email"),
                                          help_text=_("Mark to require email in content of request"))
@@ -87,7 +88,7 @@ class Request(TimeStampedModel):
         return self.subject
 
     def get_absolute_url(self):
-        return reverse('organizations_requests:details', kwargs={'slug': self.slug})
+        return reverse('organizations_requests:details', kwargs={'pk': str(self.pk)})
 
 
 class Event(TimeStampedModel):
