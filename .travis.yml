@@ -2,8 +2,12 @@ language: python
 python:
 - "3.5"
 cache: pip
-install: "pip install -r requirements/local.txt -r requirements.txt"
+install: 
+  - "pip install -r requirements/local.txt -r requirements.txt"
+  - sudo apt-get install -y python-gdal postgresql-9.5-postgis-2.3
+  - psql -U postgres -c "create extension postgis"
 script: py.test
+
 
 dist: trusty
 sudo: required
