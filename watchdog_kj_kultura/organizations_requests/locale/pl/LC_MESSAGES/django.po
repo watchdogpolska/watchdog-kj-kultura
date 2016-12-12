@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-12 05:41+0100\n"
+"PO-Revision-Date: 2016-12-12 05:41+0100\n"
+"Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: apps.py:7
+msgid "Requests to organizations system"
+msgstr "System zapytań do instytucji"
+
+#: fields.py:7
+msgid "Try to write words a period of time."
+msgstr "Napisz po angielsku okres czasu."
+
+#: forms.py:11 models.py:25 models.py:75
+msgid "Subject"
+msgstr "Tytuł"
+
+#: forms.py:12
+msgid "E-mail address"
+msgstr "Adres e-mail"
+
+#: forms.py:13 models.py:78
+msgid "Content of the request"
+msgstr "Treść zapytania"
+
+#: forms.py:16
+msgid "Send requests"
+msgstr "Wyślij zapytanie"
+
+#: models.py:12
+msgid "Supported is some shortcodes. Refer to the documentation."
+msgstr "Wspierane są pewne znaczniki. Zapoznaj się z dokumentacją."
+
+#: models.py:13
+msgid ""
+"E-mail is necessary for security purposes, as well as notification of the "
+"request."
+msgstr ""
+"Adres e-mail jest niezbędny w celach bezpieczeństwa, a także do powiadomień "
+"o stanie zapytania."
+
+#: models.py:23
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:24
+msgid "Slug"
+msgstr "Identyfikator redakcyjny"
+
+#: models.py:26
+msgid "Body"
+msgstr "Treść"
+
+#: models.py:28
+msgid "Require email"
+msgstr "Wymagaj adresu e-mail"
+
+#: models.py:29
+msgid "Mark to require email in content of request"
+msgstr "Zaznacz, aby wymagać adresu w treści zapytania."
+
+#: models.py:31
+msgid "Public visible"
+msgstr "Publiczna widoczność"
+
+#: models.py:32
+msgid "Check to mark template as public visible"
+msgstr "Zaznacz, aby oznaczyć szablon jako publicznie widoczny"
+
+#: models.py:36 models.py:46
+msgid "Template"
+msgstr "Szablon"
+
+#: models.py:37
+msgid "Templates"
+msgstr "Szablony"
+
+#: models.py:48
+msgid "The period for sending notification"
+msgstr "Okres na wysłanie powiadomienia"
+
+#: models.py:50
+msgid "Subject of notification"
+msgstr "Temat powiadomienia"
+
+#: models.py:52
+msgid "Body of notification"
+msgstr "Treść powiadomienia"
+
+#: models.py:62 models.py:63 models.py:94
+#, fuzzy
+#| msgid "Body of notification"
+msgid "Notification"
+msgstr "Treść powiadomienia"
+
+#: models.py:73
+msgid "Organization"
+msgstr "Organizacja"
+
+#: models.py:74
+msgid "Used templates"
+msgstr "Użyty szablon"
+
+#: models.py:76
+msgid "Email of organization"
+msgstr "Adres organizacji"
+
+#: models.py:77
+msgid "E-mail"
+msgstr "E-mail"
+
+#: models.py:82 models.py:95
+msgid "Request"
+msgstr "Zapytanie"
+
+#: models.py:83
+msgid "Requests"
+msgstr "Zapytania"
+
+#: validators.py:14
+#, python-format
+msgid "%(value)s is not valid delta data"
+msgstr "%(value)s nie jest poprawnym okresem czasu"
+
+#: views.py:34
+msgid "Organization list"
+msgstr "Wykaz organizacji"
+
+#: views.py:53
+#, python-brace-format
+msgid "{0} created!"
+msgstr "{0} utworzony!"
+
+#~ msgid "Epoch"
+#~ msgstr "Powiadomienie"

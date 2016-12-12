@@ -1,0 +1,2 @@
+class RelativeDateParseException(Exception):
+    pass

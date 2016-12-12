@@ -52,8 +52,15 @@ class OrganizationDetailViewTestCase(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, reverse('organizations:fix', kwargs={'slug': self.object.slug}))
 
+    # def test_contains_link_to_request(self):
+    #     resp = self.client.get(self.url)
+    #     self.assertEqual(resp.status_code, 200)
+    #     self.assertContains(resp, reverse('organizations:request',
+    #                                       kwargs={'slug': self.object.slug}))
+
 
 class OrganizationFixViewTestCase(TestCase):
+
     def setUp(self):
         self.meta = MetaCategoryFactory()
         self.object = OrganizationFactory(meta={self.meta.key: 'LOREM_IPSUM'})

@@ -1,0 +1,1 @@
+default_app_config = 'watchdog_kj_kultura.organizations_requests.apps.OrganizationsRequestsConfig'

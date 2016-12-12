@@ -6,9 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 from djgeojson.views import GeoJSONLayerView, TiledGeoJSONLayerView
 from teryt_tree.models import JednostkaAdministracyjna
-
+from ..main.views import BreadcrumbsMixin
 from .forms import OrganizationFixForm
 from .models import Category, Organization
+
+PROPERTIES_LIST = ['name', 'absolute_url']
 
 
 class VisibleMixin(object):
@@ -24,17 +26,6 @@ class MenuMixin(object):
     def get_context_data(self, **kwargs):
         context = super(MenuMixin, self).get_context_data(**kwargs)
         context['category_list'] = Category.objects.all()
-        return context
-
-
-class BreadcrumbsMixin(object):
-
-    def get_breadcrumbs(self):
-        return [(_('Organization list'), None), ]
-
-    def get_context_data(self, **kwargs):
-        context = super(BreadcrumbsMixin, self).get_context_data(**kwargs)
-        context['breadcrumbs'] = self.get_breadcrumbs()
         return context
 
 
@@ -108,9 +99,6 @@ class OrganizationDetailView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRe
         return b
 
 
-PROPERTIES_LIST = ['name', 'absolute_url']
-
-
 class OrganizationTiledGeoJSONLayerView(VisibleMixin, TiledGeoJSONLayerView):
     model = Organization
     geometry_field = 'pos'
@@ -129,11 +117,8 @@ class OrganizationMapLayer(VisibleMixin, GeoJSONLayerView):
         return qs.exclude(**{self.geometry_field: None})
 
 
-class OrganizationFixView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRelatedMixin,
-                          FormValidMessageMixin, UpdateView):
-    model = Organization
-    select_related = ['category', 'jst']
-    form_class = OrganizationFixForm
+class ActionBreadcrumbsView(object):
+    section_title = _("Report an error")
 
     def get_breadcrumbs(self):
         b = [(_('Organization list'), reverse('organizations:list')), ]
@@ -143,8 +128,15 @@ class OrganizationFixView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRelat
             for node in self.object.jst.get_ancestors(include_self=True):
                 b += [(node, reverse('organizations:list', kwargs={'region': str(node.slug)})), ]
         b += [(self.object, self.object.get_absolute_url)]
-        b += [(_("Report an error"), None)]
+        b += [(self.section_title, None)]
         return b
+
+
+class OrganizationFixView(ActionBreadcrumbsView, VisibleMixin, MenuMixin, BreadcrumbsMixin,
+                          SelectRelatedMixin, FormValidMessageMixin, UpdateView):
+    model = Organization
+    select_related = ['category', 'jst']
+    form_class = OrganizationFixForm
 
     def get_form_valid_message(self):
         return u"The request to change {0} was saved!!".format(self.object.name)

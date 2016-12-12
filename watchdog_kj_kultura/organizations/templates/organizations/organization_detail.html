@@ -3,6 +3,7 @@
 {% block organization_content %}
 <h1>{{object}}</h1>
 <a href="{% url 'organizations:fix' slug=object.slug %}" class="btn btn-warning">{% trans 'Report an error' %}</a>
+{# <a href="{% url 'organizations:request' slug=object.slug %}" class="btn btn-success">{% trans 'Request a information' %}</a> #}
 <pre>
 {{object.meta}}
 </pre>

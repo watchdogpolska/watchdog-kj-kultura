@@ -1,5 +1,5 @@
 from atom.ext.crispy_forms.forms import SingleButtonMixin
-from crispy_forms.layout import ButtonHolder, Fieldset, Layout, Submit
+from crispy_forms.layout import Fieldset, Layout
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -78,3 +78,4 @@ class OrganizationFixForm(SingleButtonMixin, forms.ModelForm):
     class Meta:
         model = Organization
         fields = ['name', 'email', 'jst', 'pos', 'category']
+

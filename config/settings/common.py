@@ -54,7 +54,8 @@ LOCAL_APPS = (
     'watchdog_kj_kultura.organizations',
     'watchdog_kj_kultura.main',
     'watchdog_kj_kultura.users',
-    'watchdog_kj_kultura.teryt'
+    'watchdog_kj_kultura.teryt',
+    'watchdog_kj_kultura.organizations_requests',
     # Your stuff: custom apps go here
 )
 
