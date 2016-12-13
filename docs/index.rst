@@ -3,20 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to watchdog-kj-kultura's documentation!
-====================================================================
+Witam w dokumentacji watchdog-kj-kultura!
+=========================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   readme
+   architecture
    install
    deploy
-   docker_ec2
-   tests
-
-
+   admin_panel
+   static_pages
+   organizations
+   organizations_requests
+   teryt_tree
 
 Indices and tables
 ==================

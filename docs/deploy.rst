@@ -1,4 +1,7 @@
-Deploy
-========
+.. _deploy:
 
-This is where you describe how the project is deployed in production.
+*********
+Wdrożenie
+*********
+
+ .. todo:: Uzupełnić dokument. Przedstawić konfiguracje zmiennych środowiskowych, a także konieczność wywoływania :ref:`send_requests_notifications` .
