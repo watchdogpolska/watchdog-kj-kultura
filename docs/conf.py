@@ -24,6 +24,7 @@ from django.utils.html import strip_tags
 
 sys.path.append(os.path.abspath('..'))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'config.settings.local'
+os.environ['DATABASE_URL'] = 'postgres://'
 
 django.setup()
 
