@@ -53,7 +53,7 @@ extensions = [
 intersphinx_mapping = {
     'python': ('https://python.readthedocs.io/en/v2.7.2/', None),
     'django': ('https://docs.djangoproject.com/en/dev/',
-               'https://docs.djangoproject.com/en/dev/_objects/'),
+               'http://docs.djangoproject.com/en/dev/_objects/'),
     'sphinx': ('https://sphinx.readthedocs.io/en/latest/', None),
     'grappelli': ('https://django-grappelli.readthedocs.io/en/latest/', None),
 }
