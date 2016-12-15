@@ -55,6 +55,7 @@ intersphinx_mapping = {
     'django': ('https://docs.djangoproject.com/en/dev/',
                'https://docs.djangoproject.com/en/dev/_objects/'),
     'sphinx': ('https://sphinx.readthedocs.io/en/latest/', None),
+    'grappelli': ('https://django-grappelli.readthedocs.io/en/latest/', None),
 }
 
 # Add any paths that contain templates here, relative to this directory.

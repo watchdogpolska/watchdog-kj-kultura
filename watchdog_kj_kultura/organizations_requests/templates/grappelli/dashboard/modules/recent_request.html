@@ -1,0 +1,23 @@
+{% extends "grappelli/dashboard/module.html" %}
+{% load i18n %}
+{% load main_tags %}
+{% load humanize %}
+{% block module_content %}
+    <div class="grp-module">
+        {% if module.children %}
+            <ul class="grp-listing-small">
+                {% for entry in module.children %}
+                    <li class="grp-row {% if entry.is_addition %}grp-add-link{% endif %}{% if entry.is_change %}grp-change-link{% endif %}{% if entry.is_deletion %}grp-delete-link{% endif %}">
+                        <a href="{{ entry | object_to_url_edit_obj }}">{{ entry }}</a>
+                        <span class="grp-font-color-quiet">
+                        {% with organization=entry.organization created=entry.created created_natural=entry.created|naturaltime %}
+                        {{ organization }} at <span title="{{created}}">{{created_natural}}</span></span>
+                        {% endwith %}
+                        </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="grp-row"><p>{% trans 'None Available' %}</p></div>
+        {% endif %}
+    </div>
+{% endblock %}

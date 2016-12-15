@@ -54,3 +54,11 @@ Panel administracyjny
 
 .. automodule:: watchdog_kj_kultura.organizations_requests.admin
    :members:
+
+Moduły ekranu zarządzania
+#########################
+
+Dostępne są moduły kompatybilne z :ref:`grappelli:dashboard_api`.
+
+.. automodule:: watchdog_kj_kultura.organizations_requests.dashboardmodules
+   :members:

@@ -7,17 +7,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-10 20:39+0100\n"
-"PO-Revision-Date: 2016-12-10 20:42+0100\n"
+"POT-Creation-Date: 2016-12-15 20:00+0100\n"
+"PO-Revision-Date: 2016-12-15 19:54+0100\n"
+"Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
+"Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.8.7.1\n"
+
+#: dashboard.py:26
+msgid "Editorial Section"
+msgstr "Sekcja redakcyjna"
+
+#: dashboard.py:34
+msgid "Administration Section"
+msgstr "Sekcja administracyjna"
+
+#: dashboard.py:50
+msgid "Support"
+msgstr "Wsparcie"
+
+#: dashboard.py:54
+msgid "Citizens Network Watchdog Poland"
+msgstr "Sieć Obywatelska Watchdog Polska"
+
+#: dashboard.py:59
+msgid "watchdog-kj-kultura Documentation"
+msgstr "Dokumentacja watchdog-kj-kultura"
+
+#: dashboard.py:64
+msgid "watchdog-kj-kultura code"
+msgstr "Kod źródłowy watchdog-kj-kultura"
 
 #: templates/account/account_inactive.html:5
 #: templates/account/account_inactive.html:8
@@ -116,7 +140,7 @@ msgstr ""
 "<a href=\"%(email_url)s\">wygenerować nowe łącze dla Twojego adresu. </a>."
 
 #: templates/account/login.html:7 templates/account/login.html:11
-#: templates/account/login.html:44 templates/base.html:63
+#: templates/account/login.html:44
 msgid "Sign In"
 msgstr "Zaloguj"
 
@@ -151,7 +175,7 @@ msgid "Forgot Password?"
 msgstr "Zapomniałeś hasła?"
 
 #: templates/account/logout.html:5 templates/account/logout.html:8
-#: templates/account/logout.html:17 templates/base.html:56
+#: templates/account/logout.html:17
 msgid "Sign Out"
 msgstr "Wyloguj się"
 
@@ -234,7 +258,6 @@ msgid "Signup"
 msgstr "Zarejestruj się"
 
 #: templates/account/signup.html:9 templates/account/signup.html:19
-#: templates/base.html:60
 msgid "Sign Up"
 msgstr "Zarejestuj się"
 
@@ -300,6 +323,46 @@ msgstr ""
 "<strong>Uwaga:</strong> możesz ciągle <a href=\"%(email_url)s\">zmienić Twój "
 "adres e-mail</a>."
 
-#: templates/base.html:53
-msgid "My Profile"
-msgstr "Mój profil"
+#: templates/base.html:45
+msgid "Organizations system"
+msgstr "Baza instytucji kultury"
+
+#: templates/base.html:54
+#, python-format
+msgid "Edit %(object)s"
+msgstr "Edytuj %(object)s"
+
+#: templates/base.html:59
+msgid "Changelist"
+msgstr "Lista edycyjna"
+
+#: templates/pages/home.html:14
+msgid "Let's civil data mining!"
+msgstr ""
+
+#: templates/pages/home.html:15
+msgid "Move debates to new age together!"
+msgstr ""
+
+#: templates/pages/home.html:16
+msgid "Learn more"
+msgstr "Czytaj więcej"
+
+#: urls.py:20
+msgid "^users/"
+msgstr "^uzytkownicy/"
+
+#: urls.py:21
+msgid "^organizations/"
+msgstr "^instytucje/"
+
+#: urls.py:23
+msgid "^region/"
+msgstr "^region/"
+
+#: urls.py:24
+msgid "^requests/"
+msgstr "^zapytania/"
+
+#~ msgid "My Profile"
+#~ msgstr "Mój profil"

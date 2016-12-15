@@ -31,7 +31,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.gis',
     # Useful template tags:
-    # 'django.contrib.humanize',
+    'django.contrib.humanize',
 
     # Admin
     'django.contrib.admin',
@@ -41,6 +41,7 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'grappelli.dashboard',
     'mptt',
     'teryt_tree',
     'grappelli',
@@ -270,3 +271,5 @@ LEAFLET_CONFIG = {
                '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors')]
 
 }
+
+GRAPPELLI_INDEX_DASHBOARD = 'watchdog_kj_kultura.main.dashboard.CustomIndexDashboard'

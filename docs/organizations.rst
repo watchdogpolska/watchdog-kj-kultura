@@ -37,7 +37,7 @@ Dla każdej organizacji wymagane są przez aplikacje następujące pola:
 
 Każdorazowo i automatycznie jest zapisywana data utworzenia i modyfikacja wpisu.
 
-W celu wykorzystania metadanych należy dokonać edcji szablonów w kodzie źródłowym aplikacji. W celu edycji strony szczegółowej organizacji dokonaj edycji``/watchdog_kj_kultura/organizations/templates/organizations/organization_detail.html``.
+Dla każdej organizacji możliwe jest ustalenie metadanych. Wymaga to pierw wprowadzenia obiektu typu :class:`watchdog_kj_kultura.organizations.models.MetaCategory`, a wówczas podczas edycji organizacji pojawi się dodatkowe pole odpowiadające wartości metadanych. W celu wykorzystania danych zgromadzonych w polu metadanych należy dokonać edcji szablonów w kodzie źródłowym aplikacji. W celu edycji strony szczegółowej organizacji dokonaj edycji ``/watchdog_kj_kultura/organizations/templates/organizations/organization_detail.html``. Następnie należy odwołać się do metadanej wykorzystaniem np. ``{{object.meta.KLUCZ}}``.
 
 Architektura
 ############

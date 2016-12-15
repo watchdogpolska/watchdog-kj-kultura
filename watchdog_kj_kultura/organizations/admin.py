@@ -27,6 +27,9 @@ class OrganizationAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     actions = ('geocode_location', 'geocode_clean', 'switch_visible')
     form = OrganizationAdminForm
+    related_lookup_fields = {
+        'fk': ['jst'],
+    }
 
     def get_field_kwargs_for_category(self, category, obj):
         kwargs = dict(label=category.name, required=False)

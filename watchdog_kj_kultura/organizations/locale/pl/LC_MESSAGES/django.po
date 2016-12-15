@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 18:45+0100\n"
-"PO-Revision-Date: 2016-12-11 18:47+0100\n"
+"POT-Creation-Date: 2016-12-15 20:00+0100\n"
+"PO-Revision-Date: 2016-12-15 19:56+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -19,30 +19,60 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: admin.py:34
+#: admin.py:37
 #, python-brace-format
 msgid "Use {{object.meta.{key}}} in templates to display value"
 msgstr "Użyj {{object.meta.{key}}} w szablonie, aby wyświetlić wartość"
 
-#: admin.py:69
+#: admin.py:72
 msgid "Geocode selected using Nominatim"
 msgstr "Ustal pozycje używając Nominatim"
 
-#: admin.py:73
+#: admin.py:76
 msgid "Clean position of selected"
 msgstr "Wyczyść pozycje wybranych"
 
-#: admin.py:77
+#: admin.py:80
 msgid "Switch visibility of selected"
 msgstr "Przestaw widoczność wybranych"
 
-#: admin.py:90
+#: admin.py:93
 msgid "Organization count"
 msgstr "Liczba organizacji"
 
 #: apps.py:7
 msgid "Organizations system"
 msgstr "Baza instytucji kultury"
+
+#: forms.py:24
+msgid "Sources of information"
+msgstr "Źródło informacji"
+
+#: forms.py:25
+msgid "Write about where to get this information so we can verify it."
+msgstr ""
+"Napisz kilka słów o tym, gdzie pozyskać potwierdzenie dla tych informacji "
+"(jakie dokumenty itd.)."
+
+#: forms.py:27
+msgid "I am working in this institution"
+msgstr "Pracuje w tej instytucji"
+
+#: forms.py:28
+msgid "Mark, if you work in this institution."
+msgstr "Zaznacz, jeżeli pracujesz w tej instytucji"
+
+#: forms.py:50
+msgid "Basic data"
+msgstr "Dane podstawowe"
+
+#: forms.py:54
+msgid "Metadatas"
+msgstr "Metadane"
+
+#: forms.py:58
+msgid "Verification"
+msgstr "Weryfikacja"
 
 #: models.py:21 models.py:43 models.py:73
 msgid "Name"
@@ -104,6 +134,23 @@ msgstr "Organizacja"
 msgid "Organizations"
 msgstr "Organizacje"
 
+#: templates/emails/organization_fix_email-subject.html:1
+#, python-format
+msgid "Suggestion update of %(object)s"
+msgstr "Propozycja aktualizacji %(object)s"
+
+#: templates/organizations/organization_detail.html:5 views.py:121
+msgid "Report an error"
+msgstr "Zgłoś błąd"
+
+#: templates/organizations/organization_detail.html:6
+msgid "Templates of requests"
+msgstr "Szablony zapytań"
+
+#: templates/organizations/organization_detail.html:7
+msgid "Requests received:"
+msgstr "Otrzymane zapytania:"
+
 #: templates/organizations/organization_list.html:6
 msgid "organizations"
 msgstr "organizacje"
@@ -113,13 +160,17 @@ msgid "No rows."
 msgstr "Brak wierszy."
 
 #: urls.py:13
-msgid "^region-(?P<region>[\\w-]+)$"
+msgid "^region-(?P<region>[\\w\\d-]+)$"
 msgstr "^region-(?P<slug>[\\w-]+)$"
 
 #: urls.py:15
-msgid "^organization-(?P<slug>[\\w-]+)$"
+msgid "^organization-(?P<slug>[\\w\\d-]+)$"
 msgstr "^instytucja-(?P<slug>[\\w-]+)$"
 
-#: views.py:32 views.py:61 views.py:64 views.py:69 views.py:100
+#: urls.py:17
+msgid "^organization-(?P<slug>[\\w\\d-]+)/~fix$"
+msgstr "^instytucja-(?P<slug>[\\w-]+)$"
+
+#: views.py:53 views.py:56 views.py:61 views.py:92 views.py:124
 msgid "Organization list"
 msgstr "Wykaz organizacji"
