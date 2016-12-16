@@ -50,3 +50,5 @@ djmail==1.0.0
 django-atom==0.12.7
 django-haystack==2.5.1
 django-tinymce==2.4.0
+python-dateutil==2.6.0
+
