@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-15 20:00+0100\n"
-"PO-Revision-Date: 2016-12-15 19:56+0100\n"
+"POT-Creation-Date: 2016-12-16 05:40+0100\n"
+"PO-Revision-Date: 2016-12-16 05:41+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -41,8 +41,8 @@ msgid "Organization count"
 msgstr "Liczba organizacji"
 
 #: apps.py:7
-msgid "Organizations system"
-msgstr "Baza instytucji kultury"
+msgid "Static pages module"
+msgstr "Moduł stron statycznych"
 
 #: forms.py:24
 msgid "Sources of information"
@@ -161,16 +161,19 @@ msgstr "Brak wierszy."
 
 #: urls.py:13
 msgid "^region-(?P<region>[\\w\\d-]+)$"
-msgstr "^region-(?P<slug>[\\w-]+)$"
+msgstr "^region-(?P<region>[\\w\\d-]+)$"
 
 #: urls.py:15
 msgid "^organization-(?P<slug>[\\w\\d-]+)$"
-msgstr "^instytucja-(?P<slug>[\\w-]+)$"
+msgstr "^instytucja-(?P<slug>[\\w\\d-]+)$"
 
 #: urls.py:17
 msgid "^organization-(?P<slug>[\\w\\d-]+)/~fix$"
-msgstr "^instytucja-(?P<slug>[\\w-]+)$"
+msgstr "^instytucja-(?P<slug>[\\w\\d-]+)/~fix$"
 
 #: views.py:53 views.py:56 views.py:61 views.py:92 views.py:124
 msgid "Organization list"
 msgstr "Wykaz organizacji"
+
+#~ msgid "Organizations system"
+#~ msgstr "Baza instytucji kultury"

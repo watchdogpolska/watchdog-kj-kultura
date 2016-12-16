@@ -22,12 +22,10 @@ urlpatterns = [
     url(_(r'^region/'), include('watchdog_kj_kultura.teryt.urls', namespace="teryt")),
     url(_(r'^requests/'), include('watchdog_kj_kultura.organizations_requests.urls',
                                   namespace="organizations_requests")),
+    url(_(r'^pages/'), include('watchdog_kj_kultura.staticpages.urls', namespace="staticpages")),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),
-
-    # Your stuff: custom urls includes go here
-
-
+    url(r'^tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

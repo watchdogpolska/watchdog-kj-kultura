@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load staticpages_tags %}
+{% block content %}
+<h1>{{object}}</h1>
+{% render_page_with_shortcode object.content safe=True%}
+
+{% endblock %}

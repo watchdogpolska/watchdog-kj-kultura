@@ -48,6 +48,7 @@ THIRD_PARTY_APPS = (
     'leaflet',
     'djgeojson',
     'djmail',
+    'tinymce',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -57,6 +58,7 @@ LOCAL_APPS = (
     'watchdog_kj_kultura.users',
     'watchdog_kj_kultura.teryt',
     'watchdog_kj_kultura.organizations_requests',
+    'watchdog_kj_kultura.staticpages',
     # Your stuff: custom apps go here
 )
 
@@ -273,3 +275,12 @@ LEAFLET_CONFIG = {
 }
 
 GRAPPELLI_INDEX_DASHBOARD = 'watchdog_kj_kultura.main.dashboard.CustomIndexDashboard'
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'file_browser_callback': 'watchdog_filebrowser'
+}

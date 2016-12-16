@@ -4,19 +4,50 @@
 Moduł podstron statycznych
 **************************
 
-Ten moduł ma możliwość dodawania/edycje statycznych stron na portalu z poziomu panelu administracyjnego, a także wyświetlanie stron przez użytkownika. 
-Wprowadzony mechanizm ma służyć prezentacji podstawowych informacji o projekcie.
+Założenia
+############
+
+Ten moduł ma możliwość dodawania/edycje statycznych stron na portalu z poziomu panelu administracyjnego, a także wyświetlanie stron przez użytkownika. Wprowadzony mechanizm ma służyć prezentacji podstawowych informacji o projekcie, a także infografik i raportów.
 
 Karta edycji podstron edycji zawiera nastepujące pola:
 
-- Nazwa strony - Krótkie pole tekstowe
-- Treść strony - Duże pole tekstowe do wpisywania treści strony z edytorem WYSIWYG
+- Nazwa - Krótkie pole tekstowe, które określa tytuł strony
+- Użytkownik - Pole wyboru, które określa użytkownika odpowiedzialnego za stronę.
+- Rodzic - Opcjonalne pole wyboru, które określa stronę nadrzędną do edytowanej np. na potrzeby breadcrumbs,
+- Treść - Duże pole tekstowe do wpisywania treści strony z edytorem WYSIWYG, a także obsługą mapy.
+- Publiczna widoczność - Pole jednokrotnego zaznaczenia, które stwarza możliwość tymczasowego ukrycia stron.
 
 Mechanizm podstron statycznych zapewnia:
 
 * edycje wszystkich pól bazy ośrodka zgodnie z Karta tworzenia/edycji strony
 * przycisk usunięcia podstrony z bazy
-* odnośnik do podglądu strony portalu
 * możliwość tymczasowego ukrycia strony
 
-Każdorazowo i automatycznie jest zapisywana data utworzenia i modyfikacja wpisu.
+Każdorazowo i automatycznie jest zapisywana data utworzenia i modyfikacja strony.
+
+Architektura
+############
+
+Model
+-----
+
+.. automodule:: watchdog_kj_kultura.staticpages.models
+   :members:
+
+Znaczniki szablonów
+-------------------
+
+.. automodule:: watchdog_kj_kultura.staticpages.templatetags.staticpages_tags
+   :members:
+
+Widoki
+------
+
+.. automodule:: watchdog_kj_kultura.staticpages.views
+   :members:
+
+Panel administracyjny
+---------------------
+
+.. automodule:: watchdog_kj_kultura.staticpages.admin
+   :members:
