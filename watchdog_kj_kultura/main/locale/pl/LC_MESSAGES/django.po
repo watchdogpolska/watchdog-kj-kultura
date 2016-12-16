@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-15 20:00+0100\n"
-"PO-Revision-Date: 2016-12-15 19:54+0100\n"
+"POT-Creation-Date: 2016-12-16 23:42+0100\n"
+"PO-Revision-Date: 2016-12-16 23:42+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -42,6 +42,10 @@ msgstr "Dokumentacja watchdog-kj-kultura"
 #: dashboard.py:64
 msgid "watchdog-kj-kultura code"
 msgstr "Kod źródłowy watchdog-kj-kultura"
+
+#: dashboard.py:69
+msgid "watchdog-kj-kultura issues"
+msgstr "Usterki watchdog-kj-kultura"
 
 #: templates/account/account_inactive.html:5
 #: templates/account/account_inactive.html:8
@@ -349,20 +353,23 @@ msgid "Learn more"
 msgstr "Czytaj więcej"
 
 #: urls.py:20
-msgid "^users/"
-msgstr "^uzytkownicy/"
-
-#: urls.py:21
 msgid "^organizations/"
 msgstr "^instytucje/"
 
-#: urls.py:23
+#: urls.py:22
 msgid "^region/"
 msgstr "^region/"
 
-#: urls.py:24
+#: urls.py:23
 msgid "^requests/"
 msgstr "^zapytania/"
+
+#: urls.py:25
+msgid "^pages/"
+msgstr "^strony/"
+
+#~ msgid "^users/"
+#~ msgstr "^uzytkownicy/"
 
 #~ msgid "My Profile"
 #~ msgstr "Mój profil"

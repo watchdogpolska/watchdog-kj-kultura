@@ -65,5 +65,10 @@ class CustomIndexDashboard(Dashboard):
                     'url': 'https://github.com/watchdogpolska/watchdog-kj-kultura',
                     'external': True,
                 },
+                {
+                    'title': _('watchdog-kj-kultura issues'),
+                    'url': 'https://github.com/watchdogpolska/watchdog-kj-kultura/issues',
+                    'external': True,
+                },
             ]
         ))
