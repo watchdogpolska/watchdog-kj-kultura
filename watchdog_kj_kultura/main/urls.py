@@ -17,7 +17,6 @@ urlpatterns = [
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    url(_(r'^users/'), include('watchdog_kj_kultura.users.urls', namespace='users')),
     url(_(r'^organizations/'), include('watchdog_kj_kultura.organizations.urls',
                                        namespace='organizations')),
     url(_(r'^region/'), include('watchdog_kj_kultura.teryt.urls', namespace="teryt")),
