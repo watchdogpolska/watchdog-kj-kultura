@@ -4,9 +4,12 @@
 Wdrożenie
 *********
 
+Heroku
+#############
+
 Jedną z akceptowalnych form wdrożenia jest wykorzystanie Heroku. Wymaga to kilku prostych kroków.
 
-Po poeirwsze należy utworzyć aplikacje i ustalić wartość podstawowych zmiennych:
+Po peirwsze należy utworzyć aplikacje i ustalić wartość podstawowych zmiennych:
 
 .. code-block:: bash
 
@@ -63,30 +66,57 @@ Jeżeli uruchamisz apliacje pod adresem innym niż ``kultura.kj.org.pl`` koniecz
 
     $ heroku config:set DJANGO_ALLOWED_HOSTS="watchdog-kj-kultura.herokuapp.com"
 
+Aby uruchomić wyszukiwarkę należy wywołać:
+
+.. code-block:: bash
+
+    $ heroku addons:create searchbox:starter
+    $ SEARCHURL=$(heroku config:get SEARCHBOX_URL | sed 's/^http/elasticsearch/g')
+    $ heroku config:set SEARCH_URL="$SEARCHURL/haystack"
+
 Warto także utworzyć pierwszego użytkownika administracyjnego:
 
 .. code-block:: bash
 
     $ heroku run python manage.py createsuperuser
 
-Konieczne może się okazać także zamieszczenie plików statycznych na serwerze:
+Konieczne może się okazać także zamieszczenie plików statycznych na serwerze multimediów:
 
 .. code-block:: bash
 
     $ heroku run python manage.py collectstatic
 
-Założenia
-#########
+.. _scheduler:
 
-W celu zapewnienia powiadomień z komponentu :ref:`organizations_requests` konieczne jest skonfigurowanie cyklicznego wywołania polecenia :ref:`send_requests_notifications`. Wystarczające winno być powiadomienie raz dziennie.
+Planista
+########
 
-W przypadku Heroku należy wykorzystać:
+Niektóre komponenty powinny być uruchamiane cyklicznie niezależnie od interakcji użytkownika. W przypadku Heroku należy w takiej sytuacji wykorzystać:
 
 .. code-block:: bash
 
     $ heroku addons:create scheduler:standard
+
+W systemach Unix można wykorzystać program cron odpowiednio. Pamiętać należy jednak o ustawieniu odpowiednich zmiennych środowiskowych.
+
+Powiadomienia
+#############
+
+W celu zapewnienia powiadomień z komponentu :ref:`organizations_requests` konieczne jest skonfigurowanie cyklicznego wywołania polecenia :ref:`send_requests_notifications`. Wystarczające winno być powiadomienie raz dziennie.
+
+W Heroku wywołać:
+
+.. code-block:: bash
+
     $ heroku addons:open scheduler
 
-W nowo otwartym oknie wprowadzić następujące ustawienia
+W nowo otwartym oknie wprowadzić następujące ustawienia:
 
 .. figure:: _images/heroku_scheduler.png
+
+Wyszukiwarka
+############
+
+W celu zapewnienia sprawnego wyszukiwania konieczne jest skonfigurowanie cyklicznej aktualizacji indeksu wyszukiwarki. Wystarczające powinno być indeksowanie co godzinę.
+
+W przypadku Heroku należy wykorzystać :ref:`scheduler`, a następnie wykorzystać polecenie ``python manage.py update_index --age=1`` wywoływane co godzinę. Patrz także na szczegółową instrukcje dla `:ref:`Powiadomienia`. 

@@ -1,0 +1,5 @@
+{{object.name}}
+{{object.email}}
+{% for key, value in object.meta.items %}
+    {{key}}: {{value}}
+{% endfor %}
