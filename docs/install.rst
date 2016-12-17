@@ -68,4 +68,3 @@ Ostatecznie możliwe jest uruchomienie serwera WWW:
     watchdog-kj-kultura-master$ python manage.py 0.0.0.0:2000
 
 Jest on dostępny po wywołaniu ``localhost:8080`` w przeglądarce.
-

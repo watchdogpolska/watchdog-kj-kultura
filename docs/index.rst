@@ -6,20 +6,42 @@
 Witam w dokumentacji watchdog-kj-kultura!
 =========================================
 
-Contents:
+.. _introduction:
 
 .. toctree::
    :maxdepth: 2
+   :caption: Wprowadzenie
 
    readme
    architecture
+   admin_panel
+
+.. _administration:
+
+.. toctree::
+   :caption: Administracja
+
    install
    deploy
-   admin_panel
+
+.. _modules:
+
+.. toctree::
+   :caption: Moduły
+
+   main
    static_pages
    organizations
    organizations_requests
    teryt_tree
+
+.. _development:
+
+.. toctree::
+   :caption: Rozwój
+
+   changes
+
 
 Indices and tables
 ==================

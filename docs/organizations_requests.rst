@@ -14,11 +14,10 @@ Moduł wykorzystuje dane pochodzące z :ref:`organizations` w celu zidentyfikowa
 Administracja
 -------------
 
+.. _send_requests_notifications:
 
 Polecenia zarządzania
 #####################
-
-.. _send_requests_notifications:
 
 Dostępne jest `polecenie zarządzania Django`_, które odpowiada za mechanizm automatycznego powiadomienia o sprawach, które są dostępne. Aby zapewnić prawidłowe wysyłanie powiadomień konieczne jego cykliczne wywołanie. Zaleca się wywołanie nie rzadziej niż raz dziennie.
 

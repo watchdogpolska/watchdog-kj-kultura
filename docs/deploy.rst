@@ -4,8 +4,6 @@
 Wdrożenie
 *********
 
- .. todo:: Uzupełnić dokument. Przedstawić konfiguracje zmiennych środowiskowych, a także konieczność wywoływania :ref:`send_requests_notifications` .
-
 Jedną z akceptowalnych form wdrożenia jest wykorzystanie Heroku. Wymaga to kilku prostych kroków.
 
 Po poeirwsze należy utworzyć aplikacje i ustalić wartość podstawowych zmiennych:
@@ -53,7 +51,7 @@ Potem należy stworzyć bazę danych i wprowadzić schemat bazy danych:
     $ heroku addons:create heroku-postgresql:hobby-dev
     $ heroku run python manage.py migrate
 
-Należy także aktywować cache::
+Należy także aktywować cache:
 
 .. code-block:: bash
 
@@ -76,3 +74,19 @@ Konieczne może się okazać także zamieszczenie plików statycznych na serwerz
 .. code-block:: bash
 
     $ heroku run python manage.py collectstatic
+
+Założenia
+#########
+
+W celu zapewnienia powiadomień z komponentu :ref:`organizations_requests` konieczne jest skonfigurowanie cyklicznego wywołania polecenia :ref:`send_requests_notifications`. Wystarczające winno być powiadomienie raz dziennie.
+
+W przypadku Heroku należy wykorzystać:
+
+.. code-block:: bash
+
+    $ heroku addons:create scheduler:standard
+    $ heroku addons:open scheduler
+
+W nowo otwartym oknie wprowadzić następujące ustawienia
+
+.. figure:: _images/heroku_scheduler.png
