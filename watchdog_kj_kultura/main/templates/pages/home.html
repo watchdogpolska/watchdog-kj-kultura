@@ -11,9 +11,7 @@
 
 {% block content %}
 <div class="jumbotron gray">
-  <h1>{% trans "Let's civil data mining!" %}</h1>
-  <p>{% trans 'Move debates to new age together!' %}</p>
-  <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">{% trans 'Learn more'%}</a></p>
+{{ settings.home_content | safe}}
 </div>
 
 <script>

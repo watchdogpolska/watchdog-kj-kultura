@@ -75,6 +75,7 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
@@ -172,6 +173,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'watchdog_kj_kultura.main.context_processors.settings'
                 # Your stuff: custom template context processors go here
             ],
         },
