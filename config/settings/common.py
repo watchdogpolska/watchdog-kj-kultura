@@ -49,6 +49,7 @@ THIRD_PARTY_APPS = (
     'djgeojson',
     'djmail',
     'tinymce',
+    'haystack',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -286,4 +287,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
     'file_browser_callback': 'watchdog_filebrowser'
+}
+
+HAYSTACK_CONNECTIONS = {
+    'default': env.search_url(default="elasticsearch://127.0.0.1:9200/haystack"),
 }

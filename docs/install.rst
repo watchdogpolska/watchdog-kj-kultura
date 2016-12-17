@@ -6,6 +6,11 @@ Instalacja
 
 Niniejsza aplikacja przedstawia uruchomienie aplikacji w środowisku deweloperskim. Nie obejmuje wdrożenia, co zostało przedstawione w sekcji :ref:`deploy` .
 
+W niniejszej procedurze zostaną zainstalowane następujące komponenty:
+- serwer baz danych - PostgreSQL 9.5
+- serwer wyszukiwarki - Elasticsearch >=2.4.3<5
+- aplikacja
+
 W niniejszej instrukcji został wykorzystany następujący ``Vagrantfile``:
 
 .. code-block:: ruby
@@ -62,6 +67,14 @@ Następnie została skonfigurowana baza danych odpowiednio:
     $ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE watchdog_kj_kultura to $USER;"
     $ sudo -u postgres psql watchdog_kj_kultura -c "CREATE EXTENSION postgis;"
     watchdog-kj-kultura-master$ python manage.py migrate
+
+Następnie należy zainstalować silnik wyszukiwarki:
+
+.. code-block:: bash
+    
+    $ echo 'deb http://packages.elastic.co/elasticsearch/2.x/debian stable main' | sudo tee /etc/apt/sources.list.d/elasticsearch-2.x.list
+    $ sudo apt-get update
+    $ sudo apt-get install elasticsearch=2.4.3
 
 Ostatecznie możliwe jest uruchomienie serwera WWW:
 

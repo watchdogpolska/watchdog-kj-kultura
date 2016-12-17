@@ -23,6 +23,9 @@ urlpatterns = [
     url(_(r'^requests/'), include('watchdog_kj_kultura.organizations_requests.urls',
                                   namespace="organizations_requests")),
     url(_(r'^pages/'), include('watchdog_kj_kultura.staticpages.urls', namespace="staticpages")),
+
+    url(_(r'^search/'), include('haystack.urls')),
+
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
