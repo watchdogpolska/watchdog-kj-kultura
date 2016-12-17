@@ -34,6 +34,7 @@ Witam w dokumentacji watchdog-kj-kultura!
    organizations
    organizations_requests
    teryt_tree
+   menu
 
 .. _development:
 
