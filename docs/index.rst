@@ -23,6 +23,7 @@ Witam w dokumentacji watchdog-kj-kultura!
 
    install
    deploy
+   fixtures
 
 .. _modules:
 

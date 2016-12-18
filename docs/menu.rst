@@ -9,6 +9,11 @@ Założenia
 
 Moduł stanowi komponent strony internetowej w postaci menu nawigacyjnego. Zapewnia możliwości stworzenia i zarządzania dwupoziomowym menu. Elementy zamieszczone w menu mogą odwoływać się do zarówno do elementów serwisu, jak również zewnętrznych. Zapewniona jest podstawowa weryfikacja odnośników wewnętrznych.
 
+Dane testowe
+############
+
+Dla modułu menu nie możliwe jest w środowisku deweloperskim dynamicznie wygenerowanie generowanych danych testowych.
+
 Architektura
 ############
 
