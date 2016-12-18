@@ -41,6 +41,19 @@ Dla każdej organizacji możliwe jest ustalenie metadanych. Wymaga to pierw wpro
 
 W celu wykorzystania danych zgromadzonych w polu metadanych należy dokonać edcji szablonów w kodzie źródłowym aplikacji poprzez zmiany w pliku ``/watchdog_kj_kultura/organizations/templates/organizations/organization_detail.html``. Podczas edycji odwołać się do metadanej wykorzystaniem np. ``{{object.meta.KLUCZ}}``. Możesz wykorzystać w tym celu język szablonów Django - :ref:`django:template-language-intro`.
 
+.. _organizations_fixtures:
+
+Dane testowe
+############
+
+Dla bazy instytucji kultury możliwe jest w środowisku deweloperskim dynamicznie generowanych danych testowych. Wymagane jest wcześniejsze utworzenie użytkowników (zob. :ref:`users_fixtures` ) i podziału terytorialnego (zob. :ref:`teryt_tree_fixtures`). Następnie należy wywołać:
+
+.. code-block:: bash
+
+    $ python manage.py loadtestdata organizations.Category:5 organizations.Organization:100
+
+Należy odnotować, że tak utworzone dane pozbawione są informacji na temat obiektów :class:`watchdog_kj_kultura.organizations.models.MetaCategory`, a zatem także pola ``meta`` w :class:`watchdog_kj_kultura.organizations.models.Organization`. Organizacje są także prawdopodobnie ukryte.
+
 Architektura
 ############
 

@@ -11,6 +11,19 @@ Moduł zapewnia możliwość składania wniosków o informację publiczną i pet
 
 Moduł wykorzystuje dane pochodzące z :ref:`organizations` w celu zidentyfikowania organizacji, które mogą być adresatami petycji.
 
+.. _organizations_requests_fixtures:
+
+Dane testowe
+-------------
+
+Dla systemu zapytań do instytucji możliwe jest w środowisku deweloperskim dynamicznie generowanych danych testowych. Wymagane jest wcześniejsze utworzenie użytkowników (zob. :ref:`users_fixtures` ),  podziału terytorialnego (zob. :ref:`teryt_tree_fixtures`), a także organizacji (zob. :ref:`organizations_requests_fixtures` ). Następnie należy wywołać:
+
+.. code-block:: bash
+
+    $ python manage.py loadtestdata organizations_requests.Template:5 organizations_requests.Request:50
+
+Należy odnotować, że brak jest możliwości wygenerowania automatycznych danych dla powiadomień. Należy w tym zakresie wykorzystać panel administracyjny.
+
 Administracja
 -------------
 

@@ -25,6 +25,15 @@ Mechanizm podstron statycznych zapewnia:
 
 Każdorazowo i automatycznie jest zapisywana data utworzenia i modyfikacja strony.
 
+Dane testowe
+############
+
+Dla systemu stron statycznych możliwe jest w środowisku deweloperskim dynamicznie generowanych danych testowych. Wymagane jest wcześniejsze utworzenie użytkowników (zob. :ref:`users_fixtures` ). Następnie należy wywołać:
+
+.. code-block:: bash
+
+    $ python manage.py loadtestdata staticpages.Page:25
+
 Architektura
 ############
 
