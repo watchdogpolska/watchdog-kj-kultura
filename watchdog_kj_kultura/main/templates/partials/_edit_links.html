@@ -1,0 +1,14 @@
+{% load staticfiles i18n main_tags %}
+
+{% if request.user.is_authenticated and request.user.is_staff %}
+  {% if object != None or object_list != None %}
+    <div class="btn-group">
+      {% if object != None %}
+      <a class="btn btn-primary" href="{{ object | object_to_url_edit_obj }}">{% blocktrans %}Edit {{object}}{%endblocktrans%}</a>
+      {% endif %}
+      {% if object_list != None %}
+      <a class="btn btn-primary" href="{{ object_list | object_list_to_url_edit_obj }}">{% blocktrans %}Changelist{%endblocktrans%}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endif %}

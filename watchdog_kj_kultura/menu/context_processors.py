@@ -27,4 +27,6 @@ def menu(request):
         </ul>
 
     """
-    return {'menu': Element.objects.root_with_children().all()}
+    return {'menu': Element.objects.filter(parent=None).
+            root_with_children().
+            all()}

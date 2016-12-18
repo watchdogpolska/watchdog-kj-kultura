@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Prefetch
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from model_utils.models import TimeStampedModel
@@ -12,7 +13,9 @@ class ElementQuerySet(models.QuerySet):
         if visible is not None:
             qs = qs.filter(visible=visible)
             qs_children = qs_children.filter(visible=visible)
-        return qs.prefetch('children', queryset=qs)
+        return qs.prefetch_related(Prefetch('element_set',
+                                            queryset=qs,
+                                            to_attr='children_set'))
 
     def with_children_count(self):
         return self.annotate(children_count=models.Count('element'))
