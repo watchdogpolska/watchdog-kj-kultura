@@ -31,7 +31,7 @@ Witam w dokumentacji watchdog-kj-kultura!
    :caption: Moduły
 
    main
-   static_pages
+   staticpages
    organizations
    organizations_requests
    teryt_tree
