@@ -13,18 +13,22 @@ def menu(request):
     -------
     Menu render is very simple and effective. For example::
 
+        {% if menu %}
         <ul>
-        {% for el in menu %}
-        <li>
-            <a href="{{el.url}}">{{el}}</a>
-            <ul>
-            {% for child in el.children %}
-                <li><a href="{{el.url}}">{{el}}</a>
+            {% for el in menu %}
+            <li>
+                <a href="{{el.url}}">{{el}}</a>
+                {% if el.children_set %}
+                <ul>
+                {% for child in el.children_set %}
+                    <li><a href="{{child.url}}">{{child}}</a>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
             {% endfor %}
-            </ul>
-        </li>
-        {% endfor %}
         </ul>
+        {% endif %}
 
     """
     return {'menu': Element.objects.filter(parent=None).

@@ -7,6 +7,7 @@ from .validators import is_external_or_valid_url, is_external_url
 
 
 class ElementQuerySet(models.QuerySet):
+
     def root_with_children(self, visible=True):
         qs = self
         qs_children = Element.objects.all()
@@ -14,7 +15,7 @@ class ElementQuerySet(models.QuerySet):
             qs = qs.filter(visible=visible)
             qs_children = qs_children.filter(visible=visible)
         return qs.prefetch_related(Prefetch('element_set',
-                                            queryset=qs,
+                                            queryset=qs_children,
                                             to_attr='children_set'))
 
     def with_children_count(self):

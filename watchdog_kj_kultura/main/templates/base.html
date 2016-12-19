@@ -48,7 +48,7 @@
             <li>
                 <a href="{{item.url}}">{{item}}</a>
                 <ul>
-                {% for child in item.children %}
+                {% for child in item.children_set %}
                     <li><a href="{{child.url}}">{{child}}</a>
                 {% endfor %}
                 </ul>
