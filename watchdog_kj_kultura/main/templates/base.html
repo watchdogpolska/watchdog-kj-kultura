@@ -17,7 +17,7 @@
 
     {% block css %}
     <link rel="stylesheet" href="{% static "css/style.css" %}">
-
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     {% endblock %}
 
@@ -45,20 +45,26 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
             {% for item in menu %}
-            <li>
-                <a href="{{item.url}}">{{item}}</a>
-                <ul>
-                {% for child in item.children_set %}
-                    <li><a href="{{child.url}}">{{child}}</a>
-                {% endfor %}
-                </ul>
-            </li>
+              {% if item.children_set %}
+                <li class="dropdown">
+                  <a href="{{item.url}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item}} <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    {% for child in item.children_set %}
+                      <li><a href="{{child.url}}">{{child}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% else %}
+                <li>
+                  <a href="{{item.url}}">{{item}}</a>
+                </li>
+              {% endif %}
             {% endfor %}
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>
-
+    {% block main %}
     <div class="container">
       {% include "partials/_edit_links.html" %}
       {% include "partials/_breadcrumbs.html" %}
@@ -68,7 +74,7 @@
       {% endblock content %}
 
     </div> <!-- /container -->
-
+    {% endblock main %}
     {% block modal %}{% endblock modal %}
 
     <!-- Javascript

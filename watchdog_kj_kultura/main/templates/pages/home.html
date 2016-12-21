@@ -9,35 +9,111 @@
   {% leaflet_css %}
 {% endblock %}
 
-{% block content %}
-<div class="jumbotron gray">
-{{ settings.home_content | safe}}
-</div>
+{% block main %}
+  <div class="jumbotron main-header">
+    <div class="container">
+      <h1>Jesteś zainteresowany kulturą w Polsce?</h1>
+      <p>Masz prawo śledzić ich finansę i sprawdzać jak wydają pieniądzę.</p>
+      <p>Wyszukaj miejsce, które często odwiedzasz.</p>
+      <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-push-4">
+            {% include "partials/_search_form.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-features">
+    <div class="container">
+      <h2>Co możesz sprawdzić ?</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Faktury</h3>
+          <p>Każdy blladka;ksdlkasd;lka;sld</p>
+        </div>
+        <div class="col-md-6">
+          <h3>Faktury</h3>
+          <p>Każdy blladka;ksdlkasd;lka;sld</p>
+        </div>
+      </div>
+      <h2>Co możesz znaleźć tutaj?</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Dane adresowe i kontaktowe</h3>
+        </div>
+        <div class="col-md-6">
+          <h3>Dane o finansowaniu, wydatkach i zatrudnieniu</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  {% leaflet_map "main" callback="main_map_init" %}
+  </div>
+  <div class="section section-features">
+    <div class="container">
+      <h2>Co możesz zrobić?</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Przejrzeć danę powstałe w ramach serwisu</h3>
+        </div>
+        <div class="col-md-6">
+          <h3>Wysłać wniosek o informacje publiczną</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-support">
+    <div class="container">
+      <h2>Kim jesteśmy?</h2>
+      <p>Klub Jagielloński to:</p>
+      <h2>Chcesz nas wesprzeć</h2>
+      <p>[Formularz]</p>
+    </div>
+  </div>
+  <div class="section section-partners">
+    <div class="container">
 
-<script>
-function main_map_init (map, options) {
-    var geojsonMarkerOptions = {
-        radius: 8,
-        fillColor: "#ff7800",
-        color: "#000",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.8
-    };
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Partnerzy:</h2>
+          <div class="partner">
+            <a href="">
+              <img src="{% static 'img/logo-mkidn.jpg' %}" alt="Ministerstwo Kultury i Dziedzictwa Narodowego">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h2>Wykonanie: </h2>
+          <div class="partner">
+            <a href="https://siecobywatelska.pl/">
+              <img src="{% static 'img/logo-sowp.png' %}" alt="Sieć Obywatelska Watchdog Polska">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  function main_map_init (map, options) {
+      var geojsonMarkerOptions = {
+          radius: 8,
+          fillColor: "#ff7800",
+          color: "#000",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.8
+      };
 
-    var dataurl = '{% url "organizations:data" %}';
-    $.getJSON(dataurl, function (data) {
-        L.geoJson(data, {
-            pointToLayer: function (feature, latlng) {
-                var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                marker.bindPopup('<a href="' + feature.properties.absolute_url + '">' + feature.properties.name + '</a>');
-                return marker;
-            }
-        }).addTo(map);
-    });
-};
-</script>
-<div class="row">
-{% leaflet_map "main" callback="main_map_init" %}
-</div>
+      var dataurl = '{% url "organizations:data" %}';
+      $.getJSON(dataurl, function (data) {
+          L.geoJson(data, {
+              pointToLayer: function (feature, latlng) {
+                  var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                  marker.bindPopup('<a href="' + feature.properties.absolute_url + '">' + feature.properties.name + '</a>');
+                  return marker;
+              }
+          }).addTo(map);
+      });
+  };
+  </script>
 {% endblock %}

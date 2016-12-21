@@ -1376,7 +1376,7 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -5161,8 +5161,8 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: white;
-  background-color: #065693;
+  color: #065693;
+  background-color: transparent;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
@@ -5202,8 +5202,8 @@ tbody.collapse.in {
     color: #065693;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: white;
-    background-color: #065693;
+    color: #065693;
+    background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
@@ -5220,7 +5220,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-link:hover {
-  color: white;
+  color: #065693;
 }
 
 .navbar-default .btn-link {
@@ -5228,7 +5228,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .btn-link:hover, .navbar-default .btn-link:focus {
-  color: white;
+  color: #065693;
 }
 
 .navbar-default .btn-link[disabled]:hover, .navbar-default .btn-link[disabled]:focus,
@@ -6839,7 +6839,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6973,7 +6973,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7654,6 +7654,11 @@ button.close {
   background: url("../img/bg-header-pattern.png");
 }
 
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  outline: 3px solid #065693;
+}
+
 .navbar-collapse {
   padding-top: 20px;
 }
@@ -7678,6 +7683,39 @@ button.close {
 .navbar-toggle {
   background: #065693;
   color: white;
+}
+
+.main-header {
+  padding: 200px 50px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.3) 100%), url("../img/bg-jumbotron.jpg");
+  background-size: cover;
+  background-position: center center;
+  color: white;
+}
+
+.section {
+  padding: 50px 0;
+}
+
+.section-support {
+  background: #065693;
+  color: white;
+}
+
+.section-support h1, .section-support h2, .section-support h3, .section-support h4, .section-support h5, .section-support h6 {
+  color: inherit;
+}
+
+.section-partners .partner {
+  width: 200px;
+}
+
+.section-partners .partner img {
+  width: 100%;
+}
+
+.btn-primary {
+  background: url("../img/button_pattern.png");
 }
 
 /*# sourceMappingURL=style.css.map */
