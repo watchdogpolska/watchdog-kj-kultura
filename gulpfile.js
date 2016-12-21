@@ -8,6 +8,7 @@ var autoprefixer = require('autoprefixer');
 var changed      = require('gulp-changed');
 var imagemin     = require('gulp-imagemin');
 
+var args         = require('yargs').argv;
 var json         = require('./package.json');
 var pkg_name     = json.name;
 var path_root    = './' + pkg_name + '/';
@@ -31,8 +32,9 @@ gulp.task('sass', function () {
 
 // Static Server + watching scss/html files
 gulp.task('proxy', ['watch'], function() {
+  var port = args.port || '8000';
   browserSync.init({
-    proxy: 'localhost:8000'
+    proxy: 'localhost:' + port
   });
 });
 
@@ -52,5 +54,5 @@ gulp.task('watch', ['sass'], function(){
   gulp.watch(path_root + "/*/templates/**.html").on('change', browserSync.reload);
   // gulp.watch("app/*.html").on('change', browserSync.reload);
 })
-console.log(path_assets + '/scss/*.scss');
+
 gulp.task('default', ['images', 'sass', 'proxy', 'watch']);
