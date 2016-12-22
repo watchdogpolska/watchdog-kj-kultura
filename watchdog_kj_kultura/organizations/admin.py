@@ -2,13 +2,15 @@ from django import forms
 from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from import_export.admin import ImportExportMixin
 
 from .forms import OrganizationAdminForm
 from .models import Category, MetaCategory, Organization
+from .resources import OrganizationResource
 
 
 @admin.register(MetaCategory)
-class MetaCategoryAdmin(admin.ModelAdmin):
+class MetaCategoryAdmin(ImportExportMixin, admin.ModelAdmin):
     '''
         Admin View for MetaCategory
     '''
@@ -17,7 +19,7 @@ class MetaCategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Organization)
-class OrganizationAdmin(admin.ModelAdmin):
+class OrganizationAdmin(ImportExportMixin, admin.ModelAdmin):
     '''
         Admin View for Organization
     '''
@@ -27,6 +29,7 @@ class OrganizationAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     actions = ('geocode_location', 'geocode_clean', 'switch_visible')
     form = OrganizationAdminForm
+    resource_class = OrganizationResource
     related_lookup_fields = {
         'fk': ['jst'],
     }

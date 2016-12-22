@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = (
     'grappelli.dashboard',
     'mptt',
     'teryt_tree',
+    'import_export',
     'grappelli',
     'leaflet',
     'djgeojson',

@@ -10,6 +10,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from model_utils.models import TimeStampedModel
 from teryt_tree.models import JednostkaAdministracyjna
+from .validators import is_allnum
 
 
 class MetaCategoryQuerySet(models.QuerySet):
@@ -19,7 +20,10 @@ class MetaCategoryQuerySet(models.QuerySet):
 @python_2_unicode_compatible
 class MetaCategory(TimeStampedModel):
     name = models.CharField(verbose_name=_("Name"), max_length=50)
-    key = models.CharField(verbose_name=_("Key"), max_length=25)
+    key = models.CharField(verbose_name=_("Key"),
+                           max_length=25,
+                           validators=[is_allnum],
+                           help_text=_("They are permitted only Latin characters and numbers."))
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     objects = MetaCategoryQuerySet.as_manager()
 
