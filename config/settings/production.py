@@ -11,6 +11,7 @@ Production Configurations
 
 """
 from __future__ import absolute_import, unicode_literals
+import os
 
 from boto.s3.connection import OrdinaryCallingFormat
 from django.utils import six
@@ -99,6 +100,7 @@ AWS_HEADERS = {
 
 #  See:http://stackoverflow.com/questions/10390244/
 from storages.backends.s3boto import S3BotoStorage
+
 StaticRootS3BotoStorage = lambda: S3BotoStorage(location='static')
 MediaRootS3BotoStorage = lambda: S3BotoStorage(location='media')
 DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3BotoStorage'
@@ -227,3 +229,24 @@ ADMIN_URL = env('DJANGO_ADMIN_URL')
 
 # Your production stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+
+if 'SEARCHBOX_URL' in os.environ:
+    try:
+        from urllib.parse import urlparse
+    except ImportError:
+        from urlparse import urlparse
+    es = urlparse(os.environ['SEARCHBOX_URL'])
+
+    port = es.port or 80
+
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+           'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+           'URL': es.scheme + '://' + es.hostname + ':' + str(port),
+           'INDEX_NAME': 'documents',
+        }
+    }
+
+    if es.username:
+        HAYSTACK_CONNECTIONS['default']['KWARGS'] = {"http_auth": es.username + ':' + es.password}
