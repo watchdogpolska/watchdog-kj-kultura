@@ -1,12 +1,32 @@
 from django import forms
-from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from import_export.admin import ImportExportMixin
 
+from .admin_actions import GeocodeOrganizationAction
 from .forms import OrganizationAdminForm
 from .models import Category, MetaCategory, Organization
 from .resources import OrganizationResource
+
+
+class GeocoderActionsMixin(object):
+    """Mixins with actions to geocode organizations.
+    """
+
+    def get_geocode_actions_list(self):
+        """Returns dict of geocoders to appends
+        """
+        return GeocodeOrganizationAction.list_supported()
+
+    def _get_geocode_action(self, name, func):
+        # (function, name, short_description)
+        return (func, name, func.short_description)
+
+    def get_actions(self, request):
+        actions = super(GeocoderActionsMixin, self).get_actions(request)
+        for name, func in self.get_geocode_actions_list().items():
+            actions[name] = self._get_geocode_action(name, func)
+        return actions
 
 
 @admin.register(MetaCategory)
@@ -19,7 +39,7 @@ class MetaCategoryAdmin(ImportExportMixin, admin.ModelAdmin):
 
 
 @admin.register(Organization)
-class OrganizationAdmin(ImportExportMixin, admin.ModelAdmin):
+class OrganizationAdmin(GeocoderActionsMixin, ImportExportMixin, admin.ModelAdmin):
     '''
         Admin View for Organization
     '''
@@ -27,7 +47,7 @@ class OrganizationAdmin(ImportExportMixin, admin.ModelAdmin):
     list_filter = ('created', 'modified')
     readonly_fields = ('meta',)
     search_fields = ('name',)
-    actions = ('geocode_location', 'geocode_clean', 'switch_visible')
+    actions = ('geocode_clean', 'switch_visible',)
     form = OrganizationAdminForm
     resource_class = OrganizationResource
     related_lookup_fields = {
@@ -54,25 +74,6 @@ class OrganizationAdmin(ImportExportMixin, admin.ModelAdmin):
                   for category in self.categories}
         self.form.declared_fields.update(fields)
         return gf
-
-    def get_geocoder_useragent(self):
-        return ','.join("%s <%s>" % x for x in settings.ADMINS)
-
-    def geocode_location(self, request, queryset):
-        from geopy.geocoders import Nominatim
-        geolocator = Nominatim(user_agent=self.get_geocoder_useragent())
-        geocoded = 0
-        skipped = 0
-        for organization in queryset:
-            point = geolocator.geocode(organization.geocode_input(), language='pl')
-            if point:
-                organization.set_geopy_point(point)
-                organization.save(update_fields=["pos"])
-                geocoded += 1
-            else:
-                skipped += 1
-        print("%s geocoded, %d skipped" % (geocoded, skipped))
-    geocode_location.short_description = _("Geocode selected using Nominatim")
 
     def geocode_clean(self, request, queryset):
         queryset.update(pos=None)

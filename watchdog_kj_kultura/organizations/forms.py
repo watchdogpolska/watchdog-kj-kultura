@@ -9,9 +9,9 @@ from .models import MetaCategory, Organization
 
 
 class OrganizationAdminForm(forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        super(OrganizationAdminForm, self).__init__(*args, **kwargs)
+    """Organization management form for usage in
+    :class:`watchdog_kj_kultura.organizations.admin.OrganizationAdmin`
+    """
 
     def save(self, *args, **kwargs):
         self.instance.meta = {category.key: self.cleaned_data['meta_%d' % (category.pk)]
@@ -20,6 +20,9 @@ class OrganizationAdminForm(forms.ModelForm):
 
 
 class OrganizationFixForm(SingleButtonMixin, forms.ModelForm):
+    """Report changes suggestion form for usage with
+    :class:`watchdog_kj_kultura.organizations.models.Organization`` instances.
+    """
     sources = forms.CharField(widget=forms.Textarea(),
                               label=_("Sources of information"),
                               help_text=_("Write about where to get this information " +
@@ -63,6 +66,8 @@ class OrganizationFixForm(SingleButtonMixin, forms.ModelForm):
         )
 
     def get_recipients(self):
+        """Return emails of recipients of notifications.
+        """
         return [x.email for x in User.objects.filter(notify_about_fix=True).all()]
 
     def save(self, *args, **kwargs):
@@ -71,11 +76,12 @@ class OrganizationFixForm(SingleButtonMixin, forms.ModelForm):
             obj.meta[category.key] = self.cleaned_data['meta_%d' % (category.pk)]
         to = self.get_recipients()
         if to:
-            OrganizationFixEmail().send(to, {'object': obj, 'sources': self.cleaned_data['sources'],
-                                                            'worker': self.cleaned_data['worker']})
+            context = {'object': obj,
+                       'sources': self.cleaned_data['sources'],
+                       'worker': self.cleaned_data['worker']}
+            OrganizationFixEmail().send(to, context)
         return obj
 
     class Meta:
         model = Organization
         fields = ['name', 'email', 'jst', 'pos', 'category']
-
