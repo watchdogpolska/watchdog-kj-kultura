@@ -71,8 +71,7 @@ Aby uruchomić wyszukiwarkę należy wywołać:
 .. code-block:: bash
 
     $ heroku addons:create searchbox:starter
-    $ SEARCHURL=$(heroku config:get SEARCHBOX_URL | sed 's/^http/elasticsearch/g')
-    $ heroku config:set SEARCH_URL="$SEARCHURL/haystack"
+    $ heroku run python manage.py rebuild_index
 
 Warto także utworzyć pierwszego użytkownika administracyjnego:
 
@@ -119,4 +118,4 @@ Wyszukiwarka
 
 W celu zapewnienia sprawnego wyszukiwania konieczne jest skonfigurowanie cyklicznej aktualizacji indeksu wyszukiwarki. Wystarczające powinno być indeksowanie co godzinę.
 
-W przypadku Heroku należy wykorzystać :ref:`scheduler`, a następnie wykorzystać polecenie ``python manage.py update_index --age=1`` wywoływane co godzinę. Patrz także na szczegółową instrukcje dla `:ref:`Powiadomienia`. 
+W przypadku Heroku należy wykorzystać :ref:`scheduler` z poleceniem ``python manage.py update_index --age=1`` wywoływanym co godzinę. Patrz także na szczegółową instrukcje dla `:ref:`Powiadomienia`. 

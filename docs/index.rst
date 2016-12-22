@@ -6,7 +6,7 @@
 Witam w dokumentacji watchdog-kj-kultura!
 =========================================
 
-.. _introduction:
+.. _toc_introduction:
 
 .. toctree::
    :maxdepth: 2
@@ -16,7 +16,7 @@ Witam w dokumentacji watchdog-kj-kultura!
    architecture
    admin_panel
 
-.. _administration:
+.. _toc_administration:
 
 .. toctree::
    :caption: Administracja
@@ -26,7 +26,7 @@ Witam w dokumentacji watchdog-kj-kultura!
    fixtures
    development
 
-.. _modules:
+.. _toc_modules:
 
 .. toctree::
    :caption: Moduły
@@ -38,11 +38,12 @@ Witam w dokumentacji watchdog-kj-kultura!
    teryt_tree
    menu
 
-.. _development:
+.. _toc_development:
 
 .. toctree::
    :caption: Rozwój
 
+   development
    changes
 
 
