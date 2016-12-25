@@ -9,12 +9,16 @@ from django.utils.translation import ugettext_lazy as _
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
+from . import views
+
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
+
+    url(_(r'^search/'), views.CustomFacetedSearchView.as_view(), name="haystack_search"),
 
     # User management
     url(_(r'^organizations/'), include('watchdog_kj_kultura.organizations.urls',
@@ -23,8 +27,6 @@ urlpatterns = [
     url(_(r'^requests/'), include('watchdog_kj_kultura.organizations_requests.urls',
                                   namespace="organizations_requests")),
     url(_(r'^pages/'), include('watchdog_kj_kultura.staticpages.urls', namespace="staticpages")),
-
-    url(_(r'^search/'), include('haystack.urls')),
 
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),

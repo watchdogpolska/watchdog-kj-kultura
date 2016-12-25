@@ -8,6 +8,10 @@ class NoteIndex(indexes.SearchIndex, indexes.Indexable):
     user = indexes.CharField()
     created = indexes.DateTimeField()
     modified = indexes.DateTimeField()
+    jst = indexes.FacetCharField()
+
+    def prepare_jst(self, obj):
+        return obj.jst.slug
 
     def get_model(self):
         return Organization
@@ -16,4 +20,4 @@ class NoteIndex(indexes.SearchIndex, indexes.Indexable):
         return 'modified'
 
     def index_queryset(self, using=None):
-        return self.get_model().objects.filter(visible=True)
+        return self.get_model().objects.visible().all()

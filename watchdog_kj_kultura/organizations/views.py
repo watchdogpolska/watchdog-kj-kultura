@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 from djgeojson.views import GeoJSONLayerView, TiledGeoJSONLayerView
 from teryt_tree.models import JednostkaAdministracyjna
+
 from ..main.views import BreadcrumbsMixin
 from .forms import OrganizationFixForm
 from .models import Category, Organization

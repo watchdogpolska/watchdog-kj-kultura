@@ -54,4 +54,5 @@ python-dateutil==2.6.0
 elasticsearch==5.0.1
 django-import-export==0.5.1
 geopy==1.11.0
+django-haystack-panel==0.2.1
 

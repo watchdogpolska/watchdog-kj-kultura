@@ -12,7 +12,7 @@ def object_to_url_edit_obj(obj):
         return reverse('admin:%s_%s_change' % (obj._meta.app_label,
                                                obj._meta.model_name),
                        args=[obj.pk])
-    except NoReverseMatch:
+    except (NoReverseMatch, AttributeError):
         return None
 
 
@@ -21,7 +21,9 @@ def object_list_to_url_edit_obj(object_list):
     if object_list is None:
         return None
     try:
+        if None in (object_list.model._meta.app_label, object_list.model._meta.model_name):
+            return None
         return reverse('admin:%s_%s_changelist' % (object_list.model._meta.app_label,
                                                    object_list.model._meta.model_name))
-    except NoReverseMatch:
+    except (NoReverseMatch, AttributeError):
         return None

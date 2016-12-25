@@ -71,6 +71,14 @@ class OrganizationQuerySet(models.QuerySet):
                                         When(visible=False, then=True),
                                         default=False))
 
+    def with_jst_tree_selected(self):
+        return self.select_related('jst__parent',
+                                   'jst__parent__parent',
+                                   'jst__parent__parent__parent')
+
+    def visible(self):
+        return self.filter(visible=True)
+
 
 @python_2_unicode_compatible
 class Organization(TimeStampedModel):
@@ -98,6 +106,14 @@ class Organization(TimeStampedModel):
 
     def set_geopy_point(self, point):
         self.pos = Point(point.point.longitude, point.point.latitude)
+
+    def jst_list(self):
+        r = [self.jst.pk]
+        jst = self.jst
+        while jst.parent:
+            r = r + [jst.parent_id, ]
+            jst = jst.parent
+        return r
 
     class Meta:
         verbose_name = _("Organization")

@@ -34,7 +34,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # raven sentry client
 # See https://docs.sentry.io/clients/python/integrations/django/
 INSTALLED_APPS += ('raven.contrib.django.raven_compat', )
-RAVEN_MIDDLEWARE = ('raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware', )
+RAVEN_MIDDLEWARE = (
+    'raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware', )
 MIDDLEWARE = RAVEN_MIDDLEWARE + MIDDLEWARE
 
 
@@ -170,7 +171,8 @@ CACHES = {
 
 # Sentry Configuration
 SENTRY_DSN = env('DJANGO_SENTRY_DSN')
-SENTRY_CLIENT = env('DJANGO_SENTRY_CLIENT', default='raven.contrib.django.raven_compat.DjangoClient')
+SENTRY_CLIENT = env('DJANGO_SENTRY_CLIENT',
+                    default='raven.contrib.django.raven_compat.DjangoClient')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -242,11 +244,14 @@ if 'SEARCHBOX_URL' in os.environ:
 
     HAYSTACK_CONNECTIONS = {
         'default': {
-           'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-           'URL': es.scheme + '://' + es.hostname + ':' + str(port),
-           'INDEX_NAME': 'documents',
+            'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+            'URL': es.scheme + '://' + es.hostname + ':' + str(port),
+            'INDEX_NAME': 'documents',
         }
     }
 
     if es.username:
         HAYSTACK_CONNECTIONS['default']['KWARGS'] = {"http_auth": es.username + ':' + es.password}
+
+if 'Elasticsearch' in HAYSTACK_CONNECTIONS['default']['ENGINE']:
+    HAYSTACK_CONNECTIONS['default']['ENGINE'] = 'elasticsearch2_backend.ElasticsearchSearchEngine'

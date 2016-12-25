@@ -3,10 +3,10 @@
 {% if request.user.is_authenticated and request.user.is_staff %}
   {% if object != None or object_list != None %}
     <div class="btn-group">
-      {% if object != None %}
+      {% if object != None and object.model != None %}
       <a class="btn btn-primary" href="{{ object | object_to_url_edit_obj }}">{% blocktrans %}Edit {{object}}{%endblocktrans%}</a>
       {% endif %}
-      {% if object_list != None %}
+      {% if object_list != None and object_list.model != None %}
       <a class="btn btn-primary" href="{{ object_list | object_list_to_url_edit_obj }}">{% blocktrans %}Changelist{%endblocktrans%}</a>
       {% endif %}
     </div>
