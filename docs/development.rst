@@ -60,3 +60,22 @@ Nastepnie należy przejść do katalogu ``docs`` i wywołać::
 Warto zaznaczyć, że aktualna dokumentacja jest budowana automatycznie i publikowana na `Read the Docs`_.
 
 .. _`Read the Docs`: http://watchdog-kj-kultura.readthedocs.io/
+
+Jak analizować działanie Elasticsearch?
+---------------------------------------
+
+W celu analizowania poprawności komunikacji aplikacji z serwerem wyszukiwarki Elasticsearch zaleca się wykorzystanie opcji `"Reverse proxy" narzędzia mitmproxy`_. 
+
+.. _`"Reverse proxy" narzędzia mitmproxy`: http://docs.mitmproxy.org/en/latest/features/reverseproxy.html
+
+Należy przykładowo wywołać::
+
+.. code-block:: bash
+
+    $ mitmweb -R http://127.0.0.1:9200
+
+Następnie wykorzystać utworzony serwer proxy do połączenia::
+
+.. code-block:: bash
+
+    $ SEARCH_URL="elasticsearch://127.0.0.1:8080" python manage.py rebuild_index

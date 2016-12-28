@@ -8,7 +8,7 @@ Niniejsza aplikacja przedstawia uruchomienie aplikacji w środowisku dewelopersk
 
 W niniejszej procedurze zostaną zainstalowane następujące komponenty:
 - serwer baz danych - PostgreSQL 9.5
-- serwer wyszukiwarki - Elasticsearch >=2.4.3<5
+- serwer wyszukiwarki - Elasticsearch >= 2.4.3<5
 - aplikacja
 
 W niniejszej instrukcji został wykorzystany następujący ``Vagrantfile``:
