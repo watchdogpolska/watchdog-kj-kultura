@@ -39,6 +39,7 @@ class CustomFacetedSearchView(FacetedSearchView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(CustomFacetedSearchView, self).get_context_data(*args, **kwargs)
-        context['jst'] = self.prefetch_jst(context['facets']['fields']['jst'])
-        context['django_ct'] = self.prefetch_django_ct(context['facets']['fields']['django_ct'])
+        if 'fields' in context['facets']:
+            context['jst'] = self.prefetch_jst(context['facets']['fields']['jst'])
+            context['django_ct'] = self.prefetch_django_ct(context['facets']['fields']['django_ct'])
         return context
