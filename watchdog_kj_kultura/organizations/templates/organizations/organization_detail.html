@@ -1,9 +1,7 @@
 {% extends 'organizations/organization_base.html' %}
 {% load i18n %}
-{% block organization_content %}
-<h1>{{object}}</h1>
-<a href="{% url 'organizations:fix' slug=object.slug %}" class="btn btn-warning">{% trans 'Report an error' %}</a>
-<a href="{% url 'organizations_requests:templates' organization=object.slug %}" class="btn btn-success">{% trans 'Templates of requests' %}</a>
+{% block content %}
+<h2>{{object}}</h2>
 <p>{% trans 'Requests received:'%} {{organization.request_set.count}}</p>
 <pre>
 {{object.meta}}
@@ -20,4 +18,12 @@
     </tr>
     {% endfor %}
 </table>
+<div class="row">
+  <div class="col-md-push-4 col-md-4">
+      <a href="{% url 'organizations_requests:templates' organization=object.slug %}" class="btn btn-block btn-primary">
+        <i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Templates of requests' %}
+      </a>
+  </div>
+</div>
+<a href="{% url 'organizations:fix' slug=object.slug %}">{% trans 'Report an error' %}</a>
 {% endblock %}

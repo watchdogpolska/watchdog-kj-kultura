@@ -2,7 +2,7 @@
 
 {% if request.user.is_authenticated and request.user.is_staff %}
   {% if object != None or object_list != None %}
-    <div class="btn-group">
+    <div class="btn-group pull-right">
       {% if object != None and object.model != None %}
       <a class="btn btn-primary" href="{{ object | object_to_url_edit_obj }}">{% blocktrans %}Edit {{object}}{%endblocktrans%}</a>
       {% endif %}

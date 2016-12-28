@@ -1,0 +1,22 @@
+{% load i18n %}
+
+{% if query %}
+  {% if jst %}
+      <dt>{% trans 'Units of administrative division' %}</dt>
+      {% for obj, key, count in jst|slice:":5" %}
+
+          <dd><a href="{{ request.get_full_path }}&amp;selected_facets=jst:{{ key|urlencode }}">{{ obj }}</a> ({{ count }})</dd>
+      {% endfor %}
+  {% endif %}
+
+  {% comment %}
+  {% if django_ct %}
+      <dt>{% trans 'Content type' %}</dt>
+      {% for obj, key, count in django_ct|slice:":5"  %}
+          <dd><a href="{{ request.get_full_path }}&amp;selected_facets=django_ct:{{ key|urlencode }}">{{ obj }}</a> ({{ count }})</dd>
+      {% endfor %}
+  {% endif %}
+
+  {% endcomment %}
+
+{% endif %}

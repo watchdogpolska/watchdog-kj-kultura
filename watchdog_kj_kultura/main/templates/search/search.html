@@ -1,59 +1,70 @@
 {% extends 'base.html' %}
 {% load i18n %}
+
 {% block content %}
-    <h2>Search</h2>
+    <h1>Search</h1>
     <div class="row">
-        <div class="col-sm-4">
-            <form>
-            <table>
-            {{ form.as_table }}
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Search">
-                </td>
-            </tr>
-            </table>
-            </form>
-            {% if query %}
-            {% if jst %}
-                <dt>{% trans 'Units of administrative division' %}</dt>
-                {% for obj, key, count in jst|slice:":5" %}
-
-                    <dd><a href="{{ request.get_full_path }}&amp;selected_facets=jst:{{ key|urlencode }}">{{ obj }}</a> ({{ count }})</dd>
-                {% endfor %}
-            {% endif %}
-
-            {% if django_ct %}
-                <dt>{% trans 'Content type' %}</dt>
-                {% for obj, key, count in django_ct|slice:":5"  %}
-                    <dd><a href="{{ request.get_full_path }}&amp;selected_facets=django_ct:{{ key|urlencode }}">{{ obj }}</a> ({{ count }})</dd>
-                {% endfor %}
-            {% endif %}
-
-            {% endif %}
+      <div class="col-md-6 col-md-push-3">
+        {% include "partials/_search_form.html" %}
+        <div class="visible-xs-block">
+        <p>&nbsp;</p>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Advanced search
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                {% include "partials/_search_faceting.html" %}
+              </div>
+            </div>
+          </div>
         </div>
-        <div col="col-sm-8">
-        {% if query %}
-            <h3>{% trans 'Results' %}</h3>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="hidden-xs">
+              {% include "partials/_search_faceting.html" %}
+            </div>
+            {% comment %}
+              <form action="" method="GET" role="form">
+
+                          <div class="form-group">
+                            <label for="q">{% trans "Search keywords:" %}</label>
+                            <input type="text" name="q" class="form-control" id="" value="{{form.fields.q.widgets.initial}}" placeholder="Search">
+                          </div>
+                          <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
+                        </form>
+            {% endcomment %}
+
+        </div>
+        <div class="col-md-9">
+            <h2>{% trans 'Results' %}</h2>
             {% for result in object_list %}
                 <p>
-                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
+                    <h4>
+                      <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
+                    </h2>
                 </p>
             {% empty %}
-                <p>No results found.</p>
+                <p>{% trans "No results found." %}</p>
             {% endfor %}
 
             {% if page.has_previous or page.has_next %}
                 <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}{% trans "&laquo; Previous" %}{% if page.has_previous %}</a>{% endif %}
                     |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}{% trans "Next &raquo;" %}{% if page.has_next %}</a>{% endif %}
                 </div>
             {% endif %}
-        {% else %}
-            {# Show some example queries to run, maybe query syntax, something else? #}
-        {% endif %}
+
         </div>
     </div>
 {% endblock %}

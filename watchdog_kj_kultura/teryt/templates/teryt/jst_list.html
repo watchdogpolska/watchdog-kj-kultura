@@ -4,11 +4,19 @@
 
 <div class="gray">
     <h1 class="page-header">{% trans 'Voivodeship'%}</h1>
-    <p>{% trans 'Select voivodeship.' %}</p>
-    <ul class="select-list">
-        {% for jst in object_list %}
-        <li><a href="{{jst.get_absolute_url}}">{{jst}}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="gray">
+            {% include 'teryt/_voivodeship_map.svg.html' with selected=object %}
+        </div>
+      </div>
+      <div class="col-md-3">
+        <ul class="select-list">
+            {% for jst in object_list %}
+            <li><a href="{{jst.get_absolute_url}}">{{jst}}</a></li>
+            {% endfor %}
+        </ul>
+      </div>
+    </div>
 </div>
 {% endblock %}

@@ -3,6 +3,8 @@
 {% load leaflet_tags %}
 {% load geojson_tags %}
 
+{% block body_classes %}navbar-without-margin{% endblock body_classes %}
+
 {% block css %}
   {{block.super}}
   {% leaflet_js %}
@@ -21,27 +23,32 @@
         </div>
       </div>
     </div>
+    <ul class="main-header__slideshow">
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+    </ul>
   </div>
   <div class="section section-features">
     <div class="container">
-      <h2>Co możesz sprawdzić ?</h2>
+      <h2 class="heading-accent">Co możesz zrobić?</h2>
       <div class="row">
         <div class="col-md-6">
-          <h3>Faktury</h3>
-          <p>Każdy blladka;ksdlkasd;lka;sld</p>
+          <div class="text-center">
+            <i class="fa fa-bar-chart fa-5x" aria-hidden="true"></i>
+          </div>
+          <h3 class="heading-accent">Przejrzeć danę powstałe w ramach serwisu</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, perferendis aliquid sed laboriosam similique, culpa neque maiores libero totam fugiat cum. Illo ad cumque aperiam quaerat, facilis vero assumenda molestiae!</p>
         </div>
         <div class="col-md-6">
-          <h3>Faktury</h3>
-          <p>Każdy blladka;ksdlkasd;lka;sld</p>
-        </div>
-      </div>
-      <h2>Co możesz znaleźć tutaj?</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Dane adresowe i kontaktowe</h3>
-        </div>
-        <div class="col-md-6">
-          <h3>Dane o finansowaniu, wydatkach i zatrudnieniu</h3>
+          <div class="text-center">
+            <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
+          </div>
+          <h3 class="heading-accent">Wysłać wniosek o informacje publiczną</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, magnam excepturi voluptates quaerat corrupti a quae inventore perspiciatis, temporibus eius asperiores vel libero in debitis deleniti vitae est. Doloremque, ducimus.</p>
         </div>
       </div>
     </div>
@@ -51,23 +58,36 @@
   </div>
   <div class="section section-features">
     <div class="container">
-      <h2>Co możesz zrobić?</h2>
+      <h2 class="heading-accent">Co możesz znaleźć tutaj?</h2>
       <div class="row">
         <div class="col-md-6">
-          <h3>Przejrzeć danę powstałe w ramach serwisu</h3>
+          <div class="text-center">
+            <i class="fa fa-address-card-o fa-5x" aria-hidden="true"></i>
+          </div>
+          <h3 class="heading-accent">Dane adresowe i kontaktowe</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa hic laboriosam ab quas atque, ullam animi sint repellendus aut incidunt ipsum odio repellat est distinctio iusto temporibus dicta obcaecati ducimus.</p>
         </div>
         <div class="col-md-6">
-          <h3>Wysłać wniosek o informacje publiczną</h3>
+          <div class="text-center">
+            <i class="fa fa-money fa-5x" aria-hidden="true"></i>
+          </div>
+          <h3>Dane o finansowaniu, wydatkach i zatrudnieniu</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, optio, pariatur consectetur quisquam labore sint, tempora culpa animi qui velit porro alias voluptatibus fugiat ut consequuntur ipsa reiciendis. Neque, excepturi!</p>
         </div>
       </div>
     </div>
   </div>
   <div class="section section-support">
     <div class="container">
-      <h2>Kim jesteśmy?</h2>
-      <p>Klub Jagielloński to:</p>
-      <h2>Chcesz nas wesprzeć</h2>
-      <p>[Formularz]</p>
+      <div class="section-content">
+        <h2>Kim jesteśmy?</h2>
+        <p>Klub Jagielloński jest ogólnopolskim środowiskiem działaczy obywatelskich, publicystów i ekspertów młodego pokolenia pracujących razem na rzecz dobra wspólnego. Prowadzimy działalność edukacyjną, społeczną, wydawniczą i analityczną oraz realizujemy oddolne inicjatywy polityczne zachowując niezależność od partii i innych organizacji politycznych.</p>
+        <p>Wydajemy pismo „Pressje” i portal jagiellonski24.pl. Realizujemy Akademię Nowoczesnego Patriotyzmu, w ramach której uczymy młodych ludzi poważnego podejścia do polityki i zachęcamy do wpływania na życie ich lokalnej społeczności. Stworzyliśmy aplikację Pola, dzięki której już ponad 330 000 Polaków pozyskuje szczegółowe informacje o kupowanych przez siebie produktach. Tworzymy ekspertyzy i raporty w ramach Centrum Analiz Klubu Jagiellońskiego, które zrzesza blisko 100 ekspertów różnych specjalizacji. Prowadzimy poradnie prawne w kilkunastu miastach południowej Polski. Każdego roku organizujemy szereg mniejszych projektów społecznych i kulturalnych. </p>
+        <p>Chcesz do nas dołączyć? Regularnie spotykamy się już w Krakowie, Warszawie, Łodzi, Katowicach, Gdańsku, Poznaniu, Toruniu, Lublinie, Szczecinie i Rzeszowie!  Skontaktuj się z koordynatorem z najbliższego od działu i zacznij z nami zmieniać Polskę na lepsze.</p>
+        <p class="text-center">
+          <a href="http://kj.org.pl/o-klubie/oddzialy/" class="btn btn-primary btn-lg">Skontaktuj się z nami</a>
+        </p>
+      </div>
     </div>
   </div>
   <div class="section section-partners">
@@ -75,7 +95,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <h2>Partnerzy:</h2>
+          <h2 class="heading-accent">Partnerzy:</h2>
           <div class="partner">
             <a href="">
               <img src="{% static 'img/logo-mkidn.jpg' %}" alt="Ministerstwo Kultury i Dziedzictwa Narodowego">
@@ -83,7 +103,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <h2>Wykonanie: </h2>
+          <h2 class="heading-accent">Wykonanie: </h2>
           <div class="partner">
             <a href="https://siecobywatelska.pl/">
               <img src="{% static 'img/logo-sowp.png' %}" alt="Sieć Obywatelska Watchdog Polska">
@@ -103,6 +123,8 @@
           opacity: 1,
           fillOpacity: 0.8
       };
+
+      map.scrollWheelZoom.disable()
 
       var dataurl = '{% url "organizations:data" %}';
       $.getJSON(dataurl, function (data) {
