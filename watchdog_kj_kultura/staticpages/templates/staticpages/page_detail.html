@@ -5,3 +5,13 @@
 {% render_page_with_shortcode object.content safe=True%}
 
 {% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  {% if object.use_map %}
+    <script src="https://cdn.rawgit.com/jdbartlett/loupe/master/jquery.loupe.min.js"></script>
+    <script>
+      $('.magnifier img').loupe();
+    </script>
+  {% endif %}
+{% endblock %}

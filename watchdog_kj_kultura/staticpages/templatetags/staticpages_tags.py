@@ -5,11 +5,16 @@ from django.utils.html import mark_safe, escape
 
 register = template.Library()
 
-RE_MAP = re.compile(r'\[map\](.+)\[\/map\]', re.DOTALL)
+RE_MAP = re.compile(r'\[map\]([^"]+)\[\/map\]', re.DOTALL)
 
 
 def repl(match):
-    return '<div class="map">%s</div>' % (match.group(1))
+    return '''<div class="magnifier">
+        <a href="%s">
+            <img src="%s" alt="" class="img-responsive" />
+        </a>
+    </div>
+    ''' % (match.group(1), match.group(1))
 
 
 @register.simple_tag(takes_context=True)
