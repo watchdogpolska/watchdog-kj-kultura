@@ -5,8 +5,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(_(r'^organization-(?P<organization>[\w\d-]+)$'), views.TemplateListView.as_view(),
-        name="templates"),
     url(_(r'^organization-(?P<organization>[\w\d-]+)/(?P<template>[\w\d-]+)$'),
         views.RequestCreateView.as_view(),
         name="send"),

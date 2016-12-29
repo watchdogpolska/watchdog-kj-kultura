@@ -23,19 +23,6 @@ class OrganizationMixin(object):
         return context
 
 
-class TemplateListView(BreadcrumbsMixin, OrganizationMixin, ListView):
-    model = Template
-
-    def get_breadcrumbs(self):
-        b = [(_('Organization list'), reverse('organizations:list')), ]
-        if self.organization.jst:
-            for node in self.organization.jst.get_ancestors(include_self=True):
-                b += [(node, reverse('organizations:list', kwargs={'region': str(node.slug)})), ]
-        b += [(self.organization, self.organization.get_absolute_url())]
-        b += [(_("Templates list"), None)]
-        return b
-
-
 class RequestCreateView(BreadcrumbsMixin, SelectRelatedMixin, FormValidMessageMixin,
                         CreateView):
 
@@ -74,8 +61,6 @@ class RequestCreateView(BreadcrumbsMixin, SelectRelatedMixin, FormValidMessageMi
             for node in self.organization.jst.get_ancestors(include_self=True):
                 b += [(node, reverse('organizations:list', kwargs={'region': str(node.slug)})), ]
         b += [(self.organization, self.organization.get_absolute_url())]
-        b += [(_("Template list"), reverse('organizations_requests:templates',
-                                           kwargs={'organization': self.organization.slug}))]
         b += [(self.template, None)]
         return b
 

@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import DetailView, ListView, UpdateView
 from djgeojson.views import GeoJSONLayerView, TiledGeoJSONLayerView
 from teryt_tree.models import JednostkaAdministracyjna
+from watchdog_kj_kultura.organizations_requests.models import Template
 
 from ..main.views import BreadcrumbsMixin
 from .forms import OrganizationFixForm
@@ -98,6 +99,11 @@ class OrganizationDetailView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRe
                 b += [(node, reverse('organizations:list', kwargs={'region': str(node.slug)})), ]
         b += [(self.object, None), ]
         return b
+
+    def get_context_data(self, **kwargs):
+        context = super(OrganizationDetailView, self).get_context_data(**kwargs)
+        context['template_list'] = Template.objects.all()
+        return context
 
 
 class OrganizationTiledGeoJSONLayerView(VisibleMixin, TiledGeoJSONLayerView):

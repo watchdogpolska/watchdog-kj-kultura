@@ -3,6 +3,7 @@ from django.test import TestCase
 
 from ..factories import CategoryFactory, OrganizationFactory, MetaCategoryFactory
 from teryt_tree.factories import JednostkaAdministracyjnaFactory
+from watchdog_kj_kultura.organizations_requests.factories import TemplateFactory
 
 
 class OrganizationListViewTestCase(TestCase):
@@ -33,7 +34,6 @@ class OrganizationListViewTestCase(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, org_inside)
         self.assertNotContains(resp, org_outside)
-
         self.assertContains(resp, jst.name)
 
 
@@ -52,11 +52,15 @@ class OrganizationDetailViewTestCase(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, reverse('organizations:fix', kwargs={'slug': self.object.slug}))
 
-    def test_contains_link_to_request(self):
+    def test_contains_link_to_template(self):
+        template = TemplateFactory()
         resp = self.client.get(self.url)
         self.assertEqual(resp.status_code, 200)
-        self.assertContains(resp, reverse('organizations_requests:templates',
-                                          kwargs={'organization': self.object.slug}))
+        self.assertContains(resp, reverse('organizations_requests:send',
+                                          kwargs={'organization': self.object.slug,
+                                                  'template': template.slug}))
+        self.assertContains(resp, template.description)
+        self.assertContains(resp, template.name)
 
 
 class OrganizationFixViewTestCase(TestCase):

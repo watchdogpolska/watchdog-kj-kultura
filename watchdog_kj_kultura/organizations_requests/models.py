@@ -12,6 +12,7 @@ from .utils import parse_relativedelta_text
 SHORTCODE_HELPTEXT = _("Supported is some shortcodes. Refer to the documentation.")
 EMAIL_HELP_TEXT = _("E-mail is necessary for security purposes, " +
                     "as well as notification of the request.")
+DESCRIPTION_HELP_TEXT = _("Short description of the potential use of the template.")
 
 
 class TemplateQuerySet(models.QuerySet):
@@ -24,6 +25,8 @@ class Template(TimeStampedModel):
     slug = AutoSlugField(populate_from='name', verbose_name=_("Slug"), unique=True)
     subject = models.CharField(verbose_name=_("Subject"), max_length=100)
     body = models.TextField(verbose_name=_("Body"))
+    description = models.TextField(verbose_name=_("Description"),
+                                   help_text=DESCRIPTION_HELP_TEXT)
     introduction = models.TextField(verbose_name=_("Introduction"), blank=True)
     email_required = models.BooleanField(blank=True,
                                          verbose_name=_("Require email"),
