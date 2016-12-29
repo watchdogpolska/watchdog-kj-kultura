@@ -14,7 +14,7 @@ class PageAdmin(MPTTModelAdmin):
     search_fields = ('name', 'content')
 
     class Media:
-        js = ('watchdog_filebrowser/js/attachment_init.js',)
+        js = ('staticpages/js/attachment_init.js',)
 
 
 @admin.register(Attachment)

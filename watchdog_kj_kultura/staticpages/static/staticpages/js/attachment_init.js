@@ -1,6 +1,6 @@
 function watchdog_filebrowser(field_name, url, type, win) {
     tinyMCE.activeEditor.windowManager.open({
-        url: "/admin/" + type + "/",
+        url: "/admin/staticpages/attachment/?type=" + type + '&_popup=1',
         width: 400,
         height: 300,
         movable: true,
