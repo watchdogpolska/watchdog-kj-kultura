@@ -1,8 +1,8 @@
 {% extends 'organizations/organization_base.html' %}
 {% load i18n %}
 {% block content %}
-<h2>{{object}}</h2>
-<p>{% trans 'Requests received:'%} {{organization.request_set.count}}</p>
+<h1 class="heading-accent">{{object}}</h1>
+
 <pre>
 {{object.meta}}
 </pre>
