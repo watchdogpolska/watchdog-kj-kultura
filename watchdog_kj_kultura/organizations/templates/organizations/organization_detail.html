@@ -23,10 +23,23 @@
     </tbody>
 </table>
 <div class="row">
-  <div class="col-md-push-4 col-md-4">
-      <a href="{% url 'organizations_requests:templates' organization=object.slug %}" class="btn btn-block btn-primary">
-        <i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Templates of requests' %}
-      </a>
+  <div class="col-md-push-2 col-md-8">
+    <h2>Wyślij pismo</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium incidunt fuga repellendus dolorum dolorem aperiam assumenda, laboriosam ad dignissimos tempora eligendi animi ex, doloribus recusandae, nam molestiae vitae voluptatem sed.</p>
+    <p>{% trans 'Requests received:'%} {{organization.request_set.count}}</p>
+    <div class="row">
+      {% for template in templates %}
+        <div class="col-md-6">
+            <div class="text-center">
+              <h3> {{template.title}} </h3>
+              <p> {{template.description}} </p>
+              <a href="{% url 'organizations_requests:templates' organization=object.slug %}" class="btn btn-block btn-primary">
+                <i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Write a letter' %}
+              </a>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 <a href="{% url 'organizations:fix' slug=object.slug %}">{% trans 'Report an error' %}</a>
