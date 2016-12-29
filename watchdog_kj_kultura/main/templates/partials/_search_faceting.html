@@ -9,6 +9,14 @@
       {% endfor %}
   {% endif %}
 
+  {% if category %}
+      <dt>{% trans 'Categories' %}</dt>
+      {% for obj, key, count in category|slice:":5" %}
+
+          <dd><a href="{{ request.get_full_path }}&amp;selected_facets=category:{{ key|urlencode }}">{{ obj }}</a> ({{ count }})</dd>
+      {% endfor %}
+  {% endif %}
+
   {% comment %}
   {% if django_ct %}
       <dt>{% trans 'Content type' %}</dt>

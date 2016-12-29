@@ -3,6 +3,7 @@ from haystack.forms import FacetedSearchForm
 from haystack.generic_views import FacetedSearchView
 from .compat import get_model
 from ..teryt.models import JST
+from watchdog_kj_kultura.organizations.models import Category
 
 
 class BreadcrumbsMixin(object):
@@ -20,13 +21,19 @@ class BreadcrumbsMixin(object):
 
 class CustomFacetedSearchView(FacetedSearchView):
     form_class = FacetedSearchForm
-    facet_fields = ['jst', 'django_ct']
+    facet_fields = ['jst', 'django_ct', 'category']
 
-    def prefetch_jst(self, field):
+    def _prefetch_by_slug(self, model, field):
         ids = [key for key, count in field]
-        object_dict = {obj.slug: obj for obj in JST.objects.filter(slug__in=ids).all()}
+        object_dict = {obj.slug: obj for obj in model.objects.filter(slug__in=ids).all()}
         return [(object_dict.get(key, key), key, count)
                 for key, count in field]
+
+    def prefetch_jst(self, field):
+        return self._prefetch_by_slug(JST, field)
+
+    def prefetch_category(self, field):
+        return self._prefetch_by_slug(Category, field)
 
     def prefetch_django_ct(self, field):
         result = []
@@ -41,5 +48,6 @@ class CustomFacetedSearchView(FacetedSearchView):
         context = super(CustomFacetedSearchView, self).get_context_data(*args, **kwargs)
         if 'fields' in context['facets']:
             context['jst'] = self.prefetch_jst(context['facets']['fields']['jst'])
+            context['category'] = self.prefetch_category(context['facets']['fields']['category'])
             context['django_ct'] = self.prefetch_django_ct(context['facets']['fields']['django_ct'])
         return context

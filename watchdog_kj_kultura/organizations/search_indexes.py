@@ -6,9 +6,10 @@ class NoteIndex(indexes.SearchIndex, indexes.Indexable):
     name = indexes.CharField()
     text = indexes.CharField(document=True, use_template=True)
     user = indexes.CharField()
+    category = indexes.CharField(model_attr='category__slug')
     created = indexes.DateTimeField()
     modified = indexes.DateTimeField()
-    jst = indexes.FacetCharField()
+    jst = indexes.FacetCharField(model_attr='jst__slug')
 
     def prepare_jst(self, obj):
         return obj.jst.slug
@@ -20,4 +21,4 @@ class NoteIndex(indexes.SearchIndex, indexes.Indexable):
         return 'modified'
 
     def index_queryset(self, using=None):
-        return self.get_model().objects.visible().all()
+        return self.get_model().objects.select_related('category', 'jst').visible().all()
