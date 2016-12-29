@@ -42,5 +42,8 @@
     </div>
   </div>
 </div>
-<a href="{% url 'organizations:fix' slug=object.slug %}">{% trans 'Report an error' %}</a>
+
+<div class="text-right">
+  <a href="{% url 'organizations:fix' slug=object.slug %}">{% trans 'Report an error' %}</a>
+</div>
 {% endblock %}
