@@ -7834,4 +7834,14 @@ button.close {
   display: block;
 }
 
+.footer {
+  padding: 30px 0;
+  background: #065693;
+  color: white;
+}
+
+.footer a {
+  color: white;
+}
+
 /*# sourceMappingURL=style.css.map */
