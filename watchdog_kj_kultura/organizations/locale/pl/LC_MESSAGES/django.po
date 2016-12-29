@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-22 02:50+0100\n"
-"PO-Revision-Date: 2016-12-22 02:50+0100\n"
+"POT-Creation-Date: 2016-12-29 14:38+0100\n"
+"PO-Revision-Date: 2016-12-29 14:38+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -19,62 +19,69 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: admin.py:40
+#: admin.py:60
 #, python-brace-format
 msgid "Use {{object.meta.{key}}} in templates to display value"
 msgstr "Użyj {{object.meta.{key}}} w szablonie, aby wyświetlić wartość"
 
-#: admin.py:75
-msgid "Geocode selected using Nominatim"
-msgstr "Ustal pozycje używając Nominatim"
-
-#: admin.py:79
+#: admin.py:80
 msgid "Clean position of selected"
 msgstr "Wyczyść pozycje wybranych"
 
-#: admin.py:83
+#: admin.py:84
 msgid "Switch visibility of selected"
 msgstr "Przestaw widoczność wybranych"
 
-#: admin.py:96
+#: admin.py:97
 msgid "Organization count"
 msgstr "Liczba organizacji"
+
+#: admin_actions.py:48
+#, python-format
+msgid "Geocode using %s"
+msgstr "Geokoduj używaj %s"
+
+#: admin_actions.py:70
+#, python-brace-format
+msgid "In action {geocoded} organizations was geocoded, {skipped} skipped"
+msgstr ""
+"W akcji {geocoded} organizacji zostało geokodowanych, {skipped} pominięto."
 
 #: apps.py:7
 msgid "Static pages module"
 msgstr "Moduł stron statycznych"
 
-#: forms.py:24
+#: forms.py:27
 msgid "Sources of information"
 msgstr "Źródło informacji"
 
-#: forms.py:25
+#: forms.py:28
 msgid "Write about where to get this information so we can verify it."
 msgstr ""
 "Napisz kilka słów o tym, gdzie pozyskać potwierdzenie dla tych informacji "
 "(jakie dokumenty itd.)."
 
-#: forms.py:27
+#: forms.py:30
 msgid "I am working in this institution"
 msgstr "Pracuje w tej instytucji"
 
-#: forms.py:28
+#: forms.py:31
 msgid "Mark, if you work in this institution."
 msgstr "Zaznacz, jeżeli pracujesz w tej instytucji"
 
-#: forms.py:50
+#: forms.py:53
 msgid "Basic data"
 msgstr "Dane podstawowe"
 
-#: forms.py:54
+#: forms.py:57
 msgid "Metadatas"
 msgstr "Metadane"
 
-#: forms.py:58
+#: forms.py:61
 msgid "Verification"
 msgstr "Weryfikacja"
 
-#: models.py:22 models.py:47 models.py:77
+#: models.py:22 models.py:47 models.py:85
 msgid "Name"
 msgstr "Nazwa"
 
@@ -94,11 +101,11 @@ msgstr "Metakategoria"
 msgid "MetaCategorys"
 msgstr "Metakategorie"
 
-#: models.py:48 models.py:78
+#: models.py:48 models.py:86
 msgid "Slug"
 msgstr "Identyfikator redakcyjny"
 
-#: models.py:52 models.py:85
+#: models.py:52 models.py:93 templates/organizations/organization_base.html:10
 msgid "Category"
 msgstr "Kategoria"
 
@@ -106,35 +113,36 @@ msgstr "Kategoria"
 msgid "Categories"
 msgstr "Kategorie"
 
-#: models.py:79
+#: models.py:87
 msgid "E-mail"
 msgstr "E-mail"
 
-#: models.py:81
+#: models.py:89
 msgid "Unit of administrative division"
 msgstr "Jednostka podziału terytorialnego"
 
-#: models.py:83
+#: models.py:91
 msgid "Position"
 msgstr "Pozycja"
 
-#: models.py:88
+#: models.py:96
 msgid "Public visible"
 msgstr "Publiczna widoczność"
 
-#: models.py:89
+#: models.py:97
 msgid "Check to mark organization as public visible"
 msgstr "Zaznacz, aby oznaczyć organizacje jako widoczną publicznie"
 
-#: models.py:91
+#: models.py:99
 msgid "Metadata"
 msgstr "Metadane"
 
-#: models.py:103
+#: models.py:119
 msgid "Organization"
 msgstr "Organizacja"
 
-#: models.py:104
+#: models.py:120 templates/organizations/organization_base.html:6
+#: templates/organizations/organization_list.html:6
 msgid "Organizations"
 msgstr "Organizacje"
 
@@ -147,21 +155,17 @@ msgstr "Początek"
 msgid "Suggestion update of %(object)s"
 msgstr "Propozycja aktualizacji %(object)s"
 
-#: templates/organizations/organization_detail.html:5 views.py:121
-msgid "Report an error"
-msgstr "Zgłoś błąd"
-
-#: templates/organizations/organization_detail.html:6
-msgid "Templates of requests"
-msgstr "Szablony zapytań"
-
-#: templates/organizations/organization_detail.html:7
+#: templates/organizations/organization_detail.html:5
 msgid "Requests received:"
 msgstr "Otrzymane zapytania:"
 
-#: templates/organizations/organization_list.html:6
-msgid "organizations"
-msgstr "organizacje"
+#: templates/organizations/organization_detail.html:24
+msgid "Templates of requests"
+msgstr "Szablony zapytań"
+
+#: templates/organizations/organization_detail.html:28 views.py:122
+msgid "Report an error"
+msgstr "Zgłoś błąd"
 
 #: templates/organizations/organization_list.html:14
 msgid "No rows."
@@ -188,9 +192,18 @@ msgstr ""
 "%(value)s nie jest poprawnym kluczem. Dopuszczalne są tylko znaki alfabetu "
 "łacińskiego i cyfry."
 
-#: views.py:53 views.py:56 views.py:61 views.py:92 views.py:124
+#: views.py:54 views.py:57 views.py:62 views.py:93 views.py:125
 msgid "Organization list"
 msgstr "Wykaz organizacji"
+
+#~ msgid "%s geocoded, %d skipped"
+#~ msgstr "%s zageokodowanych, %d pominięto"
+
+#~ msgid "Geocode selected using Nominatim"
+#~ msgstr "Ustal pozycje używając Nominatim"
+
+#~ msgid "organizations"
+#~ msgstr "organizacje"
 
 #~ msgid "Organizations system"
 #~ msgstr "Baza instytucji kultury"

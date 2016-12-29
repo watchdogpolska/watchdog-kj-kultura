@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-17 04:19+0100\n"
-"PO-Revision-Date: 2016-12-17 04:12+0100\n"
+"POT-Creation-Date: 2016-12-29 14:19+0100\n"
+"PO-Revision-Date: 2016-12-29 14:21+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -51,15 +51,15 @@ msgstr "Kod źródłowy watchdog-kj-kultura"
 msgid "watchdog-kj-kultura issues"
 msgstr "Usterki watchdog-kj-kultura"
 
-#: models.py:15
+#: models.py:13
 msgid "Site"
 msgstr "Strona"
 
-#: models.py:16
+#: models.py:14
 msgid "Content of home page"
 msgstr "Treść strony głównej"
 
-#: models.py:20 models.py:21
+#: models.py:18 models.py:19
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -260,8 +260,8 @@ msgstr ""
 "href=\"%(passwd_reset_url)s\">Zresetuj hasło jeszcze raz.</a>"
 
 #: templates/account/password_reset_from_key.html:18
-msgid "change password"
-msgstr "zmień hasło"
+msgid "Change password"
+msgstr "Zmień hasło"
 
 #: templates/account/password_reset_from_key.html:21
 #: templates/account/password_reset_from_key_done.html:8
@@ -343,34 +343,61 @@ msgstr ""
 "<strong>Uwaga:</strong> możesz ciągle <a href=\"%(email_url)s\">zmienić Twój "
 "adres e-mail</a>."
 
-#: templates/base.html:45
-msgid "Organizations system"
-msgstr "Baza instytucji kultury"
-
-#: templates/base.html:54
+#: templates/partials/_edit_links.html:7
 #, python-format
 msgid "Edit %(object)s"
 msgstr "Edytuj %(object)s"
 
-#: templates/base.html:59
+#: templates/partials/_edit_links.html:10
 msgid "Changelist"
 msgstr "Lista edycyjna"
 
-#: urls.py:20
+#: templates/partials/_search_faceting.html:5
+msgid "Units of administrative division"
+msgstr "Jednostki podziału terytorialnego"
+
+#: templates/partials/_search_faceting.html:13
+msgid "Categories"
+msgstr "Kategorie"
+
+#: templates/search/search.html:50
+msgid "Results"
+msgstr "Wyniki"
+
+#: templates/search/search.html:58
+msgid "No results found."
+msgstr "Brak wyników"
+
+#: templates/search/search.html:63
+msgid "&laquo; Previous"
+msgstr "&laquo; Poprzednie"
+
+#: templates/search/search.html:65
+msgid "Next &raquo;"
+msgstr "Następne &raquo;"
+
+#: urls.py:21
+msgid "^search/"
+msgstr "^wyszukiwanie/"
+
+#: urls.py:24
 msgid "^organizations/"
 msgstr "^instytucje/"
 
-#: urls.py:22
+#: urls.py:26
 msgid "^region/"
 msgstr "^region/"
 
-#: urls.py:23
+#: urls.py:27
 msgid "^requests/"
 msgstr "^zapytania/"
 
-#: urls.py:25
+#: urls.py:29
 msgid "^pages/"
 msgstr "^strony/"
+
+#~ msgid "Organizations system"
+#~ msgstr "Baza instytucji kultury"
 
 #~ msgid "Learn more"
 #~ msgstr "Czytaj więcej"

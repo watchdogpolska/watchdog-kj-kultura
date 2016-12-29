@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-15 20:00+0100\n"
+"POT-Creation-Date: 2016-12-29 14:18+0100\n"
 "PO-Revision-Date: 2016-12-15 19:37+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "Requests to organizations system"
 msgstr "System zapytań do instytucji"
 
-#: dashboardmodules.py:12
+#: dashboardmodules.py:24
 msgid "Recent Actions"
 msgstr "Ostatnie akcje"
 
-#: dashboardmodules.py:18
+#: dashboardmodules.py:30
 msgid "Recent requests"
 msgstr "Ostatnie zapytania"
 
