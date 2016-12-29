@@ -34,6 +34,7 @@ class MenuMixin(object):
 class OrganizationListView(VisibleMixin, MenuMixin, BreadcrumbsMixin, SelectRelatedMixin, ListView):
     model = Organization
     select_related = ['category']
+    paginate_by = 25
 
     @property
     def is_category(self):

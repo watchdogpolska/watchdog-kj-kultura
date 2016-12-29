@@ -51,6 +51,7 @@ THIRD_PARTY_APPS = (
     'djmail',
     'tinymce',
     'haystack',
+    'bootstrap_pagination',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (

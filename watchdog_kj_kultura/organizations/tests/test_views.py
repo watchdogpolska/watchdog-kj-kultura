@@ -31,10 +31,20 @@ class OrganizationListViewTestCase(TestCase):
         org_inside = OrganizationFactory(jst=jst)
         org_outside = OrganizationFactory(jst=JednostkaAdministracyjnaFactory())
         resp = self.client.get(reverse('organizations:list', kwargs={'region': jst.slug}))
-        self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, org_inside)
         self.assertNotContains(resp, org_outside)
         self.assertContains(resp, jst.name)
+
+    def test_use_pagination(self):
+        orgs = OrganizationFactory.create_batch(50)
+        resp = self.client.get(reverse('organizations:list'))
+        self.assertContains(resp, orgs[0])
+        self.assertNotContains(resp, orgs[49])
+
+    def test_contains_paginator(self):
+        OrganizationFactory.create_batch(50)
+        resp = self.client.get(reverse('organizations:list'))
+        self.assertContains(resp, "?page=2")
 
 
 class OrganizationDetailViewTestCase(TestCase):

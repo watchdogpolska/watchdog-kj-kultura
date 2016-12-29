@@ -1,5 +1,6 @@
 {% extends 'organizations/organization_base.html' %}
 {% load i18n %}
+{% load bootstrap_pagination %}
 
 {% block organization_content %}
 <div class="organization-list">
@@ -9,6 +10,7 @@
     {% for organization in object_list %}
     <li><a href="{{organization.get_absolute_url}}">{{organization}}</a></li>
     {% endfor %}
+    {% bootstrap_paginate page_obj range=10 show_first_last="true" %}
 </ul>
 {% else %}
     {% trans 'No rows.' %}
