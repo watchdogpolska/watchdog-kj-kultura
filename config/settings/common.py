@@ -32,6 +32,7 @@ DJANGO_APPS = (
     'django.contrib.gis',
     # Useful template tags:
     'django.contrib.humanize',
+    'django.contrib.sitemaps',
 
     # Admin
     'django.contrib.admin',

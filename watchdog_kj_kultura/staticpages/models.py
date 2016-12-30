@@ -14,7 +14,9 @@ from django.utils.functional import cached_property
 
 
 class PageQuerySet(models.QuerySet):
-    pass
+
+    def visible(self):
+        return self.filter(visible=True)
 
 
 @python_2_unicode_compatible

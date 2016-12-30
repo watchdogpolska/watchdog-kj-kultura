@@ -8,8 +8,18 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+from watchdog_kj_kultura.teryt.sitemaps import JSTSitemap
+from watchdog_kj_kultura.organizations.sitemaps import OrganizationSitemap
+from watchdog_kj_kultura.staticpages.sitemaps import PageSitemap
+from django.contrib.sitemaps import views as sitemap_views
 
 from . import views
+
+sitemaps = {
+    'teryt': JSTSitemap,
+    'organization': OrganizationSitemap,
+    'page': PageSitemap,
+}
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
@@ -31,6 +41,10 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
+
+    url(r'^sitemap\.xml$', sitemap_views.index, {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap_views.sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
