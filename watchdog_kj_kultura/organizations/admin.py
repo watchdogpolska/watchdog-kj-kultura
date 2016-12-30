@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from leaflet.admin import LeafletGeoAdminMixin
 from import_export.admin import ImportExportMixin
 
 from .admin_actions import GeocodeOrganizationAction
@@ -39,7 +40,8 @@ class MetaCategoryAdmin(ImportExportMixin, admin.ModelAdmin):
 
 
 @admin.register(Organization)
-class OrganizationAdmin(GeocoderActionsMixin, ImportExportMixin, admin.ModelAdmin):
+class OrganizationAdmin(GeocoderActionsMixin, LeafletGeoAdminMixin, ImportExportMixin,
+                        admin.ModelAdmin):
     '''
         Admin View for Organization
     '''

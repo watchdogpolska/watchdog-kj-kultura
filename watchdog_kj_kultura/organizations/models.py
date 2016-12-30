@@ -1,15 +1,15 @@
 from autoslug.fields import AutoSlugField
 from django.conf import settings
-from django.contrib.gis.db import models as gismodels
-from django.contrib.gis.geos import Point
 from django.contrib.postgres.fields import JSONField
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import Case, When
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from djgeojson.fields import PointField
 from model_utils.models import TimeStampedModel
 from teryt_tree.models import JednostkaAdministracyjna
+
 from .validators import is_allnum
 
 
@@ -88,7 +88,7 @@ class Organization(TimeStampedModel):
     jst = models.ForeignKey(JednostkaAdministracyjna,
                             verbose_name=_("Unit of administrative division"))
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    pos = gismodels.PointField(verbose_name=_("Position"), null=True, blank=True, db_index=True)
+    pos = PointField(verbose_name=_("Position"), null=True, blank=True)
     category = models.ForeignKey(to=Category,
                                  verbose_name=_("Category"),
                                  null=True,
@@ -105,7 +105,8 @@ class Organization(TimeStampedModel):
         return self.name or "Warszawa, mazowieckie, Polska"
 
     def set_geopy_point(self, point):
-        self.pos = Point(point.point.longitude, point.point.latitude)
+        self.pos = {'type': 'Point',
+                    'coordinates': [point.point.longitude, point.point.latitude]}
 
     def jst_list(self):
         r = [self.jst.pk]
