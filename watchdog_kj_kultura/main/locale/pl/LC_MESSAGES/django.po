@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 14:19+0100\n"
+"POT-Creation-Date: 2016-12-30 20:24+0100\n"
 "PO-Revision-Date: 2016-12-29 14:21+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
@@ -376,23 +376,23 @@ msgstr "&laquo; Poprzednie"
 msgid "Next &raquo;"
 msgstr "Następne &raquo;"
 
-#: urls.py:21
+#: urls.py:31
 msgid "^search/"
 msgstr "^wyszukiwanie/"
 
-#: urls.py:24
+#: urls.py:34
 msgid "^organizations/"
 msgstr "^instytucje/"
 
-#: urls.py:26
+#: urls.py:36
 msgid "^region/"
 msgstr "^region/"
 
-#: urls.py:27
+#: urls.py:37
 msgid "^requests/"
 msgstr "^zapytania/"
 
-#: urls.py:29
+#: urls.py:39
 msgid "^pages/"
 msgstr "^strony/"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 14:18+0100\n"
+"POT-Creation-Date: 2016-12-30 20:23+0100\n"
 "PO-Revision-Date: 2016-12-29 14:19+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
@@ -23,59 +23,59 @@ msgstr ""
 msgid "Static pages"
 msgstr "Strony statyczne"
 
-#: models.py:22
+#: models.py:24
 msgid "Name"
 msgstr "Nazwa"
 
-#: models.py:23
+#: models.py:25
 msgid "Slug"
 msgstr "Identyfikator redakcyjny"
 
-#: models.py:25
+#: models.py:27
 msgid "Parent"
 msgstr "Rodzic"
 
-#: models.py:31
+#: models.py:33
 msgid "Content"
 msgstr "Treść"
 
-#: models.py:32
+#: models.py:34
 msgid "Public visible"
 msgstr "Publiczna widoczność"
 
-#: models.py:33
+#: models.py:35
 msgid "Check to mark page as public visible"
 msgstr "Zaznacz, aby oznaczyć stronę jako widoczną publicznie"
 
-#: models.py:36
+#: models.py:38
 msgid "created"
 msgstr "utworzono"
 
-#: models.py:37
+#: models.py:39
 msgid "modified"
 msgstr "zmodyfikowane"
 
-#: models.py:41
+#: models.py:43
 msgid "Use map?"
 msgstr "Mapa używana?"
 
-#: models.py:45
+#: models.py:47
 msgid "Page"
 msgstr "Strona"
 
-#: models.py:46
+#: models.py:48
 msgid "Pages"
 msgstr "Strony"
 
-#: models.py:62
+#: models.py:64
 msgid "File"
 msgstr "Plik"
 
-#: models.py:66
+#: models.py:68
 msgid "Attachment"
 msgstr "Załącznik"
 
-#: models.py:67
+#: models.py:69
 msgid "Attachments"
 msgstr "Załączniki"
 

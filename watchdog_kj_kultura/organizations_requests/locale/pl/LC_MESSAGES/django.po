@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 14:18+0100\n"
-"PO-Revision-Date: 2016-12-15 19:37+0100\n"
+"POT-Creation-Date: 2016-12-30 20:23+0100\n"
+"PO-Revision-Date: 2016-12-30 20:23+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -55,91 +55,99 @@ msgstr ""
 "Adres e-mail jest niezbędny w celach bezpieczeństwa, a także do powiadomień "
 "o stanie zapytania."
 
-#: models.py:23
+#: models.py:15
+msgid "Short description of the potential use of the template."
+msgstr "Krótki opis potencjału użycia szablonu."
+
+#: models.py:24
 msgid "Name"
 msgstr "Nazwa"
 
-#: models.py:24
+#: models.py:25
 msgid "Slug"
 msgstr "Identyfikator redakcyjny"
 
-#: models.py:25 models.py:76
+#: models.py:26 models.py:79
 msgid "Subject"
 msgstr "Tytuł"
 
-#: models.py:26
+#: models.py:27
 msgid "Body"
 msgstr "Treść"
 
-#: models.py:27
+#: models.py:28
+msgid "Description"
+msgstr "Opis"
+
+#: models.py:30
 msgid "Introduction"
 msgstr "Wprowadzenie"
 
-#: models.py:29
+#: models.py:32
 msgid "Require email"
 msgstr "Wymagaj adresu e-mail"
 
-#: models.py:30
+#: models.py:33
 msgid "Mark to require email in content of request"
 msgstr "Zaznacz, aby wymagać adresu w treści zapytania."
 
-#: models.py:32
+#: models.py:35
 msgid "Public visible"
 msgstr "Publiczna widoczność"
 
-#: models.py:33
+#: models.py:36
 msgid "Check to mark template as public visible"
 msgstr "Zaznacz, aby oznaczyć szablon jako publicznie widoczny"
 
-#: models.py:37 models.py:47
+#: models.py:40 models.py:50
 msgid "Template"
 msgstr "Szablon"
 
-#: models.py:38
+#: models.py:41
 msgid "Templates"
 msgstr "Szablony"
 
-#: models.py:49
+#: models.py:52
 msgid "The period for sending notification"
 msgstr "Okres na wysłanie powiadomienia"
 
-#: models.py:51
+#: models.py:54
 msgid "Subject of notification"
 msgstr "Temat powiadomienia"
 
-#: models.py:53
+#: models.py:56
 msgid "Body of notification"
 msgstr "Treść powiadomienia"
 
-#: models.py:63 models.py:64 models.py:95
+#: models.py:66 models.py:67 models.py:98
 msgid "Notification"
 msgstr "Powiadomienie"
 
-#: models.py:74
+#: models.py:77
 msgid "Organization"
 msgstr "Organizacja"
 
-#: models.py:75
+#: models.py:78
 msgid "Used templates"
 msgstr "Użyty szablon"
 
-#: models.py:77
+#: models.py:80
 msgid "Email of organization"
 msgstr "Adres organizacji"
 
-#: models.py:78
+#: models.py:81
 msgid "E-mail"
 msgstr "E-mail"
 
-#: models.py:79
+#: models.py:82
 msgid "Content of the request"
 msgstr "Treść zapytania"
 
-#: models.py:83 models.py:96
+#: models.py:86 models.py:99
 msgid "Request"
 msgstr "Zapytanie"
 
-#: models.py:84
+#: models.py:87
 msgid "Requests"
 msgstr "Zapytania"
 
@@ -170,14 +178,10 @@ msgid "Form"
 msgstr "Formularz"
 
 #: urls.py:8
-msgid "^organization-(?P<organization>[\\w\\d-]+)$"
-msgstr "^instytucja-(?P<organization>[\\w\\d-]+)$"
-
-#: urls.py:10
 msgid "^organization-(?P<organization>[\\w\\d-]+)/(?P<template>[\\w\\d-]+)$"
 msgstr "^instytucja-(?P<organization>[\\w\\d-]+)/(?P<template>[\\w\\d-]+)$"
 
-#: urls.py:13
+#: urls.py:11
 msgid "^request-(?P<pk>[\\d]+)$"
 msgstr "^zapytanie-(?P<pk>[\\d]+)$"
 
@@ -186,22 +190,23 @@ msgstr "^zapytanie-(?P<pk>[\\d]+)$"
 msgid "%(value)s is not valid delta data"
 msgstr "%(value)s nie jest poprawnym okresem czasu"
 
-#: views.py:30 views.py:72 views.py:88
-msgid "Organization list"
-msgstr "Wykaz organizacji"
-
-#: views.py:35
-msgid "Templates list"
-msgstr "Wykaz szablonów"
-
-#: views.py:69
+#: views.py:56
 #, python-brace-format
 msgid "Requests to {organization} was sent!"
 msgstr "Zapytanie do {organization} zostało wysłane!"
 
-#: views.py:77
-msgid "Template list"
-msgstr "Wykaz szablonów"
+#: views.py:59 views.py:73
+msgid "Organization list"
+msgstr "Wykaz organizacji"
+
+#~ msgid "^organization-(?P<organization>[\\w\\d-]+)$"
+#~ msgstr "^instytucja-(?P<organization>[\\w\\d-]+)$"
+
+#~ msgid "Templates list"
+#~ msgstr "Wykaz szablonów"
+
+#~ msgid "Template list"
+#~ msgstr "Wykaz szablonów"
 
 #~ msgid "E-mail address"
 #~ msgstr "Adres e-mail"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 14:38+0100\n"
-"PO-Revision-Date: 2016-12-29 14:38+0100\n"
+"POT-Creation-Date: 2016-12-30 20:24+0100\n"
+"PO-Revision-Date: 2016-12-30 20:24+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -19,20 +19,20 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: admin.py:60
+#: admin.py:62
 #, python-brace-format
 msgid "Use {{object.meta.{key}}} in templates to display value"
 msgstr "Użyj {{object.meta.{key}}} w szablonie, aby wyświetlić wartość"
 
-#: admin.py:80
+#: admin.py:82
 msgid "Clean position of selected"
 msgstr "Wyczyść pozycje wybranych"
 
-#: admin.py:84
+#: admin.py:86
 msgid "Switch visibility of selected"
 msgstr "Przestaw widoczność wybranych"
 
-#: admin.py:97
+#: admin.py:99
 msgid "Organization count"
 msgstr "Liczba organizacji"
 
@@ -137,12 +137,12 @@ msgstr "Zaznacz, aby oznaczyć organizacje jako widoczną publicznie"
 msgid "Metadata"
 msgstr "Metadane"
 
-#: models.py:119
+#: models.py:120
 msgid "Organization"
 msgstr "Organizacja"
 
-#: models.py:120 templates/organizations/organization_base.html:6
-#: templates/organizations/organization_list.html:6
+#: models.py:121 templates/organizations/organization_base.html:6
+#: templates/organizations/organization_list.html:7
 msgid "Organizations"
 msgstr "Organizacje"
 
@@ -155,19 +155,27 @@ msgstr "Początek"
 msgid "Suggestion update of %(object)s"
 msgstr "Propozycja aktualizacji %(object)s"
 
-#: templates/organizations/organization_detail.html:5
+#: templates/organizations/organization_detail.html:12
+msgid "Field"
+msgstr "Pole"
+
+#: templates/organizations/organization_detail.html:13
+msgid "Value"
+msgstr "Wartość"
+
+#: templates/organizations/organization_detail.html:29
 msgid "Requests received:"
 msgstr "Otrzymane zapytania:"
 
-#: templates/organizations/organization_detail.html:24
-msgid "Templates of requests"
-msgstr "Szablony zapytań"
+#: templates/organizations/organization_detail.html:37
+msgid "Write a letter"
+msgstr "Napisz pismo"
 
-#: templates/organizations/organization_detail.html:28 views.py:122
+#: templates/organizations/organization_detail.html:47 views.py:129
 msgid "Report an error"
 msgstr "Zgłoś błąd"
 
-#: templates/organizations/organization_list.html:14
+#: templates/organizations/organization_list.html:16
 msgid "No rows."
 msgstr "Brak wierszy."
 
@@ -192,9 +200,12 @@ msgstr ""
 "%(value)s nie jest poprawnym kluczem. Dopuszczalne są tylko znaki alfabetu "
 "łacińskiego i cyfry."
 
-#: views.py:54 views.py:57 views.py:62 views.py:93 views.py:125
+#: views.py:56 views.py:59 views.py:64 views.py:95 views.py:132
 msgid "Organization list"
 msgstr "Wykaz organizacji"
+
+#~ msgid "Templates of requests"
+#~ msgstr "Szablony zapytań"
 
 #~ msgid "%s geocoded, %d skipped"
 #~ msgstr "%s zageokodowanych, %d pominięto"
