@@ -10,14 +10,21 @@ django==1.10.4
 # Configuration
 django-environ==0.4.1
 
-
-
 # Forms
 django-braces==1.10.0
 django-crispy-forms==1.6.1
 
+# Templates
+django-bootstrap-pagination==1.6.2
+
 # Models
 django-model-utils==2.6
+
+# Admin
+django-grappelli==2.9.1
+geopy==1.11.0
+django-import-export==0.5.1
+django-tinymce==2.4.0
 
 # Images
 Pillow==3.4.2
@@ -26,6 +33,11 @@ Pillow==3.4.2
 # Well-built with regular release cycles!
 django-allauth==0.29.0
 
+# Search
+elasticsearch==5.0.1
+django-haystack==2.5.1
+elasticsearch2-haystack==0.1
+django-haystack-panel==0.2.1
 
 # Python-PostgreSQL Database Adapter
 psycopg2==2.6.2
@@ -39,21 +51,18 @@ pytz==2016.10
 # Redis support
 django-redis==4.6.0
 redis>=2.10.5
-django-grappelli==2.9.1
+
+# Data source
 django-teryt-tree==0.11.1
 django-autofixture==0.12.1
-django-leaflet==0.19.0
-django-geojson==2.9.1
-https://github.com/ad-m/django-geojson/archive/python35-support-rebased.zip # See https://github.com/makinacorpus/django-geojson/issues/82 and https://github.com/makinacorpus/django-geojson/pull/81
-# Your custom requirements go here
+
+# Pretty e-mail
 djmail==1.0.0
+
+# GeoMaps
+django-leaflet==0.19.0
+https://github.com/balazs-endresz/django-geojson/archive/a2b05b4c644e54a127a482c41d3617897c2a86cd.zip # See https://github.com/makinacorpus/django-geojson/issues/82 and https://github.com/makinacorpus/django-geojson/pull/81
+
+# Utils
 django-atom==0.12.7
-django-haystack==2.5.1
-django-tinymce==2.4.0
 python-dateutil==2.6.0
-elasticsearch==5.0.1
-django-import-export==0.5.1
-geopy==1.11.0
-django-haystack-panel==0.2.1
-elasticsearch2-haystack==0.1
-django-bootstrap-pagination==1.6.2
