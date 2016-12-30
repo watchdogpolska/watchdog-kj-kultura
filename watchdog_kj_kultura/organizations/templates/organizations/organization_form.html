@@ -1,9 +1,13 @@
 {% extends 'organizations/organization_base.html' %}
+{% load leaflet_tags %}
 {% load crispy_forms_tags i18n %}
 {% block content %}
 {% crispy form %}
 {% endblock %}
 
-{% block extra_css %}
+{% block css %}
+{{block.super}}
+{% leaflet_js  plugins="forms" %}
+{% leaflet_css plugins="forms" %}
 {{form.media}}
 {% endblock %}

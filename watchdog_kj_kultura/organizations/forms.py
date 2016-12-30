@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from ..users.models import User
 from .emails import OrganizationFixEmail
 from .models import MetaCategory, Organization
-
+from leaflet.forms.widgets import LeafletWidget
 
 class OrganizationAdminForm(forms.ModelForm):
     """Organization management form for usage in
@@ -85,3 +85,6 @@ class OrganizationFixForm(SingleButtonMixin, forms.ModelForm):
     class Meta:
         model = Organization
         fields = ['name', 'email', 'jst', 'pos', 'category']
+        widgets = {
+            'pos': LeafletWidget(),
+        }
