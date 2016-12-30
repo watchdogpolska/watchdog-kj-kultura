@@ -68,7 +68,8 @@ class GeocodeOrganizationAction(object):
 
     def result(self, skipped, geocoded):
         msg = _("In action {geocoded} organizations was " +
-                "geocoded, {skipped} skipped").format(geocoded, skipped)
+                "geocoded, {skipped} skipped").format(geocoded=geocoded,
+                                                      skipped=skipped)
         messages.success(self.request, msg)
 
     def execute(self, request, queryset):
