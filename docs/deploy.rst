@@ -7,9 +7,12 @@ Wdrożenie
 Heroku
 #############
 
-Jedną z akceptowalnych form wdrożenia jest wykorzystanie Heroku. Wymaga to kilku prostych kroków.
+Jedną z akceptowalnych form wdrożenia jest wykorzystanie Heroku. Wymaga to kilku prostych kroków, które są szczegółowo przedstawione poniżej.
 
-Po peirwsze należy utworzyć aplikacje i ustalić wartość podstawowych zmiennych:
+1. Utworzenie aplikacji
+-----------------------
+
+Po pierwsze należy utworzyć aplikacje i ustalić wartość podstawowych zmiennych:
 
 .. code-block:: bash
 
@@ -19,14 +22,34 @@ Po peirwsze należy utworzyć aplikacje i ustalić wartość podstawowych zmienn
     $ heroku config:set DJANGO_ADMIN_URL=admin/
     $ heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
 
-Następnie należy określić miejsce przechowywania załączników. Rekomenduje w tym zakresie wykorzystanie usługi e24files od `e24cloud <https://panel.e24cloud.com/referal/GuFfaD31>`_ , co pozwala na efektywne cenowe przechowywanie danych w Polsce:
+2. API plików statycznych
+----------------------------------
+
+Następnie należy określić miejsce przechowywania plików statycznych (załączników itd.). Rekomenduje w tym zakresie wykorzystanie usługi e24files od `e24cloud <https://panel.e24cloud.com/referal/GuFfaD31>`_ , co pozwala na efektywne cenowe przechowywanie danych w Polsce:
 
 .. code-block:: bash
 
     $ heroku config:set DJANGO_AWS_ACCESS_KEY_ID=**CUT**
-    $ heroku config:set DJANGO_AWS_S3_HOST=e24files.com
+    $ heroku config:set AWS_S3_ENDPOINT_URL="https://e24files.com/""
+    $ heroku config:set AWS_S3_SIGNATURE_VERSION="s3"
+    $ heroku config:set AWS_S3_CUSTOM_DOMAIN="**CUT**.e24files.com"
     $ heroku config:set DJANGO_AWS_SECRET_ACCESS_KEY=**CUT**
     $ heroku config:set DJANGO_AWS_STORAGE_BUCKET_NAME=watchdog-kj-kultura
+
+Możliwe jest także wykorzystanie zwyczajnego Amazon S3 z wykorzystaniem ustawień
+
+.. code-block:: bash
+
+    $ heroku config:set DJANGO_AWS_ACCESS_KEY_ID=**CUT**
+    $ heroku config:set AWS_S3_CUSTOM_DOMAIN="**CUT**.s3.eu-central-1.amazonaws.com"
+    $ heroku config:set AWS_S3_ENDPOINT_URL=http://s3.amazonaws.com
+    $ heroku config:set AWS_S3_REGION_NAME=eu-central-1
+    $ heroku config:set AWS_S3_SIGNATURE_VERSION="s3v4"
+    $ heroku config:set DJANGO_AWS_SECRET_ACCESS_KEY=**CUT**
+    $ heroku config:set DJANGO_AWS_STORAGE_BUCKET_NAME=watchdog-kj-kultura
+
+3. API wiadomości e-mail
+------------------------
 
 W kolejnym kroku należy wskazać dane operatora wiadomości e-mail. Wstępnie aplikacja jest skonfigurowana do obsługi Mailgun, zważywszy na swoją popularność:
 
@@ -35,17 +58,26 @@ W kolejnym kroku należy wskazać dane operatora wiadomości e-mail. Wstępnie a
     $ heroku config:set DJANGO_MAILGUN_API_KEY=key-xxxx
     $ heroku config:set MAILGUN_SENDER_DOMAIN=sandboxxx.mailgun.org
 
+4. API monitorowania wyjątków
+-----------------------------
+
 Wymagane jest również, aby wskazać dane dostępowe DSN do instancji Sentry:
 
 .. code-block:: bash
 
     $ heroku config:set DJANGO_SENTRY_DSN=http://...:...@sentry.jawne.info.pl/16 
 
+5. Publikacja kodu
+------------------
+
 W tym miejscu dopiero warto umieścić kod źródłowy aplikacji na serwerze:
 
 .. code-block:: bash
 
     $ git push heroku master
+
+6. Baza danych
+--------------
 
 Potem należy stworzyć bazę danych i wprowadzić schemat bazy danych:
 
@@ -54,17 +86,26 @@ Potem należy stworzyć bazę danych i wprowadzić schemat bazy danych:
     $ heroku addons:create heroku-postgresql:hobby-dev
     $ heroku run python manage.py migrate
 
+7. Cache
+--------
+
 Należy także aktywować cache:
 
 .. code-block:: bash
 
     $ heroku addons:create rediscloud:30
 
+8. Adres WWW
+-------------
+
 Jeżeli uruchamisz apliacje pod adresem innym niż ``kultura.kj.org.pl`` konieczne jest także zaakceptowanie domeny:
 
 .. code-block:: bash
 
     $ heroku config:set DJANGO_ALLOWED_HOSTS="watchdog-kj-kultura.herokuapp.com"
+
+9. Wyszukiwarka
+---------------
 
 Aby uruchomić wyszukiwarkę należy wywołać:
 
@@ -73,17 +114,14 @@ Aby uruchomić wyszukiwarkę należy wywołać:
     $ heroku addons:create searchbox:starter
     $ heroku run python manage.py rebuild_index
 
+10. Administrator aplikacji
+---------------------------
+
 Warto także utworzyć pierwszego użytkownika administracyjnego:
 
 .. code-block:: bash
 
     $ heroku run python manage.py createsuperuser
-
-Konieczne może się okazać także zamieszczenie plików statycznych na serwerze multimediów:
-
-.. code-block:: bash
-
-    $ heroku run python manage.py collectstatic
 
 .. _scheduler:
 
