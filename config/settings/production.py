@@ -84,8 +84,8 @@ AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME', default=None)
 AWS_S3_SIGNATURE_VERSION = env('AWS_S3_SIGNATURE_VERSION', default='s3v4')
 AWS_AUTO_CREATE_BUCKET = env.bool('AWS_AUTO_CREATE_BUCKET', default=True)
 AWS_QUERYSTRING_AUTH = False
-AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL', default=None)
-
+AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL')
+AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN')
 # AWS cache settings, don't change unless you know what you're doing:
 AWS_EXPIRY = 60 * 60 * 24 * 7
 
@@ -108,12 +108,11 @@ MediaRootS3BotoStorage = lambda: S3Boto3Storage(location='media')
 
 DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3BotoStorage'
 
-MEDIA_URL = 'https://s3.amazonaws.com/%s/media/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = 'https://%s/%s/media/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STORAGE_BUCKET_NAME)
 
 # Static Assets
 # ------------------------
-
-STATIC_URL = 'https://s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = 'https://%s/%s/static/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STORAGE_BUCKET_NAME)
 STATICFILES_STORAGE = 'config.settings.production.StaticRootS3BotoStorage'
 # See: https://github.com/antonagestam/collectfast
 # For Django 1.7+, 'collectfast' should come before
