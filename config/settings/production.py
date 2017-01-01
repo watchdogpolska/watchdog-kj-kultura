@@ -86,6 +86,7 @@ AWS_AUTO_CREATE_BUCKET = env.bool('AWS_AUTO_CREATE_BUCKET', default=True)
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_ENDPOINT_URL = env('AWS_S3_ENDPOINT_URL')
 AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN')
+
 # AWS cache settings, don't change unless you know what you're doing:
 AWS_EXPIRY = 60 * 60 * 24 * 7
 
