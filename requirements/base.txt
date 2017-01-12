@@ -34,9 +34,9 @@ Pillow==3.4.2
 django-allauth==0.30.0
 
 # Search
-elasticsearch==5.0.1
+elasticsearch==2.4.1 # pyup: <5.0.0
 django-haystack==2.5.1
-elasticsearch2-haystack==0.1
+django-haystack-elasticsearch==0.1.0
 django-haystack-panel==0.2.1
 
 # Python-PostgreSQL Database Adapter
