@@ -18,7 +18,7 @@ django-crispy-forms==1.6.1
 django-bootstrap-pagination==1.6.2
 
 # Models
-django-model-utils==2.6
+django-model-utils==2.6.1
 
 # Admin
 django-grappelli==2.9.1
@@ -34,9 +34,9 @@ Pillow==3.4.2
 django-allauth==0.30.0
 
 # Search
-elasticsearch==5.0.1
+elasticsearch==2.4.1 # pyup: <5.0.0
 django-haystack==2.6.0
-elasticsearch2-haystack==0.1
+django-haystack-elasticsearch==0.1.0
 django-haystack-panel==0.2.1
 
 # Python-PostgreSQL Database Adapter

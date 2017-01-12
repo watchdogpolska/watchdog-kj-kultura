@@ -255,4 +255,4 @@ if 'SEARCHBOX_URL' in os.environ:
         HAYSTACK_CONNECTIONS['default']['KWARGS'] = {"http_auth": es.username + ':' + es.password}
 
 if 'Elasticsearch' in HAYSTACK_CONNECTIONS['default']['ENGINE']:
-    HAYSTACK_CONNECTIONS['default']['ENGINE'] = 'elasticsearch2_backend.ElasticsearchSearchEngine'
+    HAYSTACK_CONNECTIONS['default']['ENGINE'] = 'haystack_elasticsearch.elasticsearch2.Elasticsearch2SearchEngine'

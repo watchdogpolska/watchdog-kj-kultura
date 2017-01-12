@@ -296,4 +296,4 @@ HAYSTACK_CONNECTIONS = {
     'default': env.search_url(default="elasticsearch://127.0.0.1:9200/haystack"),
 }
 if 'Elasticsearch' in HAYSTACK_CONNECTIONS['default']['ENGINE']:
-    HAYSTACK_CONNECTIONS['default']['ENGINE'] = 'elasticsearch2_backend.ElasticsearchSearchEngine'
+    HAYSTACK_CONNECTIONS['default']['ENGINE'] = 'haystack_elasticsearch.elasticsearch2.Elasticsearch2SearchEngine'
