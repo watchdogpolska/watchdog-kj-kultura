@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from leaflet.admin import LeafletGeoAdminMixin
+
 from import_export.admin import ImportExportMixin
+from leaflet.admin import LeafletGeoAdminMixin
 
 from .admin_actions import GeocodeOrganizationAction
 from .forms import OrganizationAdminForm
@@ -87,7 +88,7 @@ class OrganizationAdmin(GeocoderActionsMixin, LeafletGeoAdminMixin, ImportExport
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(ImportExportMixin, admin.ModelAdmin):
     '''
         Admin View for Category
     '''

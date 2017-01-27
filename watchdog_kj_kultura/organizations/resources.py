@@ -2,7 +2,7 @@ import logging
 
 from import_export import fields, resources
 
-from .models import MetaCategory, Organization
+from .models import MetaCategory, Organization, Category
 
 logger = logging.getLogger(__name__)
 

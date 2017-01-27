@@ -21,7 +21,7 @@ class MetaCategoryQuerySet(models.QuerySet):
 class MetaCategory(TimeStampedModel):
     name = models.CharField(verbose_name=_("Name"), max_length=50)
     key = models.CharField(verbose_name=_("Key"),
-                           max_length=25,
+                           max_length=50,
                            validators=[is_allnum],
                            help_text=_("They are permitted only Latin characters and numbers."))
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
