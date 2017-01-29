@@ -9,7 +9,6 @@ from .models import Category, MetaCategory, Organization
 class MetaCategoryFactory(factory.django.DjangoModelFactory):
     name = factory.Sequence(lambda n: 'user%d' % n)
     key = factory.LazyAttribute(lambda obj: 'key_%s' % obj.name)
-    user = factory.SubFactory(UserFactory)
 
     class Meta:
         model = MetaCategory

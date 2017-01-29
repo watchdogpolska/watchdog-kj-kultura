@@ -24,7 +24,6 @@ class MetaCategory(TimeStampedModel):
                            max_length=50,
                            validators=[is_allnum],
                            help_text=_("They are permitted only Latin characters and numbers."))
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     objects = MetaCategoryQuerySet.as_manager()
 
     class Meta:
