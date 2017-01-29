@@ -82,11 +82,12 @@ class OrganizationQuerySet(models.QuerySet):
 
 @python_2_unicode_compatible
 class Organization(TimeStampedModel):
-    name = models.CharField(verbose_name=_("Name"), max_length=50)
+    name = models.CharField(verbose_name=_("Name"), max_length=150)
     slug = AutoSlugField(populate_from='name', verbose_name=_("Slug"), unique=True)
     email = models.EmailField(verbose_name=_("E-mail"))
     jst = models.ForeignKey(JednostkaAdministracyjna,
-                            verbose_name=_("Unit of administrative division"))
+                            verbose_name=_("Unit of administrative division"),
+                            null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     pos = PointField(verbose_name=_("Position"), null=True, blank=True)
     category = models.ForeignKey(to=Category,

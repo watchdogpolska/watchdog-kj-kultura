@@ -9,6 +9,7 @@ from .admin_actions import GeocodeOrganizationAction
 from .forms import OrganizationAdminForm
 from .models import Category, MetaCategory, Organization
 from .resources import OrganizationResource
+from .filters import HasJSTListFilter
 
 
 class GeocoderActionsMixin(object):
@@ -47,7 +48,7 @@ class OrganizationAdmin(GeocoderActionsMixin, LeafletGeoAdminMixin, ImportExport
         Admin View for Organization
     '''
     list_display = ('name', 'email', 'jst', 'user', 'created', 'modified', 'pos', )
-    list_filter = ('created', 'modified')
+    list_filter = ('created', 'modified', HasJSTListFilter)
     readonly_fields = ('meta',)
     search_fields = ('name',)
     actions = ('geocode_clean', 'switch_visible',)
@@ -85,6 +86,10 @@ class OrganizationAdmin(GeocoderActionsMixin, LeafletGeoAdminMixin, ImportExport
     def switch_visible(self, request, queryset):
         queryset.switch_visibility()
     switch_visible.short_description = _("Switch visibility of selected")
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(OrganizationAdmin, self).get_queryset(*args, **kwargs)
+        return qs.select_related('jst', 'user')
 
 
 @admin.register(Category)
