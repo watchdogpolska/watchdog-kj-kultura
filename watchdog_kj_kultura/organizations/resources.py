@@ -28,6 +28,7 @@ def get_jst(pk):
 
 
 class JSTField(fields.Field):
+
     def clean(self, data):
         pk = data[self.column_name].rjust(7, '0')
         try:
@@ -87,5 +88,5 @@ class OrganizationResource(resources.ModelResource):
 
     class Meta:
         model = Organization
-        fields = ('id', 'name', 'slug', 'email', 'user', 'category', 'visible')
+        fields = ('id', 'name', 'slug', 'email', 'category', 'visible')
         export_order = fields

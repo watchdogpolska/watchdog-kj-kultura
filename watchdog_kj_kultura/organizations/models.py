@@ -19,7 +19,7 @@ class MetaCategoryQuerySet(models.QuerySet):
 
 @python_2_unicode_compatible
 class MetaCategory(TimeStampedModel):
-    name = models.CharField(verbose_name=_("Name"), max_length=50)
+    name = models.CharField(verbose_name=_("Name"), max_length=100)
     key = models.CharField(verbose_name=_("Key"),
                            max_length=50,
                            validators=[is_allnum],
@@ -87,7 +87,6 @@ class Organization(TimeStampedModel):
     jst = models.ForeignKey(JednostkaAdministracyjna,
                             verbose_name=_("Unit of administrative division"),
                             null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     pos = PointField(verbose_name=_("Position"), null=True, blank=True)
     category = models.ForeignKey(to=Category,
                                  verbose_name=_("Category"),
