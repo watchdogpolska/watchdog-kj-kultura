@@ -12,7 +12,9 @@ class NoteIndex(indexes.SearchIndex, indexes.Indexable):
     jst = indexes.FacetCharField(model_attr='jst__slug')
 
     def prepare_jst(self, obj):
-        return obj.jst.slug
+        if obj.jst:
+            return obj.jst.slug
+        return None
 
     def get_model(self):
         return Organization

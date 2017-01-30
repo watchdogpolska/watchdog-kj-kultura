@@ -30,7 +30,7 @@ class ModelAdminTests(TestCase):
     def test_default_fields(self):
         ma = OrganizationAdmin(Organization, self.site)
         extra = ['meta_%d' % category.pk for category in self.categories]
-        fields = ['name', 'email', 'jst', 'user', 'category', 'pos', 'visible'] + extra
+        fields = ['name', 'email', 'jst', 'category', 'pos', 'visible'] + extra
         # Form contains only editable fields
         self.assertCountEqual(ma.get_form(request).base_fields, fields)
         # Admin contains readonly-fields too
