@@ -7847,6 +7847,7 @@ button.close {
 }
 
 .footer {
+  margin-top: 20px;
   padding: 30px 0;
   background: #065693;
   color: white;
