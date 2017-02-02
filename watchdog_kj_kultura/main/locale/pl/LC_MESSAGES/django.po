@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-30 20:24+0100\n"
-"PO-Revision-Date: 2016-12-29 14:21+0100\n"
+"POT-Creation-Date: 2017-02-02 23:13+0100\n"
+"PO-Revision-Date: 2017-02-02 23:16+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -62,6 +62,41 @@ msgstr "Treść strony głównej"
 #: models.py:18 models.py:19
 msgid "Settings"
 msgstr "Ustawienia"
+
+#: templates/404.html:3 templates/404.html:6
+msgid "Page Not found"
+msgstr "Strona nie znaleziona"
+
+#: templates/404.html:3 templates/500.html:3 templates/account/base.html:4
+#: templates/base.html:8 templates/pages/home.html:6
+#: templates/search/search.html:5 templates/users/user_detail.html:5
+#: templates/users/user_form.html:4 templates/users/user_list.html:3
+msgid "watchdog-kj-kultura"
+msgstr "Mapa Kultury"
+
+#: templates/404.html:8
+msgid "This is not the page you were looking for."
+msgstr "Nie istnieje strona, której tutaj szukasz."
+
+#: templates/500.html:3
+msgid "Server Error"
+msgstr "Błąd serwera"
+
+#: templates/500.html:6
+msgid "Ooops!!! 500"
+msgstr "Ooops!!! 500"
+
+#: templates/500.html:8
+msgid "Looks like something went wrong!"
+msgstr "Wygląda na to, że coś poszło nie tak."
+
+#: templates/500.html:10
+msgid ""
+"We track these errors automatically, but if the problem persists feel free "
+"to contact us. In the meantime, try refreshing."
+msgstr ""
+"Śledzimy tego rodzaju błędy automatycznie. Jeżeli problem będzie się "
+"utrzymywać - powiadom nas. Tymczasem, spróbuj odświeżyć stronę."
 
 #: templates/account/account_inactive.html:5
 #: templates/account/account_inactive.html:8
@@ -360,21 +395,45 @@ msgstr "Jednostki podziału terytorialnego"
 msgid "Categories"
 msgstr "Kategorie"
 
-#: templates/search/search.html:50
+#: templates/partials/_search_form.html:8 templates/search/search.html:8
+msgid "Search"
+msgstr "Szukaj"
+
+#: templates/search/search.html:5
+msgid "Search result"
+msgstr "Wyniki wyszukiwania"
+
+#: templates/search/search.html:53
 msgid "Results"
 msgstr "Wyniki"
 
-#: templates/search/search.html:58
+#: templates/search/search.html:61
 msgid "No results found."
 msgstr "Brak wyników"
 
-#: templates/search/search.html:63
+#: templates/search/search.html:66
 msgid "&laquo; Previous"
 msgstr "&laquo; Poprzednie"
 
-#: templates/search/search.html:65
+#: templates/search/search.html:68
 msgid "Next &raquo;"
 msgstr "Następne &raquo;"
+
+#: templates/users/user_detail.html:5
+msgid "User:"
+msgstr "Użytkownik: "
+
+#: templates/users/user_detail.html:25
+msgid "My Info"
+msgstr "O mnie"
+
+#: templates/users/user_list.html:3
+msgid "Members"
+msgstr "Członkowie"
+
+#: templates/users/user_list.html:7
+msgid "Users"
+msgstr "Użytkownicy"
 
 #: urls.py:31
 msgid "^search/"
@@ -401,9 +460,6 @@ msgstr "^strony/"
 
 #~ msgid "Learn more"
 #~ msgstr "Czytaj więcej"
-
-#~ msgid "^users/"
-#~ msgstr "^uzytkownicy/"
 
 #~ msgid "My Profile"
 #~ msgstr "Mój profil"
