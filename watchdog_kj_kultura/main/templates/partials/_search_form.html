@@ -1,6 +1,6 @@
 <form method="get" action="{% url 'haystack_search' %}" class="search-form">
     <div class="input-group input-group-lg">
-        <input type="search" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="np. Teatr Wielki w Krakowie">
+        <input type="search" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="np. Opera Narodowa">
         <input type="hidden" name="models" value="organizations.organization">
         <span class="input-group-btn">
             <button class="btn btn-primary" type="submit">Szukaj</button>
