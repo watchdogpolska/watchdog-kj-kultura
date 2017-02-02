@@ -1,5 +1,8 @@
 {% extends 'organizations/organization_list.html' %}
+
 {% load i18n %}
+
+{% block title %}{{ category }} - {% trans "watchdog-kj-kultura" %}{% endblock title %}
 
 {% block organization_content %}
 <h2>{{category}}</h2>

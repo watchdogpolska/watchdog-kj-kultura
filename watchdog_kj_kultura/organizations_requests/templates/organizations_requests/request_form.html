@@ -2,6 +2,8 @@
 
 {% load i18n crispy_forms_tags %}
 
+{% block title %}{% blocktrans %}{{template}} to {{organization}}{% endblocktrans %} - {% trans "watchdog-kj-kultura" %}{% endblock %}
+
 {% block content %}
 <h1>{% blocktrans %}{{template}} to {{organization}}{% endblocktrans %}</h1>
 {{template.introduction}}

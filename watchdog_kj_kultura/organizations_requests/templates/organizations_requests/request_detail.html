@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block title %}{{object}} - {% trans "watchdog-kj-kultura" %}{% endblock %}
 {% block content %}
 <h1>{{object}}</h1>
 <p>Organization: <a href="{{object.organization.get_absolute_url}}">{{object.organization}}</a></p>
