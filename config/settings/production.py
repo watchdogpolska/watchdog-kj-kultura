@@ -170,7 +170,7 @@ CACHES = {
     }
 }
 
-
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # Sentry Configuration
 SENTRY_DSN = env('DJANGO_SENTRY_DSN')
 SENTRY_CLIENT = env('DJANGO_SENTRY_CLIENT',
