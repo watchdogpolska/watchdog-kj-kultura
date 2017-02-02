@@ -16,7 +16,10 @@
   {% if object.use_map %}
     <script src="https://cdn.rawgit.com/jdbartlett/loupe/master/jquery.loupe.min.js"></script>
     <script>
-      $('.magnifier img').loupe();
+      $('.magnifier img').loupe({
+          width: 200,
+          height: 200,
+      });
     </script>
   {% endif %}
 {% endblock %}
