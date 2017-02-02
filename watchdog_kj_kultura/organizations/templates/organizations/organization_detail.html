@@ -4,25 +4,85 @@
 {% block content %}
 <h1 class="heading-accent">{{object}}</h1>
 
-<pre>
-{{object.meta}}
-</pre>
-<table class="table">
-    <thead>
-      <tr>
-          <th>{% trans "Field" %}</th>
-          <th>{% trans "Value" %}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for key, value in object.meta.items %}
-      <tr>
-          <td>{{key}}</td>
-          <td>{{value}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
+<h2>Dane kontaktowe</h2>
+<table class="table table-hover">
+  <tbody>
+    <tr><td>Miejscowość</td><td>{{object.meta.kod_pocztowy}} {{object.meta.nazwa_miejscowosci}}</td></tr>
+    <tr><td>Numer telefonu</td><td>{{object.meta.nr_tel}}</td></tr>
+    <tr><td>Strona internetowa</td><td>{{object.meta.www}}</td></tr>
+    <tr><td>Biuletyn Informacji Publicznej</td><td>{{object.meta.link_do_bip}}</td></tr>
+  </tbody>
 </table>
+<h2>Finanse</h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th colspan="2">Przychody</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr><td>Dotacje podmiotowe z budżetu samorządu w 2015 r.</td><td>{{object.meta.dotacje_podmiotowe_z_budzetu_samorzadu}}</td></tr>
+<tr><td>Dotacje celowe z budżetu samorządu w 2015 r.</td><td>{{object.meta.dotacje_celowe_z_budzetu_samorzadu}}</td></tr>
+<tr><td>Dotacje podmiotowe z budżetu państwa w 2015 r.</td><td>{{object.meta.dotacje_podmiotowe_z_budzetu_państwa}}</td></tr>
+<tr><td>Dotacje celowe z budzetu państwa w 2015 r.</td><td>{{object.meta.dotacje_celowe_z_budzetu_panstwa}}</td></tr>
+<tr><td>Przychody z tytułu najmu i dzierżawy w 2015 r.</td><td>{{object.meta.przychody_z_tytulu_najmu_i_dzierzawy}}</td></tr>
+<tr><td>Środki otrzymane od osób fizycznych w 2015 r.</td><td>{{object.meta.srodki_otrzymane_od_osob_fizycznych}}</td></tr>
+<tr><td>Środki otrzymane od osób prawnych w 2015 r.</td><td>{{object.meta.srodki_otrzymane_od_osob_prawnych}}</td></tr>
+<tr><td>Inne źródła przychodów w 2015 r.</td><td>{{object.meta.inne_zrodla}}</td></tr>
+  </tbody>
+</table>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th colspan="2">Przychody</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr><td>Dotacje podmiotowe z budżetu samorządu w 2015 r.</td><td>{{object.meta.dotacje_podmiotowe_z_budzetu_samorzadu}}</td></tr>
+<tr><td>Dotacje celowe z budżetu samorządu w 2015 r.</td><td>{{object.meta.dotacje_celowe_z_budzetu_samorzadu}}</td></tr>
+<tr><td>Dotacje podmiotowe z budżetu państwa w 2015 r.</td><td>{{object.meta.dotacje_podmiotowe_z_budzetu_państwa}}</td></tr>
+<tr><td>Dotacje celowe z budzetu państwa w 2015 r.</td><td>{{object.meta.dotacje_celowe_z_budzetu_panstwa}}</td></tr>
+<tr><td>Przychody z tytułu najmu i dzierżawy w 2015 r.</td><td>{{object.meta.przychody_z_tytulu_najmu_i_dzierzawy}}</td></tr>
+<tr><td>Środki otrzymane od osób fizycznych w 2015 r.</td><td>{{object.meta.srodki_otrzymane_od_osob_fizycznych}}</td></tr>
+<tr><td>Środki otrzymane od osób prawnych w 2015 r.</td><td>{{object.meta.srodki_otrzymane_od_osob_prawnych}}</td></tr>
+<tr><td>Inne źródła przychodów w 2015 r.</td><td>{{object.meta.inne_zrodla}}</td></tr>
+  </tbody>
+</table>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th colspan="2">Wydatki</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr><td>Wynagrodzenia dla specjalistów w 2015 r.</td><td>{{object.meta.wynagrodzenia_dla_specjalistow}}</td></tr>
+<tr><td>Wynagrodzenia dla personelu administracyjnego w 2015 r.</td><td>{{object.meta.wynagrodzenia_dla_personelu_adm}}</td></tr>
+<tr><td>Koszty programowe w 2015 r.</td><td>{{object.meta.koszty_programowe}}</td></tr>
+<tr><td>Remonty i modernizacje w 2015 r.</td><td>{{object.meta.remonty_i_modernizacje}}</td></tr>
+<tr><td>Inwestycje w działalność kulturalną w 2015 r.</td><td>{{object.meta.inwestycje_w_dzialalnosc_kulturalna}}</td></tr>
+<tr><td>Pozostałe koszty administracyjne w 2015 r.</td><td>{{object.meta.pozostale_koszty_administracyjne}}</td></tr>
+  </tbody>
+</table>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th colspan="2">Zatrudnienie</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr><td>Liczba etatów specjalistów (muzycy, aktorzy, kuratorzy, bibliotekarze etc.) w 2015 roku</td><td>{{object.meta.e1}}</td></tr>
+<tr><td>Pracownicy w oparciu o umowy cywilno-prawne na stanowiskach specjalistów (muzycy, aktorzy, kuratorzy, bibliotekarze etc.) w 2015 r.</td><td>{{object.meta.f1}}</td></tr>
+<tr><td>Liczba etatów administracyjnych (dyrekcja, księgowość, personel techniczny etc.) w 2015 r.</td><td>{{object.meta.c1}}</td></tr>
+<tr><td>Pracownicy w oparciu o umowy cywilno-prawne na stanowiskach administracyjnych (dyrekcja, księgowość, personel techniczny etc.) w 2015 r.</td><td>{{object.meta.d1}}</td></tr>
+
+
+  </tbody>
+</table>
+
+
+<!-- {{object.meta}} -->
+
 <div class="row">
   <div class="col-md-push-2 col-md-8">
     <h2>Wyślij pismo</h2>
