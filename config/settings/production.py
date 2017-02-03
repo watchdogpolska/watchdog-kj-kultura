@@ -120,7 +120,7 @@ STATICFILES_STORAGE = 'config.settings.production.StaticRootS3BotoStorage'
 # 'django.contrib.staticfiles'
 AWS_PRELOAD_METADATA = True
 INSTALLED_APPS = ('collectfast', ) + INSTALLED_APPS
-
+COLLECTFAST_THREADS = 20
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
