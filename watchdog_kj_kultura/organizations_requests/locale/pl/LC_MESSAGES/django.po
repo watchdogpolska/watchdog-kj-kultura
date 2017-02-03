@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-30 20:23+0100\n"
-"PO-Revision-Date: 2016-12-30 20:23+0100\n"
+"POT-Creation-Date: 2017-02-03 19:07+0100\n"
+"PO-Revision-Date: 2017-02-03 19:07+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -163,17 +163,23 @@ msgstr ""
 msgid "None Available"
 msgstr "Żadne niedostępne"
 
-#: templates/organizations_requests/request_detail.html:6
+#: templates/organizations_requests/request_detail.html:3
+#: templates/organizations_requests/request_form.html:5
+msgid "watchdog-kj-kultura"
+msgstr "Mapa Kultury"
+
+#: templates/organizations_requests/request_detail.html:7
 #, python-format
 msgid "Send your %(template)s too"
 msgstr "Wyślij %(template)s też!"
 
-#: templates/organizations_requests/request_form.html:6
+#: templates/organizations_requests/request_form.html:5
+#: templates/organizations_requests/request_form.html:8
 #, python-format
 msgid "%(template)s to %(organization)s"
 msgstr "%(template)s do %(organization)s"
 
-#: templates/organizations_requests/request_form.html:8
+#: templates/organizations_requests/request_form.html:10
 msgid "Form"
 msgstr "Formularz"
 

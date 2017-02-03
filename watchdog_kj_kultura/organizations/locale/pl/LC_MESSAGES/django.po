@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-27 05:39+0100\n"
-"PO-Revision-Date: 2017-01-27 05:40+0100\n"
+"POT-Creation-Date: 2017-02-03 19:08+0100\n"
+"PO-Revision-Date: 2017-02-03 19:08+0100\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -19,20 +19,20 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: admin.py:63
+#: admin.py:64
 #, python-brace-format
 msgid "Use {{object.meta.{key}}} in templates to display value"
 msgstr "Użyj {{object.meta.{key}}} w szablonie, aby wyświetlić wartość"
 
-#: admin.py:83
+#: admin.py:84
 msgid "Clean position of selected"
 msgstr "Wyczyść pozycje wybranych"
 
-#: admin.py:87
+#: admin.py:88
 msgid "Switch visibility of selected"
 msgstr "Przestaw widoczność wybranych"
 
-#: admin.py:100
+#: admin.py:105
 msgid "Organization count"
 msgstr "Liczba organizacji"
 
@@ -50,6 +50,18 @@ msgstr ""
 #: apps.py:7
 msgid "Organizations module"
 msgstr "Moduł organizacji"
+
+#: filters.py:6
+msgid "Has JST"
+msgstr "Ma JST?"
+
+#: filters.py:11
+msgid "Is null"
+msgstr "Jest puste"
+
+#: filters.py:12
+msgid "Has value"
+msgstr "Ma wartość"
 
 #: forms.py:27
 msgid "Sources of information"
@@ -81,7 +93,7 @@ msgstr "Metadane"
 msgid "Verification"
 msgstr "Weryfikacja"
 
-#: models.py:22 models.py:47 models.py:85
+#: models.py:22 models.py:46 models.py:84
 msgid "Name"
 msgstr "Nazwa"
 
@@ -93,55 +105,56 @@ msgstr "Klucz"
 msgid "They are permitted only Latin characters and numbers."
 msgstr "Dopuszczalne są tylko znaki alfabetu łacińskiego i liczby."
 
-#: models.py:31
+#: models.py:30
 msgid "MetaCategory"
 msgstr "Metakategoria"
 
-#: models.py:32
+#: models.py:31
 msgid "MetaCategorys"
 msgstr "Metakategorie"
 
-#: models.py:48 models.py:86
+#: models.py:47 models.py:85
 msgid "Slug"
 msgstr "Identyfikator redakcyjny"
 
-#: models.py:52 models.py:93 templates/organizations/organization_base.html:10
+#: models.py:51 models.py:92 templates/organizations/organization_base.html:12
 msgid "Category"
 msgstr "Kategoria"
 
-#: models.py:53
+#: models.py:52
 msgid "Categories"
 msgstr "Kategorie"
 
-#: models.py:87
+#: models.py:86
 msgid "E-mail"
 msgstr "E-mail"
 
-#: models.py:89
+#: models.py:88
 msgid "Unit of administrative division"
 msgstr "Jednostka podziału terytorialnego"
 
-#: models.py:91
+#: models.py:90
 msgid "Position"
 msgstr "Pozycja"
 
-#: models.py:96
+#: models.py:95
 msgid "Public visible"
 msgstr "Publiczna widoczność"
 
-#: models.py:97
+#: models.py:96
 msgid "Check to mark organization as public visible"
 msgstr "Zaznacz, aby oznaczyć organizacje jako widoczną publicznie"
 
-#: models.py:99
+#: models.py:98
 msgid "Metadata"
 msgstr "Metadane"
 
-#: models.py:120
+#: models.py:119
 msgid "Organization"
 msgstr "Organizacja"
 
-#: models.py:121 templates/organizations/organization_base.html:6
+#: models.py:120 templates/organizations/organization_base.html:5
+#: templates/organizations/organization_base.html:8
 #: templates/organizations/organization_list.html:7
 msgid "Organizations"
 msgstr "Organizacje"
@@ -155,25 +168,24 @@ msgstr "Początek"
 msgid "Suggestion update of %(object)s"
 msgstr "Propozycja aktualizacji %(object)s"
 
-#: templates/organizations/organization_detail.html:12
-msgid "Field"
-msgstr "Pole"
+#: templates/organizations/organization_base.html:5
+#: templates/organizations/organization_category.html:5
+#: templates/organizations/organization_detail.html:3
+#: templates/organizations/organization_region.html:4
+msgid "watchdog-kj-kultura"
+msgstr "Mapa Kultury"
 
-#: templates/organizations/organization_detail.html:13
-msgid "Value"
-msgstr "Wartość"
-
-#: templates/organizations/organization_detail.html:29
+#: templates/organizations/organization_detail.html:90
 msgid "Requests received:"
 msgstr "Otrzymane zapytania:"
 
-#: templates/organizations/organization_detail.html:37
+#: templates/organizations/organization_detail.html:98
 msgid "Write a letter"
 msgstr "Napisz pismo"
 
-#: templates/organizations/organization_detail.html:47 views.py:129
-msgid "Report an error"
-msgstr "Zgłoś błąd"
+#: templates/organizations/organization_detail.html:108
+msgid "Report an error or complete information"
+msgstr "Zgłoś błąd lub uzupełnij dane"
 
 #: templates/organizations/organization_list.html:16
 msgid "No rows."
@@ -203,6 +215,16 @@ msgstr ""
 #: views.py:56 views.py:59 views.py:64 views.py:95 views.py:132
 msgid "Organization list"
 msgstr "Wykaz organizacji"
+
+#: views.py:129
+msgid "Report an error"
+msgstr "Zgłoś błąd"
+
+#~ msgid "Field"
+#~ msgstr "Pole"
+
+#~ msgid "Value"
+#~ msgstr "Wartość"
 
 #~ msgid "Static pages module"
 #~ msgstr "Moduł stron statycznych"
