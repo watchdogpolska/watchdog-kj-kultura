@@ -86,8 +86,6 @@
 <div class="row">
   <div class="col-md-push-2 col-md-8">
     <h2>Wyślij pismo</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium incidunt fuga repellendus dolorum dolorem aperiam assumenda, laboriosam ad dignissimos tempora eligendi animi ex, doloribus recusandae, nam molestiae vitae voluptatem sed.</p>
-    <p>{% trans 'Requests received:'%} {{organization.request_set.count}}</p>
     <div class="row">
       {% for template in template_list %}
         <div class="col-md-6">
@@ -101,6 +99,7 @@
         </div>
       {% endfor %}
     </div>
+    <p>{% trans 'Requests received:'%} {{organization.request_set.count}}</p>
   </div>
 </div>
 
