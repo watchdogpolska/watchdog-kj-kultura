@@ -155,22 +155,22 @@ DATABASES['default'] = env.db('DATABASE_URL')
 # CACHING
 # ------------------------------------------------------------------------------
 
-REDIS_VARIABLE = 'REDISCLOUD_URL' if 'REDISCLOUD_URL' in os.environ else 'REDIS_URL'
-REDIS_LOCATION = '{0}/{1}'.format(env(REDIS_VARIABLE, default='redis://127.0.0.1:6379'), 0)
+# REDIS_VARIABLE = 'REDISCLOUD_URL' if 'REDISCLOUD_URL' in os.environ else 'REDIS_URL'
+# REDIS_LOCATION = '{0}/{1}'.format(env(REDIS_VARIABLE, default='redis://127.0.0.1:6379'), 0)
 # Heroku URL does not pass the DB number, so we parse it in
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': REDIS_LOCATION,
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            'IGNORE_EXCEPTIONS': True,  # mimics memcache behavior.
-                                        # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
-        }
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': REDIS_LOCATION,
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#             'IGNORE_EXCEPTIONS': True,  # mimics memcache behavior.
+#                                         # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
+#         }
+#     }
+# }
+# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # Sentry Configuration
 SENTRY_DSN = env('DJANGO_SENTRY_DSN')
 SENTRY_CLIENT = env('DJANGO_SENTRY_CLIENT',
