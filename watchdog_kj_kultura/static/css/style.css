@@ -7862,4 +7862,8 @@ button.close {
   border-radius: 50%;
 }
 
+.table-fixed {
+  table-layout: fixed;
+}
+
 /*# sourceMappingURL=style.css.map */
