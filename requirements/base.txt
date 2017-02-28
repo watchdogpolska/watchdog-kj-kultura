@@ -31,7 +31,7 @@ Pillow==4.0.0
 
 # For user registration, either via email or social
 # Well-built with regular release cycles!
-django-allauth==0.30.0
+django-allauth==0.31.0
 
 # Search
 elasticsearch==2.4.1 # pyup: <5.0.0
