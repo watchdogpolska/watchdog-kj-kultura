@@ -57,7 +57,7 @@ django-teryt-tree==0.12.1
 django-autofixture==0.12.1
 
 # Pretty e-mail
-djmail==1.0.0
+djmail==1.0.1
 
 # GeoMaps
 django-leaflet==0.19.0
