@@ -62,7 +62,7 @@ djmail==1.0.1
 # GeoMaps
 django-leaflet==0.21.0
 jsonfield==2.0.1
-https://github.com/balazs-endresz/django-geojson/archive/a2b05b4c644e54a127a482c41d3617897c2a86cd.zip # See https://github.com/makinacorpus/django-geojson/issues/82 and https://github.com/makinacorpus/django-geojson/pull/81
+dkango-geojson==2.10.0
 
 # Utils
 django-atom==0.12.7
