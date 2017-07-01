@@ -61,7 +61,7 @@ djmail==1.0.1
 
 # GeoMaps
 django-leaflet==0.22.0
-jsonfield==2.0.1
+jsonfield==2.0.2
 django-geojson==2.10.0
 
 # Utils
