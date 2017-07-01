@@ -5,10 +5,10 @@
 wheel==0.29.0
 
 # Bleeding edge Django
-django==1.10.5
+django==1.11.2
 
 # Configuration
-django-environ==0.4.1
+django-environ==0.4.3
 
 # Forms
 django-braces==1.11.0
@@ -18,24 +18,24 @@ django-crispy-forms==1.6.1
 django-bootstrap-pagination==1.6.2
 
 # Models
-django-model-utils==2.6.1
+django-model-utils==3.0.0
 
 # Admin
-django-grappelli==2.9.1
+django-grappelli==2.10.1
 geopy==1.11.0
 django-import-export==0.5.1
 django-tinymce==2.6.0
 
 # Images
-Pillow==4.1.0
+Pillow==4.1.1
 
 # For user registration, either via email or social
 # Well-built with regular release cycles!
-django-allauth==0.31.0
+django-allauth==0.32.0
 
 # Search
 elasticsearch==2.4.1 # pyup: <5.0.0
-django-haystack==2.6.0
+django-haystack==2.6.1
 django-haystack-elasticsearch==0.1.0
 django-haystack-panel==0.2.1
 
@@ -49,7 +49,7 @@ awesome-slugify==1.6.5
 pytz==2017.2
 
 # Redis support
-django-redis==4.7.0
+django-redis==4.8.0
 redis>=2.10.5
 
 # Data source
@@ -60,10 +60,10 @@ django-autofixture==0.12.1
 djmail==1.0.1
 
 # GeoMaps
-django-leaflet==0.21.0
-jsonfield==2.0.1
+django-leaflet==0.22.0
+jsonfield==2.0.2
 django-geojson==2.10.0
 
 # Utils
-django-atom==0.12.7
+django-atom==0.14.3
 python-dateutil==2.6.0
