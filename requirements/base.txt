@@ -60,7 +60,7 @@ django-autofixture==0.12.1
 djmail==1.0.1
 
 # GeoMaps
-django-leaflet==0.21.0
+django-leaflet==0.22.0
 jsonfield==2.0.1
 django-geojson==2.10.0
 
