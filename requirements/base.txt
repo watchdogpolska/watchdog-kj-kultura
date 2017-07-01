@@ -65,5 +65,5 @@ jsonfield==2.0.2
 django-geojson==2.10.0
 
 # Utils
-django-atom==0.12.7
+django-atom==0.14.3
 python-dateutil==2.6.0
