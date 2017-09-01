@@ -2,7 +2,7 @@
 -r base.txt
 -r test.txt
 Sphinx==1.6.3
-django-extensions==1.8.0
+django-extensions==1.9.0
 Werkzeug==0.12.2
 factory-boy==2.8.1
 
