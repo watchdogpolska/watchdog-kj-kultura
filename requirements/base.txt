@@ -66,4 +66,4 @@ django-geojson==2.10.0
 
 # Utils
 django-atom==0.15.3
-python-dateutil==2.6.0
+python-dateutil==2.6.1
