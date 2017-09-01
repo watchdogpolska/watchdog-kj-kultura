@@ -53,7 +53,7 @@ django-redis==4.8.0
 redis>=2.10.5
 
 # Data source
-django-teryt-tree==0.12.1
+django-teryt-tree==0.14.0
 django-autofixture==0.12.1
 
 # Pretty e-mail
