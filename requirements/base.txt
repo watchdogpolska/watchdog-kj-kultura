@@ -27,7 +27,7 @@ django-import-export==1.2.0
 django-tinymce==2.8.0
 
 # Images
-Pillow==4.2.1
+Pillow==6.0.0
 
 # For user registration, either via email or social
 # Well-built with regular release cycles!
