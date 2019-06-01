@@ -18,7 +18,7 @@ django-crispy-forms==1.7.2
 django-bootstrap-pagination==1.7.0
 
 # Models
-django-model-utils==3.0.0
+django-model-utils==3.1.2
 
 # Admin
 django-grappelli==2.10.1
