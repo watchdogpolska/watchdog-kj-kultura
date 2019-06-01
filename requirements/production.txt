@@ -13,7 +13,7 @@ gunicorn==19.9.0
 # ------------------------------------------------
 boto3==1.9.159  # AWS S3 Europe
 boto==2.49.0  # e24cloud files
-django-storages==1.6.5
+django-storages==1.7.1
 Collectfast==0.5.2
 
 # Email backends for Mailgun, Postmark, SendGrid and more
