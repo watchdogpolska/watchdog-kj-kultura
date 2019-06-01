@@ -11,7 +11,7 @@ gunicorn==19.9.0
 
 # Static and Media Storage
 # ------------------------------------------------
-boto3==1.4.7  # AWS S3 Europe
+boto3==1.9.159  # AWS S3 Europe
 boto==2.48.0  # e24cloud files
 django-storages==1.6.5
 Collectfast==0.5.2
